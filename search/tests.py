@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from .text_processing import document_stats, preprocess, split_sentences, tokenize
+from .pmc_client import normalize_identifier
 
 
 class TextProcessingTests(TestCase):
@@ -34,3 +35,10 @@ class TextProcessingTests(TestCase):
         stats = document_stats("COVID-19 treatment works. It helps patients.")
         self.assertEqual(stats["sentence_count"], 2)
         self.assertEqual(stats["word_count"], 6)
+
+
+class IdentifierTests(TestCase):
+    def test_identifier_normalization(self):
+        self.assertEqual(normalize_identifier("PMC12503546"), ("pmc", "PMC12503546"))
+        self.assertEqual(normalize_identifier("42724776"), ("pubmed", "42724776"))
+        self.assertEqual(normalize_identifier("PMID:42724776"), ("pubmed", "42724776"))

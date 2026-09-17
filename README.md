@@ -16,9 +16,10 @@ Open: `http://localhost:8000/`
 - Search article **titles and abstracts** with an inverted index + BM25 ranking.
 - Porter stemming and stop-word handling; stop-word-only queries such as `on the` still have a fallback search.
 - Search-result keyword highlighting and **Abstract keyword match count**.
-- Article collection with A–Z/Z–A/date sorting, Abstract preview, and deletion.
-- Upload PMC XML or fetch one/multiple PMCIDs from PubMed Central.
-- Duplicate detection by PMCID, DOI, source filename, then title/year.
+- Article collection with A–Z/Z–A/date sorting, Abstract preview, Abstract statistics, and deletion.
+- Articles and Search Results both show 10 records per page. Abstract statistics are displayed as **Sentences → Words → Characters**; Search Results additionally show Abstract keyword matches.
+- Upload PubMed/PMC XML or fetch one/multiple PMID/PMCID values directly from NCBI.
+- Duplicate detection by PMCID, PMID, DOI, source filename, then title/year.
 - Article detail page shows metadata, Title statistics, and a sentence-segmented Abstract.
 
 ## Text counting rules
@@ -61,6 +62,15 @@ Tokenization
 
 Statistics do **not** remove stop words or stem words.
 
+
+## Preview and pagination
+
+- **Articles**: 10 articles per page; each record shows Abstract statistics before opening the Abstract preview.
+- **Search Results**: 10 results per page; each result shows an Abstract snippet, Abstract statistics, and Abstract keyword matches.
+- Abstract statistics order is **Sentences → Words → Characters**.
+- Retrieval behavior is unchanged: queries use the existing Porter stemming + inverted-index/BM25 logic. **No prefix/partial-word search is enabled.**
+- When full-text display is restored later, keep the Abstract preview/statistics and add full-article statistics rather than replacing the Abstract information.
+
 ## Current Abstract-only scope
 
 The XML parser still extracts and stores full body text in `Document.raw_text`, but the active search index currently uses:
@@ -93,3 +103,14 @@ docker compose exec web python manage.py build_index
 ```
 
 No model migration is needed just to restore the full-text display/search scope.
+
+## PMID / PMCID fetch
+
+The Upload page accepts both identifiers in the same box:
+
+- `PMC12503546` → fetched from **PubMed Central** as PMC/JATS XML.
+- `42724776` or `PMID42724776` → fetched from **PubMed** as PubMed XML.
+- Plain numeric IDs are treated as **PMID**; use the `PMC` prefix for a PMCID.
+- Multiple IDs can be separated by spaces, commas, semicolons, or new lines.
+- PubMed XML is enough for the current Abstract-only stage even when no PMC full text exists.
+

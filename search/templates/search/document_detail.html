@@ -21,6 +21,7 @@
         {% if doc.journal %}<em>{{ doc.journal }}</em>{% endif %}
         {% if doc.publication_year %}{% if doc.journal %} · {% endif %}{{ doc.publication_year }}{% endif %}
         {% if doc.pmcid %} · {{ doc.pmcid }}{% endif %}
+        {% if doc.pmid %} · PMID {{ doc.pmid }}{% endif %}
         {% if doc.doi %} · DOI {{ doc.doi }}{% endif %}
       </p>
 

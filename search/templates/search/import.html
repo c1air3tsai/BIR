@@ -3,13 +3,13 @@
 <main class="site-shell page-main narrow-page">
   <header class="page-heading">
     <h1>Upload Article</h1>
-    <p>Add PubMed Central XML articles to your local collection.</p>
+    <p>Add PubMed or PubMed Central XML articles to your local collection.</p>
   </header>
 
   <div class="upload-grid">
     <section class="simple-panel">
       <h2>Upload XML</h2>
-      <p class="panel-intro">Choose one PubMed Central / JATS XML file from your computer.</p>
+      <p class="panel-intro">Choose one PubMed / PubMed Central XML file from your computer.</p>
       <form method="post" enctype="multipart/form-data" class="stack-form">
         {% csrf_token %}
         <input type="hidden" name="action" value="upload">
@@ -22,15 +22,15 @@
     </section>
 
     <section class="simple-panel">
-      <h2>Fetch from PubMed Central</h2>
-      <p class="panel-intro">Enter one or more PMCIDs. Each article will be fetched as an XML file first.</p>
+      <h2>Fetch from PubMed / PubMed Central</h2>
+      <p class="panel-intro">Enter one or more PMID or PMCID values. Each article will be fetched as an XML file first.</p>
       <form method="post" class="stack-form">
         {% csrf_token %}
-        <input type="hidden" name="action" value="pmc_fetch">
-        {{ pmc_form.pmcids.errors }}
-        <label for="{{ pmc_form.pmcids.id_for_label }}">{{ pmc_form.pmcids.label }}</label>
-        {{ pmc_form.pmcids }}
-        <small>{{ pmc_form.pmcids.help_text }}</small>
+        <input type="hidden" name="action" value="article_fetch">
+        {{ fetch_form.identifiers.errors }}
+        <label for="{{ fetch_form.identifiers.id_for_label }}">{{ fetch_form.identifiers.label }}</label>
+        {{ fetch_form.identifiers }}
+        <small>{{ fetch_form.identifiers.help_text }}</small>
         <button class="primary-button" type="submit">Fetch XML</button>
       </form>
 

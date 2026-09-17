@@ -5,6 +5,7 @@ class Document(models.Model):
     title = models.CharField(max_length=500)
     source_file = models.CharField(max_length=300, unique=True)
     pmcid = models.CharField(max_length=40, blank=True, db_index=True)
+    pmid = models.CharField(max_length=40, blank=True, db_index=True)
     doi = models.CharField(max_length=200, blank=True)
     journal = models.CharField(max_length=300, blank=True)
     publication_year = models.CharField(max_length=10, blank=True)

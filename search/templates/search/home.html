@@ -63,14 +63,14 @@
         <p class="result-snippet">{{ r.highlighted_snippet }}</p>
 
         <div class="abstract-preview-stats" aria-label="Abstract statistics">
-          <span><strong>{{ r.abstract_stats.words }}</strong> words</span>
           <span><strong>{{ r.abstract_stats.sentences }}</strong> sentences</span>
+          <span><strong>{{ r.abstract_stats.words }}</strong> words</span>
           <span><strong>{{ r.abstract_stats.characters }}</strong> characters</span>
         </div>
 
         <div class="result-footer">
           <div class="result-metadata">
-            {% if r.doc.pmcid %}<span class="record-id">{{ r.doc.pmcid }}</span>{% endif %}
+            {% if r.doc.pmcid %}<span class="record-id">{{ r.doc.pmcid }}</span>{% elif r.doc.pmid %}<span class="record-id">PMID {{ r.doc.pmid }}</span>{% endif %}
             <span class="keyword-count">{{ r.keyword_count }} abstract keyword match{{ r.keyword_count|pluralize:"es" }}</span>
           </div>
           <a class="view-article-link" href="{% url 'search:document_detail' r.doc.pk %}?q={{ query|urlencode }}&page={{ page_obj.number }}">View abstract <span>→</span></a>

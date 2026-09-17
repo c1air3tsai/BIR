@@ -16,7 +16,7 @@ from django.views.decorators.http import require_POST
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
-from .forms import PMCDownloadForm, UploadDocumentForm
+from .forms import ArticleFetchForm, UploadDocumentForm
 from .indexer import (
     DuplicateDocumentError,
     find_duplicate_document,
@@ -24,7 +24,7 @@ from .indexer import (
     parse_document,
 )
 from .models import Document, Term
-from .pmc_client import download_pmc_xml
+from .pmc_client import download_article_xml
 from .text_processing import TOKEN_PATTERN, bm25_score, preprocess, split_sentences, stem_tokens, tokenize
 
 
@@ -35,7 +35,7 @@ def _corpus_dir():
 
 
 def _fetched_dir():
-    """Temporary holding area for XML fetched from PMC before the user uploads it."""
+    """Temporary holding area for XML fetched from NCBI before the user uploads it."""
     path = Path(settings.BASE_DIR) / "data" / "fetched"
     path.mkdir(parents=True, exist_ok=True)
     return path
@@ -440,7 +440,7 @@ def articles_view(request):
         sort = "az"
         documents = documents.order_by(Lower("title"))
 
-    paginator = Paginator(documents, 25)
+    paginator = Paginator(documents, 10)
     page_obj = paginator.get_page(request.GET.get("page", 1))
     for doc in page_obj.object_list:
         doc.abstract_stats = _basic_stats(doc.abstract, include_sentences=True)
@@ -518,7 +518,7 @@ def _duplicate_for_path(path, source_name=None):
 
 def import_view(request):
     upload_form = UploadDocumentForm()
-    pmc_form = PMCDownloadForm()
+    fetch_form = ArticleFetchForm()
     import_result = request.session.pop("import_result", None)
 
     if request.method == "POST":
@@ -564,20 +564,20 @@ def import_view(request):
                         temp_path.unlink(missing_ok=True)
                     messages.error(request, f"Upload failed: {exc}")
 
-        elif action == "pmc_fetch":
-            pmc_form = PMCDownloadForm(request.POST)
-            if pmc_form.is_valid():
+        elif action in {"article_fetch", "pmc_fetch"}:
+            fetch_form = ArticleFetchForm(request.POST)
+            if fetch_form.is_valid():
                 fetched_names = request.session.get("fetched_files", [])
                 errors = []
                 fetched_count = 0
-                for pmcid in pmc_form.cleaned_data["pmcids"]:
+                for identifier in fetch_form.cleaned_data["identifiers"]:
                     try:
-                        path = Path(download_pmc_xml(pmcid, str(_fetched_dir())))
+                        path = Path(download_article_xml(identifier, str(_fetched_dir())))
                         if path.name not in fetched_names:
                             fetched_names.append(path.name)
                         fetched_count += 1
                     except Exception as exc:
-                        errors.append(f"{pmcid}: {exc}")
+                        errors.append(f"{identifier}: {exc}")
                 request.session["fetched_files"] = fetched_names
                 if fetched_count:
                     messages.success(
@@ -585,7 +585,7 @@ def import_view(request):
                         f"Fetched {fetched_count} XML file{'s' if fetched_count != 1 else ''}. You can upload them below."
                     )
                 for error in errors:
-                    messages.error(request, f"PMC fetch failed — {error}")
+                    messages.error(request, f"Fetch failed — {error}")
                 return redirect("search:import")
 
         elif action in {"upload_fetched", "upload_all_fetched"}:
@@ -641,7 +641,7 @@ def import_view(request):
     fetched_files = _staged_files_from_session(request)
     return render(request, "search/import.html", {
         "upload_form": upload_form,
-        "pmc_form": pmc_form,
+        "fetch_form": fetch_form,
         "fetched_files": fetched_files,
         "import_result": import_result,
         "page_title": "Upload Article",

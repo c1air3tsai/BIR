@@ -1,4 +1,5 @@
 import os
+import re
 from collections import Counter
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -56,7 +57,7 @@ def _extract_abstract(root):
 
 
 def _body_text(root):
-    """Keep PMC/JATS section titles and paragraphs separated for later reading."""
+    """Keep PMC/JATS section titles and paragraphs separated for future full-text use."""
     body = next((node for node in root.iter() if _local_name(node.tag) == "body"), None)
     if body is None:
         return ""
@@ -66,22 +67,19 @@ def _body_text(root):
         tag = _local_name(node.tag)
         if tag not in {"title", "p"}:
             continue
-        text = " ".join("".join(node.itertext()).split())
+        text = _clean_node_text(node)
         if text:
             blocks.append(text)
     return "\n\n".join(blocks)
 
 
-def _extract_text_from_xml(path: str):
-    tree = ET.parse(path)
-    root = tree.getroot()
-
+def _extract_jats_xml(root, path):
     title = _first_text(root, ".//article-title") or os.path.basename(path)
     abstract = _extract_abstract(root)
     body = _body_text(root) or _first_text(root, ".//body")
     full_text = "\n\n".join(x for x in [title, abstract, body] if x).strip()
     if not full_text:
-        full_text = " ".join("".join(root.itertext()).split())
+        full_text = _clean_node_text(root)
 
     author_names = []
     for contrib in root.findall(".//contrib[@contrib-type='author']"):
@@ -91,8 +89,12 @@ def _extract_text_from_xml(path: str):
         if name:
             author_names.append(name)
 
+    # Some PMC/JATS records also carry the PMID in article-id.
+    pmid = _article_id(root, "pmid")
+
     meta = {
         "pmcid": _article_id(root, "pmcid") or _article_id(root, "pmcaid") or _article_id(root, "pmc"),
+        "pmid": pmid,
         "doi": _article_id(root, "doi"),
         "journal": _first_text(root, ".//journal-title"),
         "publication_year": _first_text(root, ".//pub-date/year") or _first_text(root, ".//year"),
@@ -100,6 +102,116 @@ def _extract_text_from_xml(path: str):
         "abstract": abstract,
     }
     return title, full_text, meta
+
+
+def _find_first_local(root, name):
+    return next((node for node in root.iter() if _local_name(node.tag) == name), None)
+
+
+def _find_all_local(root, name):
+    return [node for node in root.iter() if _local_name(node.tag) == name]
+
+
+def _pubmed_article_id(root, id_type):
+    wanted = id_type.lower()
+    for node in _find_all_local(root, "ArticleId"):
+        node_type = (node.attrib.get("IdType", "") or "").lower()
+        if node_type == wanted:
+            return (node.text or "").strip()
+    return ""
+
+
+def _extract_pubmed_abstract(article):
+    """Extract PubMed AbstractText elements and preserve structured-abstract blocks."""
+    abstract_nodes = _find_all_local(article, "AbstractText")
+    parts = []
+    for node in abstract_nodes:
+        text = _clean_node_text(node)
+        if text:
+            parts.append(text)
+    return "\n\n".join(parts)
+
+
+def _extract_pubmed_year(article):
+    # Prefer explicit Year fields in article dates / journal issue dates.
+    for parent_name in ("ArticleDate", "PubDate", "DateCompleted", "DateRevised"):
+        for parent in _find_all_local(article, parent_name):
+            year_node = next((n for n in parent.iter() if _local_name(n.tag) == "Year"), None)
+            if year_node is not None and (year_node.text or "").strip():
+                return (year_node.text or "").strip()
+
+    # MedlineDate can be values such as "2025 Jan-Feb".
+    medline_date = _find_first_local(article, "MedlineDate")
+    if medline_date is not None:
+        match = re.search(r"\b(19|20)\d{2}\b", medline_date.text or "")
+        if match:
+            return match.group(0)
+    return ""
+
+
+def _extract_pubmed_xml(root, path):
+    """Parse PubMed EFetch XML (PubmedArticleSet/PubmedArticle)."""
+    article = _find_first_local(root, "PubmedArticle")
+    if article is None:
+        raise ValueError("This XML does not contain a PubMed article")
+
+    title_node = _find_first_local(article, "ArticleTitle")
+    title = _clean_node_text(title_node) or os.path.basename(path)
+    abstract = _extract_pubmed_abstract(article)
+
+    # PubMed XML is citation/abstract XML, not PMC full text. Keep Title + Abstract
+    # in raw_text so the rest of the current Abstract-only assignment works unchanged.
+    full_text = "\n\n".join(x for x in [title, abstract] if x).strip()
+
+    pmid_node = _find_first_local(article, "PMID")
+    pmid = (pmid_node.text or "").strip() if pmid_node is not None else ""
+    pmcid = _pubmed_article_id(article, "pmc")
+    doi = _pubmed_article_id(article, "doi")
+
+    journal_node = _find_first_local(article, "Journal")
+    journal = ""
+    if journal_node is not None:
+        journal_title = next((n for n in journal_node.iter() if _local_name(n.tag) == "Title"), None)
+        journal = _clean_node_text(journal_title)
+
+    author_names = []
+    author_list = _find_first_local(article, "AuthorList")
+    if author_list is not None:
+        for author in author_list:
+            if _local_name(author.tag) != "Author":
+                continue
+            fore = next((n for n in author.iter() if _local_name(n.tag) == "ForeName"), None)
+            last = next((n for n in author.iter() if _local_name(n.tag) == "LastName"), None)
+            collective = next((n for n in author.iter() if _local_name(n.tag) == "CollectiveName"), None)
+            if collective is not None and _clean_node_text(collective):
+                author_names.append(_clean_node_text(collective))
+                continue
+            name = " ".join(
+                x for x in [_clean_node_text(fore), _clean_node_text(last)] if x
+            )
+            if name:
+                author_names.append(name)
+
+    meta = {
+        "pmcid": pmcid,
+        "pmid": pmid,
+        "doi": doi,
+        "journal": journal,
+        "publication_year": _extract_pubmed_year(article),
+        "authors": ", ".join(author_names),
+        "abstract": abstract,
+    }
+    return title, full_text, meta
+
+
+def _extract_text_from_xml(path: str):
+    tree = ET.parse(path)
+    root = tree.getroot()
+
+    # PubMed EFetch XML and PMC/JATS XML have different schemas.
+    if _find_first_local(root, "PubmedArticle") is not None:
+        return _extract_pubmed_xml(root, path)
+    return _extract_jats_xml(root, path)
 
 
 def parse_document(path: str):
@@ -118,13 +230,11 @@ def load_corpus(corpus_dir: str):
             continue
         try:
             title, text, meta = parse_document(fpath)
-        except ET.ParseError:
+        except (ET.ParseError, ValueError):
             continue
         if text:
             documents.append((title, text, fname, meta))
     return documents
-
-
 
 
 class DuplicateDocumentError(ValueError):
@@ -141,6 +251,12 @@ def find_duplicate_document(title, meta, fname):
         if existing:
             return existing
 
+    pmid = (meta.get("pmid") or "").strip()
+    if pmid:
+        existing = Document.objects.filter(pmid__iexact=pmid).first()
+        if existing:
+            return existing
+
     doi = (meta.get("doi") or "").strip()
     if doi:
         existing = Document.objects.filter(doi__iexact=doi).first()
@@ -152,7 +268,7 @@ def find_duplicate_document(title, meta, fname):
         if existing:
             return existing
 
-    # Fallback for XML files that contain neither PMCID nor DOI.
+    # Fallback for XML files that contain neither PMCID/PMID nor DOI.
     title = (title or "").strip()
     if title:
         candidates = Document.objects.filter(title__iexact=title)
@@ -171,14 +287,18 @@ def inspect_document(path: str):
     fname = Path(path).name
     return title, text, meta, find_duplicate_document(title, meta, fname)
 
+
 def _index_one(title, text, fname, meta):
     # Current assignment stage indexes Title + Abstract only.
-    # Full XML/body text is still preserved in Document.raw_text for future use.
+    # Full PMC XML/body text is still preserved in Document.raw_text for future use.
+    # PubMed XML contains citation metadata + abstract only, so text is naturally
+    # Title + Abstract for those records.
     search_text = "\n\n".join(
         part for part in [title, meta.get("abstract") or ""] if part
     ).strip()
 
-    # FUTURE FULL-TEXT SEARCH: comment the search_text block above and uncomment:
+    # FUTURE FULL-TEXT SEARCH (PMC/JATS only): comment the search_text block above
+    # and uncomment the following line, then rebuild the index.
     # search_text = text
 
     stats = document_stats(search_text)
@@ -191,6 +311,7 @@ def _index_one(title, text, fname, meta):
         sentence_count=stats["sentence_count"],
         avg_words_per_sentence=stats["avg_words_per_sentence"],
         pmcid=(meta.get("pmcid") or "")[:40],
+        pmid=(meta.get("pmid") or "")[:40],
         doi=(meta.get("doi") or "")[:200],
         journal=(meta.get("journal") or "")[:300],
         publication_year=(meta.get("publication_year") or "")[:10],

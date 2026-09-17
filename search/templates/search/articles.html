@@ -39,28 +39,27 @@
           {% if doc.publication_year %} · {{ doc.publication_year }}{% endif %}
         </p>
         {% endif %}
-        <div class="article-list-links">
-          <a class="article-open-link" href="{% url 'search:document_detail' doc.pk %}">View abstract <span>→</span></a>
-          {% if doc.abstract %}
-          <button class="abstract-preview-toggle" type="button" aria-expanded="false" aria-controls="abstract-preview-{{ doc.pk }}">Preview abstract</button>
-          {% endif %}
-        </div>
         {% if doc.abstract %}
-        <div class="article-abstract-preview" id="abstract-preview-{{ doc.pk }}" hidden>
+        <div class="abstract-preview-stats article-list-stats" aria-label="Abstract statistics">
+          <span><strong>{{ doc.abstract_stats.sentences }}</strong> sentences</span>
+          <span><strong>{{ doc.abstract_stats.words }}</strong> words</span>
+          <span><strong>{{ doc.abstract_stats.characters }}</strong> characters</span>
+        </div>
+        {% endif %}
+        {% if doc.abstract %}
+        <div class="article-abstract-preview">
           <div class="abstract-preview-heading">
             <strong>Abstract</strong>
-            <div class="abstract-preview-stats" aria-label="Abstract statistics">
-              <span><strong>{{ doc.abstract_stats.words }}</strong> words</span>
-              <span><strong>{{ doc.abstract_stats.sentences }}</strong> sentences</span>
-              <span><strong>{{ doc.abstract_stats.characters }}</strong> characters</span>
-            </div>
           </div>
           <p>{{ doc.abstract }}</p>
         </div>
         {% endif %}
+        <div class="article-list-links">
+          <a class="article-open-link" href="{% url 'search:document_detail' doc.pk %}">View abstract <span>→</span></a>
+        </div>
       </div>
       <div class="article-row-actions">
-        {% if doc.pmcid %}<span class="record-id">{{ doc.pmcid }}</span>{% endif %}
+        {% if doc.pmcid %}<span class="record-id">{{ doc.pmcid }}</span>{% elif doc.pmid %}<span class="record-id">PMID {{ doc.pmid }}</span>{% endif %}
         <form method="post" action="{% url 'search:delete_document' doc.pk %}">
           {% csrf_token %}
           <button
@@ -95,18 +94,5 @@
   </nav>
   {% endif %}
 </main>
-<script>
-(function () {
-  document.querySelectorAll('.abstract-preview-toggle').forEach((button) => {
-    button.addEventListener('click', () => {
-      const target = document.getElementById(button.getAttribute('aria-controls'));
-      if (!target) return;
-      const opening = target.hidden;
-      target.hidden = !opening;
-      button.setAttribute('aria-expanded', opening ? 'true' : 'false');
-      button.textContent = opening ? 'Hide abstract' : 'Preview abstract';
-    });
-  });
-})();
-</script>
+
 {% endblock %}
