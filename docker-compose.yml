@@ -1,0 +1,17 @@
+# docker-compose.yml
+# 用 docker compose 管理容器，比直接打一長串 docker run 指令方便很多。
+# 之後不管是重開機、重建 image，都只要記住幾個 docker compose 指令就好（詳見 README.md）。
+
+services:
+  web:
+    build: .                     # 用當前資料夾的 Dockerfile 來建置 image
+    container_name: biomedir_web
+    ports:
+      - "8000:8000"               # 「主機的 8000 port」對應「容器內的 8000 port」
+    volumes:
+      # 把整個專案資料夾掛載進容器，這樣你在自己電腦（host）改程式碼，
+      # 容器裡面會立刻同步，不用每次改完都重新 build image。
+      # db.sqlite3 也會因為這個掛載直接寫回你電腦的資料夾，容器刪掉重建也不會消失。
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1

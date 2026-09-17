@@ -1,0 +1,619 @@
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article article-type="review-article" xml:lang="en" dtd-version="1.4"><front><journal-meta><journal-id journal-id-type="nlm-ta">F1000Res</journal-id><journal-id journal-id-type="iso-abbrev">F1000Res</journal-id><journal-id journal-id-type="pmc-domain-id">2005</journal-id><journal-id journal-id-type="pmc-domain">f1000res</journal-id><journal-id journal-id-type="nlm-id">101594320</journal-id><journal-title-group><journal-title>F1000Research</journal-title></journal-title-group><issn pub-type="epub">2046-1402</issn><publisher><publisher-name>Faculty of 1000 Ltd</publisher-name></publisher></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC5989149</article-id><article-id pub-id-type="pmcid-ver">PMC5989149.1</article-id><article-id pub-id-type="pmcaid">5989149</article-id><article-id pub-id-type="pmcaiid">5989149</article-id><article-id pub-id-type="pmid">29904586</article-id><article-id pub-id-type="doi">10.12688/f1000research.12837.1</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="heading"><subject>Review</subject></subj-group><subj-group><subject>Articles</subject></subj-group></article-categories><title-group><article-title>Recent advances in field cancerization and management of multiple cutaneous squamous cell carcinomas</article-title><fn-group content-type="pub-status"><fn><p>[version 1; referees: 2 approved]</p></fn></fn-group></title-group><contrib-group><contrib contrib-type="author"><name name-style="western"><surname>Christensen</surname><given-names initials="SR">Sean R.</given-names></name><role content-type="http://credit.casrai.org/">Conceptualization</role><role content-type="http://credit.casrai.org/">Data Curation</role><role content-type="http://credit.casrai.org/">Formal Analysis</role><role content-type="http://credit.casrai.org/">Investigation</role><role content-type="http://credit.casrai.org/">Methodology</role><role content-type="http://credit.casrai.org/">Project Administration</role><role content-type="http://credit.casrai.org/">Writing – Original Draft Preparation</role><role content-type="http://credit.casrai.org/">Writing – Review &amp; Editing</role><contrib-id contrib-id-type="orcid" authenticated="false">https://orcid.org/0000-0003-2711-0026</contrib-id><xref ref-type="corresp" rid="c1">a</xref><xref ref-type="aff" rid="a1">1</xref></contrib><aff id="a1">
+<label>1</label>Section of Dermatologic Surgery and Cutaneous Oncology, Department of Dermatology, Yale University, New Haven, CT, USA</aff></contrib-group><author-notes><corresp id="c1"><label>a</label><email xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="mailto:Sean.Christensen@yale.edu">Sean.Christensen@yale.edu</email></corresp><fn fn-type="COI-statement"><p>No competing interests were disclosed.</p></fn></author-notes><pub-date pub-type="epub"><day>1</day><month>6</month><year>2018</year></pub-date><pub-date pub-type="collection"><year>2018</year></pub-date><volume>7</volume><issue-id pub-id-type="pmc-issue-id">303919</issue-id><elocation-id>F1000 Faculty Rev-690</elocation-id><history><date date-type="accepted"><day>25</day><month>5</month><year>2018</year></date></history><pub-history><event event-type="pmc-release"><date><day>01</day><month>06</month><year>2018</year></date></event><event event-type="pmc-live"><date><day>13</day><month>06</month><year>2018</year></date></event><event event-type="pmc-last-change"><date iso-8601-date="2018-06-17 01:27:36.950"><day>17</day><month>06</month><year>2018</year></date></event></pub-history><permissions><copyright-statement>Copyright: © 2018 Christensen SR</copyright-statement><copyright-year>2018</copyright-year><license xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://creativecommons.org/licenses/by/4.0/"><ali:license_ref xmlns:ali="http://www.niso.org/schemas/ali/1.0/" specific-use="textmining" content-type="ccbylicense">https://creativecommons.org/licenses/by/4.0/</ali:license_ref><license-p>This is an open access article distributed under the terms of the Creative Commons Attribution Licence, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.</license-p></license></permissions><self-uri xmlns:xlink="http://www.w3.org/1999/xlink" content-type="pmc-pdf" xlink:href="f1000research-7-13910.pdf"/><self-uri xmlns:xlink="http://www.w3.org/1999/xlink" content-type="pdf" xlink:href="f1000research-7-13910.pdf"/><abstract><p>Cutaneous squamous cell carcinoma (SCC) is among the most common cancers in humans, and many patients with SCC will develop multiple tumors within their lifetime. The field cancerization concept, originally proposed over 60 years ago, hypothesized that multiple primary cancers may arise simultaneously and coexist with subclinical precursor lesions within a defined field. Genetic sequencing of SCC and precursor lesions has identified what may be the earliest clonal proliferations in SCC development and confirmed that field cancerization in the skin is mediated by ultraviolet radiation. For patients with multiple SCCs and severe actinic damage, treatment of precursor lesions within a cancerized field can decrease the risk of subsequent cancer development. Sunblock is an effective intervention for field cancerization, even in patients with established disease. There is now direct evidence that field therapy with topical 5-fluorouracil is effective in reducing the incidence of subsequent SCC, and there is indirect evidence suggesting that topical imiquimod, topical ingenol mebutate, and photodynamic therapy are similarly effective. There is limited direct evidence to show that systemic acitretin or nicotinamide can decrease incident SCC in patients with field cancerization. In this review, an approach to the management of patients with multiple SCCs and field cancerization is presented along with the rationale to support field-directed therapy.</p></abstract><kwd-group kwd-group-type="author"><kwd>cutaneous squamous cell carcinoma</kwd><kwd>field cancerization</kwd><kwd>lesion-directed therapy</kwd></kwd-group><funding-group><award-group id="fund-1"><funding-source>The Dermatology Foundation</funding-source></award-group><funding-statement>The author(s) declared that no grants were involved in supporting this work.</funding-statement></funding-group><custom-meta-group><custom-meta><meta-name>pmc-status-qastatus</meta-name><meta-value>0</meta-value></custom-meta><custom-meta><meta-name>pmc-status-live</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-status-embargo</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-status-released</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-open-access</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-olf</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-manuscript</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-legally-suppressed</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-has-pdf</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-has-supplement</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-pdf-only</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-suppress-copyright</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-is-real-version</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-is-scanned-article</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-preprint</meta-name><meta-value>no</meta-value></custom-meta><custom-meta><meta-name>pmc-prop-in-epmc</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-license-ref</meta-name><meta-value>CC BY</meta-value></custom-meta></custom-meta-group></article-meta><notes><sec sec-type="editor-note"><title>Editorial Note on the Review Process</title><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="http://f1000research.com/browse/f1000-faculty-reviews">F1000 Faculty Reviews</ext-link> are commissioned from members of the prestigious
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="http://f1000.com/prime/thefaculty">F1000 Faculty</ext-link> and are edited as a service to readers. In order to make these reviews as comprehensive and accessible as possible, the referees provide input before publication and only the final, revised version is published. The referees who approved the final version are listed with their names and affiliations but without their reports on earlier versions (any comments will already have been addressed in the published version).</p><p>The referees who approved this article are: </p><list list-type="simple" list-content="reviewer-list"><list-item><p>
+<named-content content-type="reviewer-name">Diona Damian</named-content>, Department of Dermatology, University of Sydney, Camperdown, New South Wales, Australia
+<fn fn-type="COI-statement"><p>No competing interests were disclosed.</p></fn>
+</p></list-item><list-item><p>
+<named-content content-type="reviewer-name">John Carucci</named-content>, Laura and Isaac Perlmutter Cancer Center, NYU Langone Medical Center and School of Medicine, New York, NY, USA
+<fn fn-type="COI-statement"><p>No competing interests were disclosed.</p></fn>
+</p></list-item></list></sec></notes></front><body><sec sec-type="intro"><title>Introduction</title><p>Cutaneous squamous cell carcinoma (SCC) is the second most common malignancy in humans; up to 1 million SCC tumors are treated annually in the United States
+<sup><xref rid="ref-1" ref-type="bibr">1</xref></sup>. Over half of patients with diagnosed SCC will develop multiple tumors within their lifetime. Although the majority of SCCs of the skin are localized tumors with an exceptionally good prognosis, approximately 5% of SCCs recur locally after definitive treatment, 2–3% exhibit nodal metastasis, and 1–2% are fatal
+<sup><xref rid="ref-2" ref-type="bibr">2</xref>,
+<xref rid="ref-3" ref-type="bibr">3</xref></sup>. In addition to causing between 4,000 and 9,000 deaths annually, SCC and its associated skin lesions have an enormous financial burden at over $4 billion per year in the United States
+<sup><xref rid="ref-4" ref-type="bibr">4</xref></sup>.</p><p>Cutaneous SCC typically presents in older patients on chronically sun-exposed skin as a scaly erythematous papule that may have ulceration and hemorrhagic crust. Some lesions have more pronounced hyperkeratosis, and larger lesions may exhibit a central core of hard keratin and hemorrhagic debris (
+<xref ref-type="fig" rid="f1">Figure 1a</xref>). Lesions may bleed or be tender to palpation but often are asymptomatic. SCC
+<italic toggle="yes">in situ</italic> is an intra-epidermal malignancy (not breaching the basement membrane) that often presents as a pink scaly plaque (
+<xref ref-type="fig" rid="f1">Figure 1b</xref>) and has a low but reported risk of progression to invasive SCC
+<sup><xref rid="ref-5" ref-type="bibr">5</xref></sup>. Although the classic presentation of SCC is a solitary lesion, some patients present with multiple lesions that may be admixed with premalignant lesions known as actinic keratoses (
+<xref ref-type="fig" rid="f2">Figure 2</xref>). In these patients, lesion-directed therapy of dozens of individual neoplasms does not adequately address their underlying pathology, which is best described as field cancerization. This review will focus on recent developments in the pathogenesis and management of patients with multiple cutaneous SCCs and field cancerization.</p><fig fig-type="figure" id="f1" orientation="portrait" position="anchor"><label>Figure 1. </label><caption><title>Clinical presentation of squamous cell carcinoma (SCC) and SCC
+<italic toggle="yes">in situ</italic>.</title><p>(
+<bold>a</bold>) Invasive SCC presenting as a firm ulcerated lesion with central core of keratinaceous and hemorrhagic debris on the preauricular cheek. (
+<bold>b</bold>) SCC
+<italic toggle="yes">in situ</italic> presenting as multi-focal and poorly demarcated pink scaly plaques on the dorsal forearm.</p></caption><graphic xmlns:xlink="http://www.w3.org/1999/xlink" position="float" orientation="portrait" xlink:href="f1000research-7-13910-g0000.jpg"/></fig><fig fig-type="figure" id="f2" orientation="portrait" position="anchor"><label>Figure 2. </label><caption><title>Clinical presentation of field cancerization.</title><p>(
+<bold>a</bold>) Squamous cell carcinoma (SCC)
+<italic toggle="yes">in situ</italic> (circled lesion) presenting on the scalp with chronic actinic damage and innumerable small, gritty actinic keratoses. It is not clear which lesions are precursors and which may have progressed to SCC. (
+<bold>b</bold>) SCC (circled lesion) presenting on the forehead in close proximity to three additional lesions. Two of the satellite lesions were SCC
+<italic toggle="yes">in situ</italic> that was discontiguous with the primary SCC, suggesting simultaneous but independent development of the lesions.</p></caption><graphic xmlns:xlink="http://www.w3.org/1999/xlink" position="float" orientation="portrait" xlink:href="f1000research-7-13910-g0001.jpg"/></fig></sec><sec><title>Lesion-directed therapy of squamous cell carcinoma</title><p>Cutaneous SCC is most commonly treated with lesion-directed therapy using surgical excision or destruction. Standard excision with an appropriate margin of clinically normal skin (typically 4–6 mm) or destruction with electrodesiccation and curettage results in cure rates as high as 90–95% for typical SCC
+<sup><xref rid="ref-6" ref-type="bibr">6</xref>,
+<xref rid="ref-7" ref-type="bibr">7</xref></sup>. SCC with significant subclinical extension, or local invasion of the tumor beyond grossly visible margins, is best treated with Mohs micrographic surgery, a specialized method of staged excision in which the entire deep and peripheral surgical margin is microscopically examined by the surgeon with rapid intra-operative pathology
+<sup><xref rid="ref-8" ref-type="bibr">8</xref></sup>. Established risk factors for subclinical extension and aggressive behavior of SCC include recurrent tumors, tumor diameter greater than 2 cm, depth of invasion greater than 6 mm, poorly differentiated or desmoplastic histologic features, perineural invasion, immunosuppression, and tumor location on the scalp, ears, eyelid, nose, or lip
+<sup><xref rid="ref-9" ref-type="bibr">9</xref>–
+<xref rid="ref-11" ref-type="bibr">11</xref></sup>. The superiority of Mohs micrographic surgery over standard excision for these high-risk tumors has been documented in retrospective studies
+<sup><xref rid="ref-12" ref-type="bibr">12</xref></sup>, and the Mohs technique is currently recommended for SCC with high-risk features or in anatomically sensitive locations
+<sup><xref rid="ref-13" ref-type="bibr">13</xref></sup>.</p><p>For SCC not amenable to surgery, non-surgical treatments may be used, albeit with lower cure rates. Topical medical therapy of individual SCC
+<italic toggle="yes">in situ</italic> lesions with either imiquimod or 5-fluorouracil (5FU) has been reported with cure rates of 73–86% and 48–69%, respectively
+<sup><xref rid="ref-14" ref-type="bibr">14</xref>–
+<xref rid="ref-17" ref-type="bibr">17</xref></sup>, but neither of these treatments is consistently effective for invasive SCC. Similarly, photodynamic therapy (PDT) with either aminolevulinic acid or methyl aminolevulinate may achieve clinical cure rates of 76–82% for SCC
+<italic toggle="yes">in situ</italic>
+<sup><xref rid="ref-16" ref-type="bibr">16</xref>–
+<xref rid="ref-18" ref-type="bibr">18</xref></sup>. Lesion-directed cryotherapy with liquid nitrogen (a form of physical destruction of the lesion) is commonly used for low-risk SCC
+<italic toggle="yes">in situ</italic> and precursor lesions of actinic keratosis (AK). Although cryotherapy is highly operator-dependent, one trial reported a complete response rate for SCC
+<italic toggle="yes">in situ</italic> of 67% at 1 year, which was comparable to 5FU and inferior to PDT
+<sup><xref rid="ref-17" ref-type="bibr">17</xref></sup>. Intra-lesional chemotherapy (direct local injection into the tumor) with agents such as 5FU, methotrexate, bleomycin, or type I interferon has successfully treated SCC in several published case series, often specifically addressing the keratoacanthoma type of SCC that is characterized by rapid growth and occasional spontaneous involution
+<sup><xref rid="ref-19" ref-type="bibr">19</xref></sup>. Because intra-lesional chemotherapy has not been studied in controlled clinical trials, its use is often reserved for patients who are poor surgical candidates or who have such a high burden of individual lesions that surgery is not practical. Although medical treatment of SCC has decreased efficacy for individual lesions relative to surgery, several of these modalities have the benefit of potentially treating a broad field around the index lesion, which may inhibit the development of subsequent SCC. Patients with multiple SCCs often benefit from a combination of medical and surgical field-directed and lesion-directed treatment approaches as discussed below.</p><p>Radiation therapy has long been employed in the treatment of SCC and may be preferable to surgical treatment in specific circumstances. Low-risk SCC treated with superficial X-ray therapy has a reported 5-year recurrence rate of 5.8% in one series
+<sup><xref rid="ref-20" ref-type="bibr">20</xref></sup>. Treatment of larger SCCs, poorly differentiated tumors, or tumors on the scalp, ears, or lips with superficial radiation may result in increased recurrence rates of up to 30%
+<sup><xref rid="ref-21" ref-type="bibr">21</xref></sup>. More intense radiation therapy with electron beam or megavoltage photons has been reported as monotherapy for advanced SCC, but high-quality outcome data are lacking
+<sup><xref rid="ref-22" ref-type="bibr">22</xref></sup>. In addition, because of the risk of secondary malignancy decades after radiation therapy, this treatment is relatively contraindicated in younger patients with a long life expectancy. Finally, advanced SCC with lymph node or visceral metastasis is best managed with multi-modal therapy, including surgery, radiation, and potentially systemic chemotherapy. More recently, immunotherapy with monoclonal antibodies to the immune checkpoint receptor programmed death 1 (PD-1) on T cells has been reported as a successful treatment to induce T cell-mediated rejection of advanced SCC that is unresponsive to standard therapy
+<sup><xref rid="ref-23" ref-type="bibr">23</xref>,
+<xref rid="ref-24" ref-type="bibr">24</xref></sup>. Whether this therapy can be adapted for patients with multiple primary SCCs remains to be determined.</p></sec><sec><title>Field cancerization</title><p>In 1953, Slaughter and colleagues described the concept of field cancerization on the basis of their study of pathologic changes in the epithelium surrounding oropharyngeal SCC
+<sup><xref rid="ref-25" ref-type="bibr">25</xref></sup>. In that seminal report, the authors observed that all cases of oropharyngeal SCC had pathologic dysplasia and foci of SCC
+<italic toggle="yes">in situ</italic> in the adjacent mucosa that was grossly normal (no clinical evidence of disease). Importantly, many of these changes were not contiguous with the primary tumor and represented separate islands of dysplastic epithelium. In addition, 11% of oropharyngeal SCCs presented with two separate primary lesions, a rate 10-fold greater than expected on the basis of disease prevalence. Together, these findings support the independent or co-incident development of multiple lesions rather than the linear progression of a single mutant clone. The paradigm of field cancerization was thus proposed on the basis of the hypothesis that an area, or field, of epithelium is altered by a regional carcinogenic activity. This regional injury, which may be acute or chronic, causes irreversible genetic changes in multiple clonal populations of cells, one or several of which eventually manifest in cancer.</p><p>Although this concept of field cancerization has long been observed in the skin, Slaughter’s original pathologic findings were recently recapitulated for cutaneous SCC. In excision specimens of cutaneous SCC, 57% had separate (discontiguous) foci of dysplasia that were not detected clinically but were pathologically diagnostic of AK
+<sup><xref rid="ref-26" ref-type="bibr">26</xref></sup>. In addition, both histopathologic biopsies and non-invasive imaging with optical coherence tomography of cutaneous regions of suspected field cancerization confirmed that 79% of grossly normal skin samples in these fields had evidence of dysplasia or occult carcinoma
+<sup><xref rid="ref-27" ref-type="bibr">27</xref></sup>. The field cancer paradigm has two important implications for the management of cutaneous SCC. First, because SCC arises from multi-focal areas of precancerous change, the presence of at least one SCC confers an increased risk of subsequent SCC. It has been shown that after a single SCC, there is a 42% risk of subsequent SCC within 5 years and this risk increases to 72% in patients with two or more SCCs
+<sup><xref rid="ref-28" ref-type="bibr">28</xref></sup>. Second, clinical recurrence of SCC after complete surgical excision may in fact represent the development of a new primary cancer, and recurrence risk may correlate with the degree of field cancerization. Indeed, it was found that patients with two to nine SCCs exhibit a twofold increased risk of recurrence compared with patients with a single SCC, and patients with a lifetime history of 10 or more SCCs exhibit a 12-fold increased risk of local recurrence as well as an 11-fold increased risk of nodal metastasis
+<sup><xref rid="ref-29" ref-type="bibr">29</xref></sup>. In these patients with a heavy burden of individual cancers, understanding the mechanism of field cancerization and SCC evolution from precursor lesions has spurred development of therapeutic strategies to prevent or suppress the development of subsequent SCC.</p></sec><sec><title>Precursor lesions and the mechanistic basis of field cancer</title><p>The primary driver of epidermal carcinogenesis is solar ultraviolet (UV) radiation. Epidemiologic studies have demonstrated a 10-fold increase in SCC incidence with increasing ambient solar radiation
+<sup><xref rid="ref-30" ref-type="bibr">30</xref></sup>. From a mechanistic standpoint, UV radiation directly (primarily UVB wavelengths, 290–320 nm) and indirectly (primarily UVA wavelengths, 320–400 nm) damages epidermal DNA, leading to somatic mutations in genes that confer a growth advantage and facilitate malignant transformation
+<sup><xref rid="ref-31" ref-type="bibr">31</xref></sup>. Somatic mutations, both inactivating mutations in tumor suppressor genes and activating mutations in oncogenes, accumulate over time in a sequential fashion. According to the model of multi-step carcinogenesis, increasing somatic mutations induce clonal proliferations that progress from microscopic precursors to grossly visible lesions during the development of carcinoma
+<sup><xref rid="ref-32" ref-type="bibr">32</xref></sup>. A second mechanistic effect of UV radiation is local immunosuppression that facilitates epidermal carcinogenesis. Studies in human volunteers have defined both acute and chronic effects of UVB in inhibiting adaptive immune responses to contact allergens applied to the skin and shown that this UV-mediated immunosuppression correlates with SCC risk
+<sup><xref rid="ref-33" ref-type="bibr">33</xref></sup>. Given the established association of therapeutic immunosuppression (for example, in organ transplant recipients) with dramatically increased SCC risk, it is clear that effective anti-tumor immunity plays an important role in limiting the progression of precursor lesions in the skin.</p><p>The most characteristic precursor lesion in the skin is AK, a small papule with gritty scale that has pathologic features of epidermal dysplasia without overt carcinoma. Like SCCs, AKs are causally associated with chronic UV exposure. Although the risk of an individual AK progressing to carcinoma is low, the presence and number of AKs are correlated with SCC risk
+<sup><xref rid="ref-34" ref-type="bibr">34</xref>,
+<xref rid="ref-35" ref-type="bibr">35</xref></sup>. AK is a clear clinical indicator of field cancer, and some patients may present with dozens of lesions in a single anatomic field, conferring a high risk of subsequent SCC (
+<xref ref-type="fig" rid="f2">Figure 2a</xref>).</p><p>SCC and its precursor lesions have similar genetic driver mutations, providing further support for the field cancer model. The most commonly described somatic mutations in cutaneous SCC are loss-of-function mutations in the tumor suppressors
+<italic toggle="yes">TP53</italic> and
+<italic toggle="yes">NOTCH1</italic>, identified in up to 95% and 75% of SCCs, respectively
+<sup><xref rid="ref-36" ref-type="bibr">36</xref>–
+<xref rid="ref-38" ref-type="bibr">38</xref></sup>. Notably, over three-quarters of somatic mutations in SCC are UV-signature mutations induced by direct interaction of UVB with pyrimidine bases in DNA. Approximately two-thirds of AKs harbor mutations in
+<italic toggle="yes">TP53</italic> and these mutations have also been identified in 14% of epidermal cells in sun-exposed but normal skin
+<sup><xref rid="ref-39" ref-type="bibr">39</xref>,
+<xref rid="ref-40" ref-type="bibr">40</xref></sup>. Cells with mutated
+<italic toggle="yes">TP53</italic> proliferate in the epidermis as a clonal expansion or “patch” under continuing UV exposure, and animal studies have confirmed that UVB promotes clone expansion but that stopping UVB exposure causes some clones to regress
+<sup><xref rid="ref-41" ref-type="bibr">41</xref>,
+<xref rid="ref-42" ref-type="bibr">42</xref></sup>. Similarly,
+<italic toggle="yes">NOTCH1</italic> mutations are present in clinically and histologically normal skin adjacent to SCC and appear to arise by contiguous growth of a clonal precursor
+<sup><xref rid="ref-38" ref-type="bibr">38</xref></sup>.</p><p>Based on these data, a mechanistic model of field cancer emerges, in which initial exposure to UV radiation causes sporadic somatic mutations and subsequent UV exposure induces clonal expansion of these mutants and inhibits immune surveillance of these malignant precursors (
+<xref ref-type="fig" rid="f3">Figure 3</xref>). Competition between mutant clones and normal cells facilitates large patches of mutated cells within an actinically damaged field. Over time, the accumulation of additional mutations will allow progression to visible lesions of AK and eventually SCC. The existence of multiple clones harboring distinct and potentially carcinogenic mutations in normal skin was recently confirmed: deep sequencing of aged eyelid skin identified somatic mutations in 18–32% of epidermal cells, and the total mutation burden was comparable to many adult solid tumors
+<sup><xref rid="ref-43" ref-type="bibr">43</xref></sup>. These clonal proliferations are the earliest detectable precursors of SCC and represent targets for therapeutic intervention to prevent subsequent skin cancer. What remains unknown, however, is whether specific variables such as the frequency, size, total mutation burden, or specific mutation profile of these clones determine the magnitude of SCC risk.</p><fig fig-type="figure" id="f3" orientation="portrait" position="anchor"><label>Figure 3. </label><caption><title>Pathogenesis of field cancerization.</title><p>Ultraviolet (UV) radiation directly induces mutation in a single keratinocyte. If this mutation provides a selective growth advantage, such as with loss of functional
+<italic toggle="yes">TP53</italic>, ongoing UV exposure will facilitate expansion of the clone as well as inhibit immune-mediated surveillance. Chronic UV exposure results in development and expansion of additional clones that evolve and compete with normal cells and each other in a field of actinically damaged skin. Accumulation of additional mutations over time and ongoing UV exposure will allow progression of a microscopic subclone into a visible actinic keratosis and eventually invasive squamous cell carcinoma.</p></caption><graphic xmlns:xlink="http://www.w3.org/1999/xlink" position="float" orientation="portrait" xlink:href="f1000research-7-13910-g0002.jpg"/></fig></sec><sec><title>Management of field cancerization</title><p>The first step in the management of the patient with multiple SCCs and field cancerization is rigorous sun protection. Because UV radiation is both a tumor initiator and a tumor promoter for skin cancer and because animal models demonstrate reduced precursor lesions when UV exposure is interrupted
+<sup><xref rid="ref-42" ref-type="bibr">42</xref></sup>, there is a strong incentive to limit exposure even in patients with established actinic damage. The most compelling data to support sun protection come from randomized trials performed in Australia, a region of intense environmental UV radiation and a susceptible population with the greatest incidence of SCC worldwide. In 1993, Thompson and colleagues randomly assigned 588 patients with established AK to daily use of either sun protection factor (SPF) 17 broad-spectrum sunblock (UVA and UVB protection) or placebo cream. Patients who received sunblock had a significant reduction in new AK, and this reduction was proportional to the total amount of sunblock used
+<sup><xref rid="ref-44" ref-type="bibr">44</xref></sup>. Of note, the use of a placebo sunblock would likely be considered unethical in 2018, but the benefits of sunblock were not yet established at the time of the trial. A second trial randomly assigned 1,621 unselected participants to one of four treatments: daily use of SPF 15 broad-spectrum sunblock, discretionary use of sunblock, daily sunblock plus oral beta-carotene, and oral beta-carotene alone with discretionary use of sunblock. Over a follow-up period of 4 years, daily sunblock use caused a significant 39% reduction in new SCC; the use of beta-carotene had no effect on skin cancer development
+<sup><xref rid="ref-45" ref-type="bibr">45</xref></sup>. Follow-up of these participants for an additional 8 years revealed a persistent 41% reduction in new SCC in the former daily sunblock group, even when returning to discretionary sunblock use after completion of the original trial
+<sup><xref rid="ref-46" ref-type="bibr">46</xref></sup>. Finally, there is an important role for sun protection in immunosuppressed organ transplant recipients as well. In a 24-month trial of organ transplant recipients at high risk of SCC, patients provided with SPF 50 broad-spectrum sunblock developed fewer SCCs (eight in the control group versus zero in the sunblock group) and exhibited a significant regression of existing AK
+<sup><xref rid="ref-47" ref-type="bibr">47</xref></sup>. Cumulatively, this suggests that rigorous sun protection will have significant and long-lasting benefits in both prevention and management of field cancerization.</p><p>Apart from sun protection, the most widely used field-directed treatments are topical medications such as the pyrimidine analog chemotherapeutic 5FU. For many years, the observation that SCC precursors can be effectively treated with topical therapy provided the rationale for field treatment to decrease the incidence of SCC in high-risk patients. There is strong evidence to support the use of 5FU and other topical agents, such as the immune response modifier imiquimod and the non-steroidal anti-inflammatory drug diclofenac in the treatment of AK. Clinical evidence for these agents in AK treatment is extensive and beyond the scope of this review
+<sup><xref rid="ref-48" ref-type="bibr">48</xref></sup>. The hypothesis that treatment of precursor lesions within a cancerized field can reduce subsequent SCC development is supported by several lines of indirect evidence and, more recently, a clinical trial that documented clear efficacy of 5FU in SCC prevention. First, there is a proven benefit of field therapy over lesion-directed therapy for sustained clearance of AK within a defined field. One randomized trial found that although 5FU, imiquimod, or lesion-directed destructive therapy all had good immediate efficacy in AK clearance (68–96%), only field therapy with 5FU or imiquimod produced any significant clearance at 1 year (33% and 73%, respectively, versus 4% for lesion-directed therapy)
+<sup><xref rid="ref-49" ref-type="bibr">49</xref></sup>. Second, long-term follow-up of patients randomly assigned to 5FU field therapy versus placebo demonstrated that the benefits of sustained lesion clearance are significant for over 3 years following a single treatment course, suggesting that topical field therapy produces a long-lasting remission in SCC precursors
+<sup><xref rid="ref-50" ref-type="bibr">50</xref></sup>. Third, a recent randomized, double-blind clinical trial in 932 patients with a history of skin cancer (39% of whom had prior SCC) identified a 75% reduction in incident SCC in the first year following a single course of topical 5FU treatment (five patients with SCC in the 5FU group versus 20 patients in the placebo group)
+<sup><xref rid="ref-51" ref-type="bibr">51</xref></sup>. This study is the first high-quality, prospective trial to demonstrate a significant reduction in SCC with field therapy and provides strong support for the concept of field-directed therapy in high-risk patients. Finally, preclinical and early clinical data suggest that topical 5FU can be combined with topical immunotherapy to enhance field-directed prevention of SCC. Topical calcipotriol, a vitamin D derivative shown to enhance cutaneous T-cell activation via the production of thymic stromal lymphopoietin (TSLP), can reduce the development of SCC in animal models and was shown to enhance the efficacy of AK clearance with 5FU in a preliminary human trial
+<sup><xref rid="ref-52" ref-type="bibr">52</xref></sup>.</p><p>Another topical field therapy has recently emerged in the form of ingenol mebutate, a cyclic diterpene ester derived from the sap of the
+<italic toggle="yes">Euphorbia peplus</italic> plant, which itself is a known irritant and established botanical therapeutic
+<sup><xref rid="ref-53" ref-type="bibr">53</xref></sup>. Ingenol mebutate has direct cytotoxic effects on keratinocytes and induces a local inflammatory milieu via effects on the microvasculature and endothelial cells. Unlike other topical therapies, a short, 2- to 3-day treatment with ingenol mebutate has demonstrated efficacy in field treatment of AK, which may improve patient compliance
+<sup><xref rid="ref-54" ref-type="bibr">54</xref>,
+<xref rid="ref-55" ref-type="bibr">55</xref></sup>. Via elimination of SCC precursors such as
+<italic toggle="yes">TP53</italic>-mutated clones in the epidermis, ingenol mebutate can prevent or reduce the development of UV-induced lesions in an animal model of SCC
+<sup><xref rid="ref-56" ref-type="bibr">56</xref></sup>. Similarly, ingenol mebutate therapy in humans has been shown to decrease not only visible AK but also subclinical precursor lesions detected by optical coherence tomography and histopathologic analysis
+<sup><xref rid="ref-27" ref-type="bibr">27</xref></sup>. Although it appears likely that various topical agents such as ingenol mebutate and imiquimod can decrease the incidence of subsequent SCC in patients with field cancer, direct evidence of this effect is currently available only for 5FU
+<sup><xref rid="ref-51" ref-type="bibr">51</xref></sup>.</p><p>An established option for field-directed treatment is office-based PDT. PDT is based on photo-activation of protoporphyrin IX in keratinocytes to generate reactive oxygen species and cytotoxicity. A prodrug (aminolevulinic acid or methyl aminolevulinate) is topically applied to the skin 1–18 hours prior to visible-spectrum light treatment, and because metabolic conversion of the prodrug to protoporphyrin IX is enhanced in malignant and pre-malignant cells, this treatment is relatively selective for SCC precursors in the skin
+<sup><xref rid="ref-57" ref-type="bibr">57</xref></sup>. Analogous to the topical therapies presented above, PDT is an effective field treatment for AK and is superior to lesion-directed destructive therapy
+<sup><xref rid="ref-58" ref-type="bibr">58</xref></sup>. Like other field treatments, PDT can significantly reduce the size and number of
+<italic toggle="yes">TP53</italic>-mutated clonal precursors of SCC in human skin
+<sup><xref rid="ref-59" ref-type="bibr">59</xref></sup> and has been demonstrated to decrease UV-induced tumor development in animal models
+<sup><xref rid="ref-60" ref-type="bibr">60</xref></sup>. Because PDT (and presumably other current field therapy options) does not completely eliminate mutated precursors from the skin, repeated treatments appear to be required to continually suppress the development of SCC. One observational study of 12 organ transplant recipients with high-risk field cancer treated with cyclic PDT every 4–8 weeks reported 79% and 95% reductions in incident SCC after 1 and 2 years, respectively, compared with the year prior to cyclic PDT
+<sup><xref rid="ref-61" ref-type="bibr">61</xref></sup>. In contrast, a prospective trial of 40 patients who received a single course of PDT found no significant decrease in SCC incidence after 2 years
+<sup><xref rid="ref-62" ref-type="bibr">62</xref></sup>. The optimal interval for cyclic therapy may be better defined by an ongoing trial investigating cyclic PDT every 6 months in organ transplant recipients at elevated risk for skin cancer; interim results of the trial have not yet detected any incident SCC
+<sup><xref rid="ref-63" ref-type="bibr">63</xref></sup>. If repeated treatments are required, one promising new alternative could be daylight PDT, in which photo-activation of protoporphyrin IX is achieved by natural daylight as opposed to more intense (and often more painful) artificial light sources. Although daylight PDT appears promising for the treatment of AK
+<sup><xref rid="ref-64" ref-type="bibr">64</xref></sup>, its effect on SCC prevention has not been investigated.</p><p>For patients with severe field damage at highest risk for subsequent SCC, systemic treatment may dramatically inhibit new tumor development. Acitretin is a systemic retinoid known to suppress proliferation and promote differentiation of keratinocytes and has been shown to induce regression of SCC-like tumors in animal models
+<sup><xref rid="ref-65" ref-type="bibr">65</xref></sup>. Compelling evidence to support acitretin as field therapy comes from a prospective trial of 44 renal transplant recipients randomly assigned to either acitretin 30 mg daily or placebo for 6 months. Incident SCC was reduced by 88% in patients during acitretin treatment, although the rate of SCC development increased to the same as the control group in the 6 months following discontinuation of therapy
+<sup><xref rid="ref-66" ref-type="bibr">66</xref></sup>. Similar to PDT or topical therapy, field treatment with acitretin suppresses the development of SCC but does not completely eliminate clonal precursors of SCC and thus therapy must be continued for a prolonged period of time. Systemic side effects from acitretin can be significant but are predictable and often dose-dependent, including xerosis, mucositis, myalgias and arthralgias, hyperlipidemia, and potential hepatotoxicity. Acitretin, like all systemic retinoids, is an established teratogen and should be avoided in women of child-bearing potential because of its long half-life. Isotretinoin has a significantly shorter half-life and may be an alternative for younger women, although it is rare for this population to require systemic field therapy
+<sup><xref rid="ref-67" ref-type="bibr">67</xref></sup>. It should also be noted that the beneficial effects of systemic therapy are less pronounced in patients at lower risk for SCC and this therapy should be reserved for patients with few other options
+<sup><xref rid="ref-68" ref-type="bibr">68</xref></sup>.</p><p>At least two other approaches for systemic field therapy may also be considered. First, nicotinamide (also known as niacinamide, the amide form of vitamin B
+<sub>3</sub>) has recently been shown to have modest preventive effects on UV-induced skin lesions, presumably by promoting effective DNA repair and reducing the immunosuppressive effects of UV exposure
+<sup><xref rid="ref-69" ref-type="bibr">69</xref></sup>. In a prospective trial of 386 patients with prior skin cancer, those randomly assigned to oral nicotinamide 500 mg twice daily had a 23% reduction in new skin cancers (30% reduction in SCC) during 12 months of therapy. When patients were monitored for 6 months after cessation of nicotinamide therapy, there was a non-significant trend toward increased SCC incidence during this period
+<sup><xref rid="ref-70" ref-type="bibr">70</xref></sup>. Although nicotinamide produced only a modest reduction in SCC incidence, the lack of significant side effects associated with this agent makes it a potentially useful option, either alone or in combination with other field therapies. Second, capecitabine, an oral prodrug of 5FU that is US Food and Drug Administration-approved for the treatment of colorectal, gastric, and breast cancer, may be an effective prophylactic measure for patients with recalcitrant field cancerization. In one uncontrolled observational study, cyclic treatment with capecitabine produced a 68% reduction in incident SCC
+<sup><xref rid="ref-71" ref-type="bibr">71</xref></sup>. Because of the significant side effect profile of this systemic chemotherapy, treatment of cutaneous field cancerization with capecitabine is usually performed in conjunction with a medical oncologist.</p></sec><sec><title>Approach to the patient with field cancerization</title><p>In order to appropriately manage patients with cutaneous field cancer, it is necessary to define this term. A practical working definition of field cancerization requires three features: a defined region of skin, multiple AKs within that region, and at least one prior SCC. Although patients with severe actinic damage and multiple AKs without prior SCC may certainly require treatment for their AKs
+<sup><xref rid="ref-72" ref-type="bibr">72</xref></sup>, those patients are not considered here. The type, frequency, and intensity of field treatment for an individual patient depend on the severity of field cancerization and the risk of subsequent SCC (
+<xref ref-type="fig" rid="f4">Figure 4</xref>). All patients with evidence of field cancerization should be counseled on rigorous sun protection and have appropriate lesion-directed therapy of SCC and hypertrophic AK as indicated. Patients with multiple AKs and few sporadic SCCs are at relatively low risk of subsequent SCC and can be managed with occasional field therapy according to patient or physician preference. This may include topical 5FU, imiquimod, or ingenol mebutate, or PDT. Patients with a consistent pattern of two or three SCCs per year are at increased risk of continual SCC development and will require repeated cycles of field therapy at some interval ranging from annually to every few months. As noted previously, current field therapies suppress, rather than completely eliminate, the precursors of SCC; repeated treatments are often required for ongoing suppression. A combination of simultaneous field therapy and lesion-directed therapy in these patients may also improve local control
+<sup><xref rid="ref-73" ref-type="bibr">73</xref></sup>. Those not responding to PDT or topical therapy may benefit from systemic acitretin. Patients with more than three or four SCCs per year or more than 10 lifetime SCCs, as noted previously, are at high risk of both subsequent SCC and metastatic or fatal SCC and require aggressive field therapy. Initial therapy in these patients is often systemic acitretin, which may be combined with repeated topical therapy or PDT. Combination treatments may have synergistic efficacy, as reported in one recent series of combined lesion-directed destruction, topical 5FU, and PDT
+<sup><xref rid="ref-74" ref-type="bibr">74</xref></sup>. Combination systemic therapy with nicotinamide and acitretin is generally accepted as safe, but concurrent use of acitretin and capecitabine has not been studied and should be used with caution. Finally, organ transplant recipients require additional focus on management of field cancer, as the chronic use of immunosuppressant medications places these patients at exceptionally high risk of multiple and biologically aggressive SCCs
+<sup><xref rid="ref-75" ref-type="bibr">75</xref></sup>. Organ transplant recipients often require more frequent monitoring, earlier initiation of multi-modal field therapy, and potentially modification of their immunosuppression regimen in collaboration with their transplant team.</p><fig fig-type="figure" id="f4" orientation="portrait" position="anchor"><label>Figure 4. </label><caption><title>Approach to the patient with field cancerization.</title><p>Field cancer treatment is based on risk of subsequent squamous cell carcinoma (SCC), as determined by clinical factors. All patients require ultraviolet (UV) protection and lesion-directed therapy as indicated. AK, actinic keratosis; PDT, photodynamic therapy.</p></caption><graphic xmlns:xlink="http://www.w3.org/1999/xlink" position="float" orientation="portrait" xlink:href="f1000research-7-13910-g0003.jpg"/></fig></sec><sec><title>Conclusions and future directions</title><p>Significant progress has been made in understanding the pathogenesis and optimal management of field cancerization, yet several questions remain. It is clear that patients with a large burden of cutaneous SCC have a chronic disease with an increased risk of systemic involvement and early death; treating each lesion as an isolated neoplasm does not adequately address this disease. A systemic and systematic approach to field therapy is required for these patients. It is also clear that SCC evolves from microscopic precursors harboring carcinogenic mutations in grossly normal skin and that a significant fraction of epidermal cells may harbor these mutations in an actinically damaged field. It remains unclear, however, whether the number, size, total mutation burden, or specific mutation profile of these precursors is the critical determinant of progression to SCC. With additional data from genetic sequencing of normal but sun-exposed skin, it may be possible to more accurately determine the risk of SCC development, both for a single precursor lesion and for a cancerized field as a whole. Similarly, nearly all patients with more than 10 SCCs presented initially with a single lesion, yet current methods cannot prospectively determine subsequent field cancer risk. Additional study is required to identify those patients who would benefit most from field treatment at an early point in their field disease progression. Although there is now high-quality evidence to show that field treatment with topical 5FU can reduce the incidence of SCC for at least 1 year, additional clinical trials are needed to support the use of other therapies and the optimal interval of repeated field therapy for high-risk patients. Finally, anti-tumor immunity has been shown to be a critical factor in host defense against cancer, but the role of the immune response in the development and progression of precursor lesions has only been suggested. Future field treatments may more effectively harness the immune system to achieve a durable suppression of SCC development in a cancerized field.</p></sec></body><back><ref-list><ref id="ref-1"><label>1</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Rogers</surname><given-names>HW</given-names></name><name name-style="western"><surname>Weinstock</surname><given-names>MA</given-names></name><name name-style="western"><surname>Feldman</surname><given-names>SR</given-names></name><etal/></person-group>:
+<article-title>Incidence Estimate of Nonmelanoma Skin Cancer (Keratinocyte Carcinomas) in the U.S. Population, 2012.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2015</year>;<volume>151</volume>(<issue>10</issue>):<fpage>1081</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2015.1187</pub-id>
+<pub-id pub-id-type="pmid">25928283</pub-id></mixed-citation></ref><ref id="ref-2"><label>2</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Schmults</surname><given-names>CD</given-names></name><name name-style="western"><surname>Karia</surname><given-names>PS</given-names></name><name name-style="western"><surname>Carter</surname><given-names>JB</given-names></name><etal/></person-group>:
+<article-title>Factors predictive of recurrence and death from cutaneous squamous cell carcinoma: a 10-year, single-institution cohort study.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2013</year>;<volume>149</volume>(<issue>5</issue>):<fpage>541</fpage>–<lpage>7</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2013.2139</pub-id>
+<pub-id pub-id-type="pmid">23677079</pub-id></mixed-citation></ref><ref id="ref-3"><label>3</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Karia</surname><given-names>PS</given-names></name><name name-style="western"><surname>Han</surname><given-names>J</given-names></name><name name-style="western"><surname>Schmults</surname><given-names>CD</given-names></name></person-group>:
+<article-title>Cutaneous squamous cell carcinoma: estimated incidence of disease, nodal metastasis, and deaths from disease in the United States, 2012.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2013</year>;<volume>68</volume>(<issue>6</issue>):<fpage>957</fpage>–<lpage>66</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2012.11.037</pub-id>
+<pub-id pub-id-type="pmid">23375456</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/718014573">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-4"><label>4</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Lim</surname><given-names>HW</given-names></name><name name-style="western"><surname>Collins</surname><given-names>SAB</given-names></name><name name-style="western"><surname>Resneck</surname><given-names>JS</given-names><suffix>Jr</suffix></name><etal/></person-group>:
+<article-title>The burden of skin disease in the United States.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2017</year>;<volume>76</volume>(<issue>5</issue>):<fpage>958</fpage>–<lpage>972.e2</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2016.12.043</pub-id>
+<pub-id pub-id-type="pmid">28259441</pub-id></mixed-citation></ref><ref id="ref-5"><label>5</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Christensen</surname><given-names>SR</given-names></name><name name-style="western"><surname>McNiff</surname><given-names>JM</given-names></name><name name-style="western"><surname>Cool</surname><given-names>AJ</given-names></name><etal/></person-group>:
+<article-title>Histopathologic assessment of depth of follicular invasion of squamous cell carcinoma (SCC)
+<italic toggle="yes">in situ</italic> (SCCis): Implications for treatment approach.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2016</year>;<volume>74</volume>(<issue>2</issue>):<fpage>356</fpage>–<lpage>62</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2015.09.060</pub-id>
+<pub-id pub-id-type="pmid">26670714</pub-id></mixed-citation></ref><ref id="ref-6"><label>6</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Werlinger</surname><given-names>KD</given-names></name><name name-style="western"><surname>Upton</surname><given-names>G</given-names></name><name name-style="western"><surname>Moore</surname><given-names>AY</given-names></name></person-group>:
+<article-title>Recurrence rates of primary nonmelanoma skin cancers treated by surgical excision compared to electrodesiccation-curettage in a private dermatological practice.</article-title>
+<source><italic toggle="yes">Dermatol Surg.</italic></source>
+<year>2002</year>;<volume>28</volume>(<issue>12</issue>):<fpage>1138</fpage>–<lpage>42</lpage>; discussion 1142.
+<pub-id pub-id-type="doi">10.1046/j.1524-4725.2002.02110.x</pub-id>
+<pub-id pub-id-type="pmid">12472494</pub-id></mixed-citation></ref><ref id="ref-7"><label>7</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Lansbury</surname><given-names>L</given-names></name><name name-style="western"><surname>Bath-Hextall</surname><given-names>F</given-names></name><name name-style="western"><surname>Perkins</surname><given-names>W</given-names></name><etal/></person-group>:
+<article-title>Interventions for non-metastatic squamous cell carcinoma of the skin: systematic review and pooled analysis of observational studies.</article-title>
+<source><italic toggle="yes">BMJ.</italic></source>
+<year>2013</year>;<volume>347</volume>:<fpage>f6153</fpage>.
+<pub-id pub-id-type="doi">10.1136/bmj.f6153</pub-id>
+
+<pub-id pub-id-type="pmid">24191270</pub-id><pub-id pub-id-type="pmcid">PMC3816607</pub-id></mixed-citation></ref><ref id="ref-8"><label>8</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Tromovitch</surname><given-names>TA</given-names></name><name name-style="western"><surname>Stegeman</surname><given-names>SJ</given-names></name></person-group>:
+<article-title>Microscopically controlled excision of skin tumors.</article-title>
+<source><italic toggle="yes">Arch Dermatol.</italic></source>
+<year>1974</year>;<volume>110</volume>(<issue>2</issue>):<fpage>231</fpage>–<lpage>2</lpage>.
+<pub-id pub-id-type="doi">10.1001/archderm.1974.01630080033008</pub-id>
+<pub-id pub-id-type="pmid">4853214</pub-id></mixed-citation></ref><ref id="ref-9"><label>9</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Brodland</surname><given-names>DG</given-names></name><name name-style="western"><surname>Zitelli</surname><given-names>JA</given-names></name></person-group>:
+<article-title>Surgical margins for excision of primary cutaneous squamous cell carcinoma.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>1992</year>;<volume>27</volume>(<issue>2 Pt 1</issue>):<fpage>241</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1016/0190-9622(92)70178-I</pub-id>
+<pub-id pub-id-type="pmid">1430364</pub-id></mixed-citation></ref><ref id="ref-10"><label>10</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Leibovitch</surname><given-names>I</given-names></name><name name-style="western"><surname>Huilgol</surname><given-names>SC</given-names></name><name name-style="western"><surname>Selva</surname><given-names>D</given-names></name><etal/></person-group>:
+<article-title>Cutaneous squamous cell carcinoma treated with Mohs micrographic surgery in Australia II. Perineural invasion.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2005</year>;<volume>53</volume>(<issue>2</issue>):<fpage>261</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2005.03.048</pub-id>
+<pub-id pub-id-type="pmid">16021121</pub-id></mixed-citation></ref><ref id="ref-11"><label>11</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Eigentler</surname><given-names>TK</given-names></name><name name-style="western"><surname>Leiter</surname><given-names>U</given-names></name><name name-style="western"><surname>Häfner</surname><given-names>HM</given-names></name><etal/></person-group>:
+<article-title>Survival of Patients with Cutaneous Squamous Cell Carcinoma: Results of a Prospective Cohort Study.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>2017</year>;<volume>137</volume>(<issue>11</issue>):<fpage>2309</fpage>–<lpage>15</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jid.2017.06.025</pub-id>
+<pub-id pub-id-type="pmid">28736229</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/727835530">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-12"><label>12</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Rowe</surname><given-names>DE</given-names></name><name name-style="western"><surname>Carroll</surname><given-names>RJ</given-names></name><name name-style="western"><surname>Day</surname><given-names>CL</given-names><suffix>Jr</suffix></name></person-group>:
+<article-title>Prognostic factors for local recurrence, metastasis, and survival rates in squamous cell carcinoma of the skin, ear, and lip. Implications for treatment modality selection.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>1992</year>;<volume>26</volume>(<issue>6</issue>):<fpage>976</fpage>–<lpage>90</lpage>.
+<pub-id pub-id-type="doi">10.1016/0190-9622(92)70144-5</pub-id>
+<pub-id pub-id-type="pmid">1607418</pub-id></mixed-citation></ref><ref id="ref-13"><label>13</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><collab>Ad Hoc Task Force, </collab><name name-style="western"><surname>Connolly</surname><given-names>SM</given-names></name><name name-style="western"><surname>Baker</surname><given-names>DR</given-names></name><etal/></person-group>:
+<article-title>AAD/ACMS/ASDSA/ASMS 2012 appropriate use criteria for Mohs micrographic surgery: a report of the American Academy of Dermatology, American College of Mohs Surgery, American Society for Dermatologic Surgery Association, and the American Society for Mohs Surgery.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2012</year>;<volume>67</volume>(<issue>4</issue>):<fpage>531</fpage>–<lpage>50</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2012.06.009</pub-id>
+<pub-id pub-id-type="pmid">22959232</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/717970943">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-14"><label>14</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Patel</surname><given-names>GK</given-names></name><name name-style="western"><surname>Goodwin</surname><given-names>R</given-names></name><name name-style="western"><surname>Chawla</surname><given-names>M</given-names></name><etal/></person-group>:
+<article-title>Imiquimod 5% cream monotherapy for cutaneous squamous cell carcinoma
+<italic toggle="yes">in situ</italic> (Bowen's disease): a randomized, double-blind, placebo-controlled trial.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2006</year>;<volume>54</volume>(<issue>6</issue>):<fpage>1025</fpage>–<lpage>32</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2006.01.055</pub-id>
+<pub-id pub-id-type="pmid">16713457</pub-id></mixed-citation></ref><ref id="ref-15"><label>15</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Rosen</surname><given-names>T</given-names></name><name name-style="western"><surname>Harting</surname><given-names>M</given-names></name><name name-style="western"><surname>Gibson</surname><given-names>M</given-names></name></person-group>:
+<article-title>Treatment of Bowen's disease with topical 5% imiquimod cream: retrospective study.</article-title>
+<source><italic toggle="yes">Dermatol Surg.</italic></source>
+<year>2007</year>;<volume>33</volume>(<issue>4</issue>):<fpage>427</fpage>–<lpage>31</lpage>; discussion 431–2.
+<pub-id pub-id-type="doi">10.1111/j.1524-4725.2007.33089.x</pub-id>
+<pub-id pub-id-type="pmid">17430376</pub-id></mixed-citation></ref><ref id="ref-16"><label>16</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Salim</surname><given-names>A</given-names></name><name name-style="western"><surname>Leman</surname><given-names>JA</given-names></name><name name-style="western"><surname>McColl</surname><given-names>JH</given-names></name><etal/></person-group>:
+<article-title>Randomized comparison of photodynamic therapy with topical 5-fluorouracil in Bowen's disease.</article-title>
+<source><italic toggle="yes">Br J Dermatol.</italic></source>
+<year>2003</year>;<volume>148</volume>(<issue>3</issue>):<fpage>539</fpage>–<lpage>43</lpage>.
+<pub-id pub-id-type="doi">10.1046/j.1365-2133.2003.05033.x</pub-id>
+<pub-id pub-id-type="pmid">12653747</pub-id></mixed-citation></ref><ref id="ref-17"><label>17</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Morton</surname><given-names>C</given-names></name><name name-style="western"><surname>Horn</surname><given-names>M</given-names></name><name name-style="western"><surname>Leman</surname><given-names>J</given-names></name><etal/></person-group>:
+<article-title>Comparison of topical methyl aminolevulinate photodynamic therapy with cryotherapy or Fluorouracil for treatment of squamous cell carcinoma
+<italic toggle="yes">in situ</italic>: Results of a multicenter randomized trial.</article-title>
+<source><italic toggle="yes">Arch Dermatol.</italic></source>
+<year>2006</year>;<volume>142</volume>(<issue>6</issue>):<fpage>729</fpage>–<lpage>35</lpage>.
+<pub-id pub-id-type="doi">10.1001/archderm.142.6.729</pub-id>
+<pub-id pub-id-type="pmid">16785375</pub-id></mixed-citation></ref><ref id="ref-18"><label>18</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Truchuelo</surname><given-names>M</given-names></name><name name-style="western"><surname>Fernández-Guarino</surname><given-names>M</given-names></name><name name-style="western"><surname>Fleta</surname><given-names>B</given-names></name><etal/></person-group>:
+<article-title>Effectiveness of photodynamic therapy in Bowen's disease: an observational and descriptive study in 51 lesions.</article-title>
+<source><italic toggle="yes">J Eur Acad Dermatol Venereol.</italic></source>
+<year>2012</year>;<volume>26</volume>(<issue>7</issue>):<fpage>868</fpage>–<lpage>74</lpage>.
+<pub-id pub-id-type="doi">10.1111/j.1468-3083.2011.04175.x</pub-id>
+<pub-id pub-id-type="pmid">21740466</pub-id></mixed-citation></ref><ref id="ref-19"><label>19</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Kirby</surname><given-names>JS</given-names></name><name name-style="western"><surname>Miller</surname><given-names>CJ</given-names></name></person-group>:
+<article-title>Intralesional chemotherapy for nonmelanoma skin cancer: a practical review.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2010</year>;<volume>63</volume>(<issue>4</issue>):<fpage>689</fpage>–<lpage>702</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2009.09.048</pub-id>
+<pub-id pub-id-type="pmid">20605654</pub-id></mixed-citation></ref><ref id="ref-20"><label>20</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Cognetta</surname><given-names>AB</given-names></name><name name-style="western"><surname>Howard</surname><given-names>BM</given-names></name><name name-style="western"><surname>Heaton</surname><given-names>HP</given-names></name><etal/></person-group>:
+<article-title>Superficial x-ray in the treatment of basal and squamous cell carcinomas: a viable option in select patients.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2012</year>;<volume>67</volume>(<issue>6</issue>):<fpage>1235</fpage>–<lpage>41</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2012.06.001</pub-id>
+<pub-id pub-id-type="pmid">22818756</pub-id></mixed-citation></ref><ref id="ref-21"><label>21</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Barysch</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Eggmann</surname><given-names>N</given-names></name><name name-style="western"><surname>Beyeler</surname><given-names>M</given-names></name><etal/></person-group>:
+<article-title>Long-term recurrence rate of large and difficult to treat cutaneous squamous cell carcinomas after superficial radiotherapy.</article-title>
+<source><italic toggle="yes">Dermatology.</italic></source>
+<year>2012</year>;<volume>224</volume>(<issue>1</issue>):<fpage>59</fpage>–<lpage>65</lpage>.
+<pub-id pub-id-type="doi">10.1159/000337027</pub-id>
+<pub-id pub-id-type="pmid">22433440</pub-id></mixed-citation></ref><ref id="ref-22"><label>22</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Mendenhall</surname><given-names>WM</given-names></name><name name-style="western"><surname>Amdur</surname><given-names>RJ</given-names></name><name name-style="western"><surname>Hinerman</surname><given-names>RW</given-names></name><etal/></person-group>:
+<article-title>Radiotherapy for cutaneous squamous and basal cell carcinomas of the head and neck.</article-title>
+<source><italic toggle="yes">Laryngoscope.</italic></source>
+<year>2009</year>;<volume>119</volume>(<issue>10</issue>):<fpage>1994</fpage>–<lpage>9</lpage>.
+<pub-id pub-id-type="doi">10.1002/lary.20608</pub-id>
+<pub-id pub-id-type="pmid">19688856</pub-id></mixed-citation></ref><ref id="ref-23"><label>23</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Borradori</surname><given-names>L</given-names></name><name name-style="western"><surname>Sutton</surname><given-names>B</given-names></name><name name-style="western"><surname>Shayesteh</surname><given-names>P</given-names></name><etal/></person-group>:
+<article-title>Rescue therapy with anti-programmed cell death protein 1 inhibitors of advanced cutaneous squamous cell carcinoma and basosquamous carcinoma: preliminary experience in five cases.</article-title>
+<source><italic toggle="yes">Br J Dermatol.</italic></source>
+<year>2016</year>;<volume>175</volume>(<issue>6</issue>):<fpage>1382</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="doi">10.1111/bjd.14642</pub-id>
+<pub-id pub-id-type="pmid">27059424</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/726278818">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-24"><label>24</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Tran</surname><given-names>DC</given-names></name><name name-style="western"><surname>Colevas</surname><given-names>AD</given-names></name><name name-style="western"><surname>Chang</surname><given-names>AL</given-names></name></person-group>:
+<article-title>Follow-up on Programmed Cell Death 1 Inhibitor for Cutaneous Squamous Cell Carcinoma.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2017</year>;<volume>153</volume>(<issue>1</issue>):<fpage>92</fpage>–<lpage>4</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2016.3884</pub-id>
+<pub-id pub-id-type="pmid">27784038</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/726899809">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-25"><label>25</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>SLAUGHTER</surname><given-names>DP</given-names></name><name name-style="western"><surname>SOUTHWICK</surname><given-names>HW</given-names></name><name name-style="western"><surname>SMEJKAL</surname><given-names>W</given-names></name></person-group>:
+<article-title>Field cancerization in oral stratified squamous epithelium; clinical implications of multicentric origin.</article-title>
+<source><italic toggle="yes">Cancer.</italic></source>
+<year>1953</year>;<volume>6</volume>(<issue>5</issue>):<fpage>963</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1002/1097-0142(195309)6:5&lt;963::AID-CNCR2820060515&gt;3.0.CO;2-Q</pub-id>
+<pub-id pub-id-type="pmid">13094644</pub-id></mixed-citation></ref><ref id="ref-26"><label>26</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Lanoue</surname><given-names>J</given-names></name><name name-style="western"><surname>Chen</surname><given-names>C</given-names></name><name name-style="western"><surname>Goldenberg</surname><given-names>G</given-names></name></person-group>:
+<article-title>Actinic keratosis as a marker of field cancerization in excision specimens of cutaneous malignancies.</article-title>
+<source><italic toggle="yes">Cutis.</italic></source>
+<year>2016</year>;<volume>97</volume>(<issue>6</issue>):<fpage>415</fpage>–<lpage>20</lpage>.
+<pub-id pub-id-type="pmid">27416085</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/726513776">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-27"><label>27</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Markowitz</surname><given-names>O</given-names></name><name name-style="western"><surname>Schwartz</surname><given-names>M</given-names></name><name name-style="western"><surname>Feldman</surname><given-names>E</given-names></name><etal/></person-group>:
+<article-title>Defining Field Cancerization of the Skin Using Noninvasive Optical Coherence Tomography Imaging to Detect and Monitor Actinic Keratosis in Ingenol Mebutate 0.015%- Treated Patients.</article-title>
+<source><italic toggle="yes">J Clin Aesthet Dermatol.</italic></source>
+<year>2016</year>;<volume>9</volume>(<issue>5</issue>):<fpage>18</fpage>–<lpage>25</lpage>.
+
+<pub-id pub-id-type="pmid">27386042</pub-id><pub-id pub-id-type="pmcid">PMC4928476</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/733286238">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-28"><label>28</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Wehner</surname><given-names>MR</given-names></name><name name-style="western"><surname>Linos</surname><given-names>E</given-names></name><name name-style="western"><surname>Parvataneni</surname><given-names>R</given-names></name><etal/></person-group>:
+<article-title>Timing of subsequent new tumors in patients who present with basal cell carcinoma or cutaneous squamous cell carcinoma.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2015</year>;<volume>151</volume>(<issue>4</issue>):<fpage>382</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2014.3307</pub-id>
+<pub-id pub-id-type="pmid">25588079</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/725351445">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-29"><label>29</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Levine</surname><given-names>DE</given-names></name><name name-style="western"><surname>Karia</surname><given-names>PS</given-names></name><name name-style="western"><surname>Schmults</surname><given-names>CD</given-names></name></person-group>:
+<article-title>Outcomes of Patients With Multiple Cutaneous Squamous Cell Carcinomas: A 10-Year Single-Institution Cohort Study.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2015</year>;<volume>151</volume>(<issue>11</issue>):<fpage>1220</fpage>–<lpage>5</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2015.1702</pub-id>
+<pub-id pub-id-type="pmid">26177278</pub-id></mixed-citation></ref><ref id="ref-30"><label>30</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Xiang</surname><given-names>F</given-names></name><name name-style="western"><surname>Lucas</surname><given-names>R</given-names></name><name name-style="western"><surname>Hales</surname><given-names>S</given-names></name><etal/></person-group>:
+<article-title>Incidence of nonmelanoma skin cancer in relation to ambient UV radiation in white populations, 1978-2012: empirical relationships.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2014</year>;<volume>150</volume>(<issue>10</issue>):<fpage>1063</fpage>–<lpage>71</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2014.762</pub-id>
+<pub-id pub-id-type="pmid">25103031</pub-id></mixed-citation></ref><ref id="ref-31"><label>31</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Pfeifer</surname><given-names>GP</given-names></name><name name-style="western"><surname>Besaratinia</surname><given-names>A</given-names></name></person-group>:
+<article-title>UV wavelength-dependent DNA damage and human non-melanoma and melanoma skin cancer.</article-title>
+<source><italic toggle="yes">Photochem Photobiol Sci.</italic></source>
+<year>2012</year>;<volume>11</volume>(<issue>1</issue>):<fpage>90</fpage>–<lpage>7</lpage>.
+<pub-id pub-id-type="doi">10.1039/c1pp05144j</pub-id>
+
+<pub-id pub-id-type="pmid">21804977</pub-id><pub-id pub-id-type="pmcid">PMC3289542</pub-id></mixed-citation></ref><ref id="ref-32"><label>32</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Braakhuis</surname><given-names>BJ</given-names></name><name name-style="western"><surname>Tabor</surname><given-names>MP</given-names></name><name name-style="western"><surname>Kummer</surname><given-names>JA</given-names></name><etal/></person-group>:
+<article-title>A genetic explanation of Slaughter's concept of field cancerization: evidence and clinical implications.</article-title>
+<source><italic toggle="yes">Cancer Res.</italic></source>
+<year>2003</year>;<volume>63</volume>(<issue>8</issue>):<fpage>1727</fpage>–<lpage>30</lpage>.
+<pub-id pub-id-type="pmid">12702551</pub-id></mixed-citation></ref><ref id="ref-33"><label>33</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Yoshikawa</surname><given-names>T</given-names></name><name name-style="western"><surname>Rae</surname><given-names>V</given-names></name><name name-style="western"><surname>Bruins-Slot</surname><given-names>W</given-names></name><etal/></person-group>:
+<article-title>Susceptibility to effects of UVB radiation on induction of contact hypersensitivity as a risk factor for skin cancer in humans.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>1990</year>;<volume>95</volume>(<issue>5</issue>):<fpage>530</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="pmid">2230216</pub-id><pub-id pub-id-type="doi" assigning-authority="pmc">10.1111/1523-1747.ep12504877</pub-id></mixed-citation></ref><ref id="ref-34"><label>34</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Criscione</surname><given-names>VD</given-names></name><name name-style="western"><surname>Weinstock</surname><given-names>MA</given-names></name><name name-style="western"><surname>Naylor</surname><given-names>MF</given-names></name><etal/></person-group>:
+<article-title>Actinic keratoses: Natural history and risk of malignant transformation in the Veterans Affairs Topical Tretinoin Chemoprevention Trial.</article-title>
+<source><italic toggle="yes">Cancer.</italic></source>
+<year>2009</year>;<volume>115</volume>(<issue>11</issue>):<fpage>2523</fpage>–<lpage>30</lpage>.
+<pub-id pub-id-type="doi">10.1002/cncr.24284</pub-id>
+<pub-id pub-id-type="pmid">19382202</pub-id></mixed-citation></ref><ref id="ref-35"><label>35</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Xiong</surname><given-names>MY</given-names></name><name name-style="western"><surname>Rizzo</surname><given-names>AE</given-names></name><name name-style="western"><surname>Cohen</surname><given-names>TS</given-names></name><etal/></person-group>:
+<article-title>Predictors of squamous cell carcinoma in high-risk patients in the VATTC trial.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>2013</year>;<volume>133</volume>(<issue>6</issue>):<fpage>1521</fpage>–<lpage>32</lpage>.
+<pub-id pub-id-type="doi">10.1038/jid.2013.35</pub-id>
+<pub-id pub-id-type="pmid">23348836</pub-id></mixed-citation></ref><ref id="ref-36"><label>36</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Wang</surname><given-names>NJ</given-names></name><name name-style="western"><surname>Sanborn</surname><given-names>Z</given-names></name><name name-style="western"><surname>Arnett</surname><given-names>KL</given-names></name><etal/></person-group>:
+<article-title>Loss-of-function mutations in Notch receptors in cutaneous and lung squamous cell carcinoma.</article-title>
+<source><italic toggle="yes">Proc Natl Acad Sci U S A.</italic></source>
+<year>2011</year>;<volume>108</volume>(<issue>43</issue>):<fpage>17761</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="doi">10.1073/pnas.1114669108</pub-id>
+
+<pub-id pub-id-type="pmid">22006338</pub-id><pub-id pub-id-type="pmcid">PMC3203814</pub-id></mixed-citation></ref><ref id="ref-37"><label>37</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Pickering</surname><given-names>CR</given-names></name><name name-style="western"><surname>Zhou</surname><given-names>JH</given-names></name><name name-style="western"><surname>Lee</surname><given-names>JJ</given-names></name><etal/></person-group>:
+<article-title>Mutational landscape of aggressive cutaneous squamous cell carcinoma.</article-title>
+<source><italic toggle="yes">Clin Cancer Res.</italic></source>
+<year>2014</year>;<volume>20</volume>(<issue>24</issue>):<fpage>6582</fpage>–<lpage>92</lpage>.
+<pub-id pub-id-type="doi">10.1158/1078-0432.CCR-14-1768</pub-id>
+
+<pub-id pub-id-type="pmid">25303977</pub-id><pub-id pub-id-type="pmcid">PMC4367811</pub-id></mixed-citation></ref><ref id="ref-38"><label>38</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>South</surname><given-names>AP</given-names></name><name name-style="western"><surname>Purdie</surname><given-names>KJ</given-names></name><name name-style="western"><surname>Watt</surname><given-names>SA</given-names></name><etal/></person-group>:
+<article-title>
+<italic toggle="yes">NOTCH1</italic> mutations occur early during cutaneous squamous cell carcinogenesis.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>2014</year>;<volume>134</volume>(<issue>10</issue>):<fpage>2630</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1038/jid.2014.154</pub-id>
+
+<pub-id pub-id-type="pmid">24662767</pub-id><pub-id pub-id-type="pmcid">PMC4753672</pub-id></mixed-citation></ref><ref id="ref-39"><label>39</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Ziegler</surname><given-names>A</given-names></name><name name-style="western"><surname>Jonason</surname><given-names>AS</given-names></name><name name-style="western"><surname>Leffell</surname><given-names>DJ</given-names></name><etal/></person-group>:
+<article-title>Sunburn and p53 in the onset of skin cancer.</article-title>
+<source><italic toggle="yes">Nature.</italic></source>
+<year>1994</year>;<volume>372</volume>(<issue>6508</issue>):<fpage>773</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="doi">10.1038/372773a0</pub-id>
+<pub-id pub-id-type="pmid">7997263</pub-id></mixed-citation></ref><ref id="ref-40"><label>40</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Ståhl</surname><given-names>PL</given-names></name><name name-style="western"><surname>Stranneheim</surname><given-names>H</given-names></name><name name-style="western"><surname>Asplund</surname><given-names>A</given-names></name><etal/></person-group>:
+<article-title>Sun-induced nonsynonymous p53 mutations are extensively accumulated and tolerated in normal appearing human skin.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>2011</year>;<volume>131</volume>(<issue>2</issue>):<fpage>504</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1038/jid.2010.302</pub-id>
+<pub-id pub-id-type="pmid">20944651</pub-id></mixed-citation></ref><ref id="ref-41"><label>41</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Jonason</surname><given-names>AS</given-names></name><name name-style="western"><surname>Kunala</surname><given-names>S</given-names></name><name name-style="western"><surname>Price</surname><given-names>GJ</given-names></name><etal/></person-group>:
+<article-title>Frequent clones of p53-mutated keratinocytes in normal human skin.</article-title>
+<source><italic toggle="yes">Proc Natl Acad Sci U S A.</italic></source>
+<year>1996</year>;<volume>93</volume>(<issue>24</issue>):<fpage>14025</fpage>–<lpage>9</lpage>.
+<pub-id pub-id-type="doi">10.1073/pnas.93.24.14025</pub-id>
+
+<pub-id pub-id-type="pmid">8943054</pub-id><pub-id pub-id-type="pmcid">PMC19488</pub-id></mixed-citation></ref><ref id="ref-42"><label>42</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Zhang</surname><given-names>W</given-names></name><name name-style="western"><surname>Remenyik</surname><given-names>E</given-names></name><name name-style="western"><surname>Zelterman</surname><given-names>D</given-names></name><etal/></person-group>:
+<article-title>Escaping the stem cell compartment: sustained UVB exposure allows
+<italic toggle="yes">p53</italic>-mutant keratinocytes to colonize adjacent epidermal proliferating units without incurring additional mutations.</article-title>
+<source><italic toggle="yes">Proc Natl Acad Sci U S A.</italic></source>
+<year>2001</year>;<volume>98</volume>(<issue>24</issue>):<fpage>13948</fpage>–<lpage>53</lpage>.
+<pub-id pub-id-type="doi">10.1073/pnas.241353198</pub-id>
+
+<pub-id pub-id-type="pmid">11707578</pub-id><pub-id pub-id-type="pmcid">PMC61147</pub-id></mixed-citation></ref><ref id="ref-43"><label>43</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Martincorena</surname><given-names>I</given-names></name><name name-style="western"><surname>Roshan</surname><given-names>A</given-names></name><name name-style="western"><surname>Gerstung</surname><given-names>M</given-names></name><etal/></person-group>:
+<article-title>Tumor evolution. High burden and pervasive positive selection of somatic mutations in normal human skin.</article-title>
+<source><italic toggle="yes">Science.</italic></source>
+<year>2015</year>;<volume>348</volume>(<issue>6237</issue>):<fpage>880</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="doi">10.1126/science.aaa6806</pub-id>
+
+<pub-id pub-id-type="pmid">25999502</pub-id><pub-id pub-id-type="pmcid">PMC4471149</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/725509016">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-44"><label>44</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Thompson</surname><given-names>SC</given-names></name><name name-style="western"><surname>Jolley</surname><given-names>D</given-names></name><name name-style="western"><surname>Marks</surname><given-names>R</given-names></name></person-group>:
+<article-title>Reduction of solar keratoses by regular sunscreen use.</article-title>
+<source><italic toggle="yes">N Engl J Med.</italic></source>
+<year>1993</year>;<volume>329</volume>(<issue>16</issue>):<fpage>1147</fpage>–<lpage>51</lpage>.
+<pub-id pub-id-type="doi">10.1056/NEJM199310143291602</pub-id>
+<pub-id pub-id-type="pmid">8377777</pub-id></mixed-citation></ref><ref id="ref-45"><label>45</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Green</surname><given-names>A</given-names></name><name name-style="western"><surname>Williams</surname><given-names>G</given-names></name><name name-style="western"><surname>Neale</surname><given-names>R</given-names></name><etal/></person-group>:
+<article-title>Daily sunscreen application and betacarotene supplementation in prevention of basal-cell and squamous-cell carcinomas of the skin: a randomised controlled trial.</article-title>
+<source><italic toggle="yes">Lancet.</italic></source>
+<year>1999</year>;<volume>354</volume>(<issue>9180</issue>):<fpage>723</fpage>–<lpage>9</lpage>.
+<pub-id pub-id-type="doi">10.1016/S0140-6736(98)12168-2</pub-id>
+<pub-id pub-id-type="pmid">10475183</pub-id></mixed-citation></ref><ref id="ref-46"><label>46</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>van der Pols</surname><given-names>JC</given-names></name><name name-style="western"><surname>Williams</surname><given-names>GM</given-names></name><name name-style="western"><surname>Pandeya</surname><given-names>N</given-names></name><etal/></person-group>:
+<article-title>Prolonged prevention of squamous cell carcinoma of the skin by regular sunscreen use.</article-title>
+<source><italic toggle="yes">Cancer Epidemiol Biomarkers Prev.</italic></source>
+<year>2006</year>;<volume>15</volume>(<issue>12</issue>):<fpage>2546</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1158/1055-9965.EPI-06-0352</pub-id>
+<pub-id pub-id-type="pmid">17132769</pub-id></mixed-citation></ref><ref id="ref-47"><label>47</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Ulrich</surname><given-names>C</given-names></name><name name-style="western"><surname>Jürgensen</surname><given-names>JS</given-names></name><name name-style="western"><surname>Degen</surname><given-names>A</given-names></name><etal/></person-group>:
+<article-title>Prevention of non-melanoma skin cancer in organ transplant patients by regular use of a sunscreen: a 24 months, prospective, case-control study.</article-title>
+<source><italic toggle="yes">Br J Dermatol.</italic></source>
+<year>2009</year>;<volume>161</volume>(<issue>Suppl 3</issue>):<fpage>78</fpage>–<lpage>84</lpage>.
+<pub-id pub-id-type="doi">10.1111/j.1365-2133.2009.09453.x</pub-id>
+<pub-id pub-id-type="pmid">19775361</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/1183970">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-48"><label>48</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Gupta</surname><given-names>AK</given-names></name><name name-style="western"><surname>Paquet</surname><given-names>M</given-names></name><name name-style="western"><surname>Villanueva</surname><given-names>E</given-names></name><etal/></person-group>:
+<article-title>Interventions for actinic keratoses.</article-title>
+<source><italic toggle="yes">Cochrane Database Syst Rev.</italic></source>
+<year>2012</year>;<volume>12</volume>:<fpage>CD004415</fpage>.
+<pub-id pub-id-type="doi">10.1002/14651858.CD004415.pub2</pub-id>
+<pub-id pub-id-type="pmid">23235610</pub-id><pub-id pub-id-type="pmcid">PMC6599879</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/717969390">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-49"><label>49</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Krawtchenko</surname><given-names>N</given-names></name><name name-style="western"><surname>Roewert-Huber</surname><given-names>J</given-names></name><name name-style="western"><surname>Ulrich</surname><given-names>M</given-names></name><etal/></person-group>:
+<article-title>A randomised study of topical 5% imiquimod vs. topical 5-fluorouracil vs. cryosurgery in immunocompetent patients with actinic keratoses: a comparison of clinical and histological outcomes including 1-year follow-up.</article-title>
+<source><italic toggle="yes">Br J Dermatol.</italic></source>
+<year>2007</year>;<volume>157</volume>(<issue>Suppl 2</issue>):<fpage>34</fpage>–<lpage>40</lpage>.
+<pub-id pub-id-type="doi">10.1111/j.1365-2133.2007.08271.x</pub-id>
+<pub-id pub-id-type="pmid">18067630</pub-id></mixed-citation></ref><ref id="ref-50"><label>50</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Pomerantz</surname><given-names>H</given-names></name><name name-style="western"><surname>Hogan</surname><given-names>D</given-names></name><name name-style="western"><surname>Eilers</surname><given-names>D</given-names></name><etal/></person-group>:
+<article-title>Long-term Efficacy of Topical Fluorouracil Cream, 5%, for Treating Actinic Keratosis: A Randomized Clinical Trial.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2015</year>;<volume>151</volume>(<issue>9</issue>):<fpage>952</fpage>–<lpage>60</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2015.0502</pub-id>
+<pub-id pub-id-type="pmid">25950503</pub-id></mixed-citation></ref><ref id="ref-51"><label>51</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Weinstock</surname><given-names>MA</given-names></name><name name-style="western"><surname>Thwin</surname><given-names>SS</given-names></name><name name-style="western"><surname>Siegel</surname><given-names>JA</given-names></name><etal/></person-group>:
+<article-title>Chemoprevention of Basal and Squamous Cell Carcinoma With a Single Course of Fluorouracil, 5%, Cream: A Randomized Clinical Trial.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2018</year>;<volume>154</volume>(<issue>2</issue>):<fpage>167</fpage>–<lpage>74</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2017.3631</pub-id>
+
+<pub-id pub-id-type="pmid">29299592</pub-id><pub-id pub-id-type="pmcid">PMC5839275</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/732398233">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-52"><label>52</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Cunningham</surname><given-names>TJ</given-names></name><name name-style="western"><surname>Tabacchi</surname><given-names>M</given-names></name><name name-style="western"><surname>Eliane</surname><given-names>JP</given-names></name><etal/></person-group>:
+<article-title>Randomized trial of calcipotriol combined with 5-fluorouracil for skin cancer precursor immunotherapy.</article-title>
+<source><italic toggle="yes">J Clin Invest.</italic></source>
+<year>2017</year>;<volume>127</volume>(<issue>1</issue>):<fpage>106</fpage>–<lpage>16</lpage>.
+<pub-id pub-id-type="doi">10.1172/JCI89820</pub-id>
+
+<pub-id pub-id-type="pmid">27869649</pub-id><pub-id pub-id-type="pmcid">PMC5199703</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/727004381">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-53"><label>53</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Fallen</surname><given-names>RS</given-names></name><name name-style="western"><surname>Gooderham</surname><given-names>M</given-names></name></person-group>:
+<article-title>Ingenol mebutate: an introduction.</article-title>
+<source><italic toggle="yes">Skin Therapy Lett.</italic></source>
+<year>2012</year>;<volume>17</volume>(<issue>2</issue>):<fpage>1</fpage>–<lpage>3</lpage>.
+<pub-id pub-id-type="pmid">22358305</pub-id></mixed-citation></ref><ref id="ref-54"><label>54</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Lebwohl</surname><given-names>M</given-names></name><name name-style="western"><surname>Swanson</surname><given-names>N</given-names></name><name name-style="western"><surname>Anderson</surname><given-names>LL</given-names></name><etal/></person-group>:
+<article-title>Ingenol mebutate gel for actinic keratosis.</article-title>
+<source><italic toggle="yes">N Engl J Med.</italic></source>
+<year>2012</year>;<volume>366</volume>(<issue>11</issue>):<fpage>1010</fpage>–<lpage>9</lpage>.
+<pub-id pub-id-type="doi">10.1056/NEJMoa1111170</pub-id>
+<pub-id pub-id-type="pmid">22417254</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/717949376">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-55"><label>55</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Lebwohl</surname><given-names>M</given-names></name><name name-style="western"><surname>Shumack</surname><given-names>S</given-names></name><name name-style="western"><surname>Stein Gold</surname><given-names>L</given-names></name><etal/></person-group>:
+<article-title>Long-term follow-up study of ingenol mebutate gel for the treatment of actinic keratoses.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2013</year>;<volume>149</volume>(<issue>6</issue>):<fpage>666</fpage>–<lpage>70</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2013.2766</pub-id>
+<pub-id pub-id-type="pmid">23553119</pub-id></mixed-citation></ref><ref id="ref-56"><label>56</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Cozzi</surname><given-names>SJ</given-names></name><name name-style="western"><surname>Ogbourne</surname><given-names>SM</given-names></name><name name-style="western"><surname>James</surname><given-names>C</given-names></name><etal/></person-group>:
+<article-title>Ingenol mebutate field-directed treatment of UVB-damaged skin reduces lesion formation and removes mutant p53 patches.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>2012</year>;<volume>132</volume>(<issue>4</issue>):<fpage>1263</fpage>–<lpage>71</lpage>.
+<pub-id pub-id-type="doi">10.1038/jid.2011.418</pub-id>
+<pub-id pub-id-type="pmid">22189786</pub-id></mixed-citation></ref><ref id="ref-57"><label>57</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Angell-Petersen</surname><given-names>E</given-names></name><name name-style="western"><surname>Sørensen</surname><given-names>R</given-names></name><name name-style="western"><surname>Warloe</surname><given-names>T</given-names></name><etal/></person-group>:
+<article-title>Porphyrin formation in actinic keratosis and basal cell carcinoma after topical application of methyl 5-aminolevulinate.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>2006</year>;<volume>126</volume>(<issue>2</issue>):<fpage>265</fpage>–<lpage>71</lpage>.
+<pub-id pub-id-type="doi">10.1038/sj.jid.5700048</pub-id>
+<pub-id pub-id-type="pmid">16374471</pub-id></mixed-citation></ref><ref id="ref-58"><label>58</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Patel</surname><given-names>G</given-names></name><name name-style="western"><surname>Armstrong</surname><given-names>AW</given-names></name><name name-style="western"><surname>Eisen</surname><given-names>DB</given-names></name></person-group>:
+<article-title>Efficacy of photodynamic therapy vs other interventions in randomized clinical trials for the treatment of actinic keratoses: a systematic review and meta-analysis.</article-title>
+<source><italic toggle="yes">JAMA Dermatol.</italic></source>
+<year>2014</year>;<volume>150</volume>(<issue>12</issue>):<fpage>1281</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1001/jamadermatol.2014.1253</pub-id>
+<pub-id pub-id-type="pmid">25162181</pub-id></mixed-citation></ref><ref id="ref-59"><label>59</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Bagazgoitia</surname><given-names>L</given-names></name><name name-style="western"><surname>Cuevas Santos</surname><given-names>J</given-names></name><name name-style="western"><surname>Juarranz</surname><given-names>A</given-names></name><etal/></person-group>:
+<article-title>Photodynamic therapy reduces the histological features of actinic damage and the expression of early oncogenic markers.</article-title>
+<source><italic toggle="yes">Br J Dermatol.</italic></source>
+<year>2011</year>;<volume>165</volume>(<issue>1</issue>):<fpage>144</fpage>–<lpage>51</lpage>.
+<pub-id pub-id-type="doi">10.1111/j.1365-2133.2011.10270.x</pub-id>
+<pub-id pub-id-type="pmid">21615716</pub-id></mixed-citation></ref><ref id="ref-60"><label>60</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Stender</surname><given-names>IM</given-names></name><name name-style="western"><surname>Bech-Thomsen</surname><given-names>N</given-names></name><name name-style="western"><surname>Poulsen</surname><given-names>T</given-names></name><etal/></person-group>:
+<article-title>Photodynamic therapy with topical delta-aminolevulinic acid delays UV photocarcinogenesis in hairless mice.</article-title>
+<source><italic toggle="yes">Photochem Photobiol.</italic></source>
+<year>1997</year>;<volume>66</volume>(<issue>4</issue>):<fpage>493</fpage>–<lpage>6</lpage>.
+<pub-id pub-id-type="doi">10.1111/j.1751-1097.1997.tb03178.x</pub-id>
+<pub-id pub-id-type="pmid">9337620</pub-id></mixed-citation></ref><ref id="ref-61"><label>61</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Willey</surname><given-names>A</given-names></name><name name-style="western"><surname>Mehta</surname><given-names>S</given-names></name><name name-style="western"><surname>Lee</surname><given-names>PK</given-names></name></person-group>:
+<article-title>Reduction in the incidence of squamous cell carcinoma in solid organ transplant recipients treated with cyclic photodynamic therapy.</article-title>
+<source><italic toggle="yes">Dermatol Surg.</italic></source>
+<year>2010</year>;<volume>36</volume>(<issue>5</issue>):<fpage>652</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1111/j.1524-4725.2009.01384.x</pub-id>
+<pub-id pub-id-type="pmid">19889154</pub-id></mixed-citation></ref><ref id="ref-62"><label>62</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>de Graaf</surname><given-names>YG</given-names></name><name name-style="western"><surname>Kennedy</surname><given-names>C</given-names></name><name name-style="western"><surname>Wolterbeek</surname><given-names>R</given-names></name><etal/></person-group>:
+<article-title>Photodynamic therapy does not prevent cutaneous squamous-cell carcinoma in organ-transplant recipients: results of a randomized-controlled trial.</article-title>
+<source><italic toggle="yes">J Invest Dermatol.</italic></source>
+<year>2006</year>;<volume>126</volume>(<issue>3</issue>):<fpage>569</fpage>–<lpage>74</lpage>.
+<pub-id pub-id-type="doi">10.1038/sj.jid.5700098</pub-id>
+<pub-id pub-id-type="pmid">16374480</pub-id></mixed-citation></ref><ref id="ref-63"><label>63</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Togsverd-Bo</surname><given-names>K</given-names></name><name name-style="western"><surname>Omland</surname><given-names>SH</given-names></name><name name-style="western"><surname>Wulf</surname><given-names>HC</given-names></name><etal/></person-group>:
+<article-title>Primary prevention of skin dysplasia in renal transplant recipients with photodynamic therapy: a randomized controlled trial.</article-title>
+<source><italic toggle="yes">Am J Transplant.</italic></source>
+<year>2015</year>;<volume>15</volume>(<issue>11</issue>):<fpage>2986</fpage>–<lpage>90</lpage>.
+<pub-id pub-id-type="doi">10.1111/ajt.13358</pub-id>
+<pub-id pub-id-type="pmid">26018207</pub-id></mixed-citation></ref><ref id="ref-64"><label>64</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Rubel</surname><given-names>DM</given-names></name><name name-style="western"><surname>Spelman</surname><given-names>L</given-names></name><name name-style="western"><surname>Murrell</surname><given-names>DF</given-names></name><etal/></person-group>:
+<article-title>Daylight photodynamic therapy with methyl aminolevulinate cream as a convenient, similarly effective, nearly painless alternative to conventional photodynamic therapy in actinic keratosis treatment: a randomized controlled trial.</article-title>
+<source><italic toggle="yes">Br J Dermatol.</italic></source>
+<year>2014</year>;<volume>171</volume>(<issue>5</issue>):<fpage>1164</fpage>–<lpage>71</lpage>.
+<pub-id pub-id-type="doi">10.1111/bjd.13138</pub-id>
+<pub-id pub-id-type="pmid">24861492</pub-id></mixed-citation></ref><ref id="ref-65"><label>65</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Zito</surname><given-names>G</given-names></name><name name-style="western"><surname>Saotome</surname><given-names>I</given-names></name><name name-style="western"><surname>Liu</surname><given-names>Z</given-names></name><etal/></person-group>:
+<article-title>Spontaneous tumour regression in keratoacanthomas is driven by Wnt/retinoic acid signalling cross-talk.</article-title>
+<source><italic toggle="yes">Nat Commun.</italic></source>
+<year>2014</year>;<volume>5</volume>:<fpage>3543</fpage>.
+<pub-id pub-id-type="doi">10.1038/ncomms4543</pub-id>
+
+<pub-id pub-id-type="pmid">24667544</pub-id><pub-id pub-id-type="pmcid">PMC3974217</pub-id></mixed-citation></ref><ref id="ref-66"><label>66</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Bavinck</surname><given-names>JN</given-names></name><name name-style="western"><surname>Tieben</surname><given-names>LM</given-names></name><name name-style="western"><surname>Van der Woude</surname><given-names>FJ</given-names></name><etal/></person-group>:
+<article-title>Prevention of skin cancer and reduction of keratotic skin lesions during acitretin therapy in renal transplant recipients: a double-blind, placebo-controlled study.</article-title>
+<source><italic toggle="yes">J Clin Oncol.</italic></source>
+<year>1995</year>;<volume>13</volume>(<issue>8</issue>):<fpage>1933</fpage>–<lpage>8</lpage>.
+<pub-id pub-id-type="doi">10.1200/JCO.1995.13.8.1933</pub-id>
+<pub-id pub-id-type="pmid">7636533</pub-id></mixed-citation></ref><ref id="ref-67"><label>67</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Bettoli</surname><given-names>V</given-names></name><name name-style="western"><surname>Zauli</surname><given-names>S</given-names></name><name name-style="western"><surname>Virgili</surname><given-names>A</given-names></name></person-group>:
+<article-title>Retinoids in the chemoprevention of non-melanoma skin cancers: why, when and how.</article-title>
+<source><italic toggle="yes">J Dermatolog Treat.</italic></source>
+<year>2013</year>;<volume>24</volume>(<issue>3</issue>):<fpage>235</fpage>–<lpage>7</lpage>.
+<pub-id pub-id-type="doi">10.3109/09546634.2012.746634</pub-id>
+<pub-id pub-id-type="pmid">23148804</pub-id></mixed-citation></ref><ref id="ref-68"><label>68</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Kadakia</surname><given-names>KC</given-names></name><name name-style="western"><surname>Barton</surname><given-names>DL</given-names></name><name name-style="western"><surname>Loprinzi</surname><given-names>CL</given-names></name><etal/></person-group>:
+<article-title>Randomized controlled trial of acitretin versus placebo in patients at high-risk for basal cell or squamous cell carcinoma of the skin (North Central Cancer Treatment Group Study 969251).</article-title>
+<source><italic toggle="yes">Cancer.</italic></source>
+<year>2012</year>;<volume>118</volume>(<issue>8</issue>):<fpage>2128</fpage>–<lpage>37</lpage>.
+<pub-id pub-id-type="doi">10.1002/cncr.26374</pub-id>
+
+<pub-id pub-id-type="pmid">21882176</pub-id><pub-id pub-id-type="pmcid">PMC3365547</pub-id></mixed-citation></ref><ref id="ref-69"><label>69</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Li</surname><given-names>J</given-names></name><name name-style="western"><surname>Bonkowski</surname><given-names>MS</given-names></name><name name-style="western"><surname>Moniot</surname><given-names>S</given-names></name><etal/></person-group>:
+<article-title>A conserved NAD
+<sup>+</sup> binding pocket that regulates protein-protein interactions during aging.</article-title>
+<source><italic toggle="yes">Science.</italic></source>
+<year>2017</year>;<volume>355</volume>(<issue>6331</issue>):<fpage>1312</fpage>–<lpage>7</lpage>.
+<pub-id pub-id-type="doi">10.1126/science.aad8242</pub-id>
+
+<pub-id pub-id-type="pmid">28336669</pub-id><pub-id pub-id-type="pmcid">PMC5456119</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/727428542">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-70"><label>70</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Chen</surname><given-names>AC</given-names></name><name name-style="western"><surname>Martin</surname><given-names>AJ</given-names></name><name name-style="western"><surname>Choy</surname><given-names>B</given-names></name><etal/></person-group>:
+<article-title>A Phase 3 Randomized Trial of Nicotinamide for Skin-Cancer Chemoprevention.</article-title>
+<source><italic toggle="yes">N Engl J Med.</italic></source>
+<year>2015</year>;<volume>373</volume>(<issue>17</issue>):<fpage>1618</fpage>–<lpage>26</lpage>.
+<pub-id pub-id-type="doi">10.1056/NEJMoa1506197</pub-id>
+<pub-id pub-id-type="pmid">26488693</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/725865915">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-71"><label>71</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Endrizzi</surname><given-names>B</given-names></name><name name-style="western"><surname>Ahmed</surname><given-names>RL</given-names></name><name name-style="western"><surname>Ray</surname><given-names>T</given-names></name><etal/></person-group>:
+<article-title>Capecitabine to reduce nonmelanoma skin carcinoma burden in solid organ transplant recipients.</article-title>
+<source><italic toggle="yes">Dermatol Surg.</italic></source>
+<year>2013</year>;<volume>39</volume>(<issue>4</issue>):<fpage>634</fpage>–<lpage>45</lpage>.
+<pub-id pub-id-type="doi">10.1111/dsu.12049</pub-id>
+<pub-id pub-id-type="pmid">23379978</pub-id></mixed-citation></ref><ref id="ref-72"><label>72</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Weinstock</surname><given-names>MA</given-names></name><name name-style="western"><surname>Lee</surname><given-names>KC</given-names></name><name name-style="western"><surname>Chren</surname><given-names>MM</given-names></name><etal/></person-group>:
+<article-title>Quality of life in the actinic neoplasia syndrome: The VA Topical Tretinoin Chemoprevention (VATTC) Trial.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2009</year>;<volume>61</volume>(<issue>2</issue>):<fpage>207</fpage>–<lpage>15</lpage>.
+<pub-id pub-id-type="doi">10.1016/j.jaad.2009.02.022</pub-id>
+
+<pub-id pub-id-type="pmid">19398145</pub-id><pub-id pub-id-type="pmcid">PMC3614359</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/1164843">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-73"><label>73</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Hashim</surname><given-names>PW</given-names></name><name name-style="western"><surname>Nia</surname><given-names>JK</given-names></name><name name-style="western"><surname>Singer</surname><given-names>S</given-names></name><etal/></person-group>:
+<article-title>An Investigator-initiated Study to Assess the Safety and Efficacy of Ingenol Mebutate 0.05% Gel When Used After Cryosurgery in the Treatment of Hypertrophic Actinic Keratosis on Dorsal Hands.</article-title>
+<source><italic toggle="yes">J Clin Aesthet Dermatol.</italic></source>
+<year>2016</year>;<volume>9</volume>(<issue>7</issue>):<fpage>16</fpage>–<lpage>22</lpage>.
+
+<pub-id pub-id-type="pmid">27672408</pub-id><pub-id pub-id-type="pmcid">PMC5022999</pub-id></mixed-citation></ref><ref id="ref-74"><label>74</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Jambusaria-Pahlajani</surname><given-names>A</given-names></name><name name-style="western"><surname>Ortman</surname><given-names>S</given-names></name><name name-style="western"><surname>Schmults</surname><given-names>CD</given-names></name><etal/></person-group>:
+<article-title>Sequential Curettage, 5-Fluorouracil, and Photodynamic Therapy for Field Cancerization of the Scalp and Face in Solid Organ Transplant Recipients.</article-title>
+<source><italic toggle="yes">Dermatol Surg.</italic></source>
+<year>2016</year>;<volume>42 Suppl 1</volume>:<fpage>S66</fpage>–<lpage>72</lpage>.
+<pub-id pub-id-type="doi">10.1097/DSS.0000000000000589</pub-id>
+<pub-id pub-id-type="pmid">26730976</pub-id></mixed-citation><note><p>
+<ext-link xmlns:xlink="http://www.w3.org/1999/xlink" ext-link-type="uri" xlink:href="https://f1000.com/prime/726065699">F1000 Recommendation</ext-link>
+</p></note></ref><ref id="ref-75"><label>75</label><mixed-citation publication-type="journal">
+<person-group person-group-type="author"><name name-style="western"><surname>Berg</surname><given-names>D</given-names></name><name name-style="western"><surname>Otley</surname><given-names>CC</given-names></name></person-group>:
+<article-title>Skin cancer in organ transplant recipients: Epidemiology, pathogenesis, and management.</article-title>
+<source><italic toggle="yes">J Am Acad Dermatol.</italic></source>
+<year>2002</year>;<volume>47</volume>(<issue>1</issue>):<fpage>1</fpage>–<lpage>17</lpage>; quiz 18–20.
+<pub-id pub-id-type="doi">10.1067/mjd.2002.125579</pub-id>
+<pub-id pub-id-type="pmid">12077575</pub-id></mixed-citation></ref></ref-list></back></article></pmc-articleset>

@@ -1,0 +1,116 @@
+{% extends "search/base.html" %}
+{% block content %}
+<main class="site-shell page-main narrow-page">
+  <header class="page-heading">
+    <h1>Upload Article</h1>
+    <p>Add PubMed Central XML articles to your local collection.</p>
+  </header>
+
+  <div class="upload-grid">
+    <section class="simple-panel">
+      <h2>Upload XML</h2>
+      <p class="panel-intro">Choose one PubMed Central / JATS XML file from your computer.</p>
+      <form method="post" enctype="multipart/form-data" class="stack-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="upload">
+        {{ upload_form.file.errors }}
+        <label for="{{ upload_form.file.id_for_label }}">{{ upload_form.file.label }}</label>
+        {{ upload_form.file }}
+        <small>{{ upload_form.file.help_text }}</small>
+        <button class="primary-button" type="submit">Upload Article</button>
+      </form>
+    </section>
+
+    <section class="simple-panel">
+      <h2>Fetch from PubMed Central</h2>
+      <p class="panel-intro">Enter one or more PMCIDs. Each article will be fetched as an XML file first.</p>
+      <form method="post" class="stack-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="pmc_fetch">
+        {{ pmc_form.pmcids.errors }}
+        <label for="{{ pmc_form.pmcids.id_for_label }}">{{ pmc_form.pmcids.label }}</label>
+        {{ pmc_form.pmcids }}
+        <small>{{ pmc_form.pmcids.help_text }}</small>
+        <button class="primary-button" type="submit">Fetch XML</button>
+      </form>
+
+      {% if fetched_files %}
+      <div class="fetched-section" aria-live="polite">
+        <div class="fetched-section-heading">
+          <div>
+            <strong>Fetched XML files</strong>
+            <span>{{ fetched_files|length }} ready to upload</span>
+          </div>
+          {% if fetched_files|length > 1 %}
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="upload_all_fetched">
+            <button class="secondary-button" type="submit">Upload All</button>
+          </form>
+          {% endif %}
+        </div>
+
+        <div class="fetched-list">
+          {% for file in fetched_files %}
+          <div class="fetched-file">
+            <div class="xml-file-icon">XML</div>
+            <div class="fetched-file-info">
+              <strong>{{ file.name }}</strong>
+              <span>{{ file.size_kb }} KB · Ready to upload</span>
+            </div>
+            <form method="post" class="fetched-upload-form">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="upload_fetched">
+              <input type="hidden" name="fetched_name" value="{{ file.name }}">
+              <button class="primary-button" type="submit">Upload Article</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </section>
+  </div>
+</main>
+
+{% if import_result %}
+<div class="modal-backdrop" role="presentation">
+  <div class="success-modal {% if import_result.kind == 'duplicate' %}duplicate-modal{% endif %}" role="dialog" aria-modal="true" aria-labelledby="import-result-title">
+    {% if import_result.kind == 'duplicate' %}
+      <div class="status-icon duplicate-icon">!</div>
+      <h2 id="import-result-title">Article already exists</h2>
+      {% if import_result.duplicates %}
+        <p><strong>{{ import_result.duplicates.0.title }}</strong> is already in your collection.</p>
+      {% endif %}
+    {% elif import_result.kind == 'partial' %}
+      <div class="status-icon partial-icon">✓</div>
+      <h2 id="import-result-title">Upload completed</h2>
+      <p>{{ import_result.uploaded|length }} article{{ import_result.uploaded|length|pluralize }} uploaded. {{ import_result.duplicates|length }} duplicate{{ import_result.duplicates|length|pluralize }} skipped.</p>
+    {% elif import_result.kind == 'success' %}
+      <div class="status-icon success-check">✓</div>
+      <h2 id="import-result-title">Article{% if import_result.uploaded|length > 1 %}s{% endif %} uploaded successfully</h2>
+      <p>{{ import_result.uploaded|length }} article{{ import_result.uploaded|length|pluralize }} {% if import_result.uploaded|length == 1 %}is{% else %}are{% endif %} now available in your collection.</p>
+    {% else %}
+      <div class="status-icon duplicate-icon">!</div>
+      <h2 id="import-result-title">Upload could not be completed</h2>
+      <p>Please check the XML file and try again.</p>
+    {% endif %}
+
+    {% if import_result.errors %}
+    <div class="modal-error-list">
+      {% for error in import_result.errors %}<div>{{ error }}</div>{% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="modal-actions">
+      {% if import_result.kind == 'duplicate' and import_result.duplicates %}
+        <a class="primary-button modal-confirm" href="{% url 'search:document_detail' import_result.duplicates.0.id %}">View Existing Article</a>
+      {% else %}
+        <a class="primary-button modal-confirm" href="{% url 'search:articles' %}">View Articles</a>
+      {% endif %}
+      <a class="secondary-button modal-secondary" href="{% url 'search:import' %}">Continue Uploading</a>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+  <front>
+    <journal-meta><journal-title-group><journal-title>Cardiovascular AI Research</journal-title></journal-title-group></journal-meta>
+    <article-meta>
+      <article-id pub-id-type="pmcid">PMC1000003</article-id>
+      <pub-date><year>2026</year></pub-date>
+      <title-group>
+        <article-title>Cardiovascular Risk Prediction Using Deep Learning on ECG Signals</article-title>
+      </title-group>
+      <abstract>
+        <p>Cardiovascular disease remains a leading cause of mortality worldwide. This study proposes a convolutional neural network for predicting cardiovascular risk directly from raw electrocardiogram (ECG) signals. Compared with Dr. M. Wu's baseline logistic regression model, the proposed approach improved the area under the ROC curve from 0.78 to 0.91. Vs. traditional feature engineering, the deep learning approach required no manual feature selection. Approx. 12000 ECG recordings were used for training and validation. These findings suggest deep learning models could support early cardiovascular screening in primary care settings.</p>
+      </abstract>
+    </article-meta>
+  </front>
+</article>

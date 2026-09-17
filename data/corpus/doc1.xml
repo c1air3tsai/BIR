@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+  <front>
+    <journal-meta><journal-title-group><journal-title>Sample Biomedical Journal</journal-title></journal-title-group></journal-meta>
+    <article-meta>
+      <article-id pub-id-type="pmcid">PMC1000001</article-id>
+      <title-group><article-title>Diabetic Kidney Disease and Early Biomarkers</article-title></title-group>
+      <contrib-group>
+        <contrib contrib-type="author"><name><surname>Chen</surname><given-names>J.</given-names></name></contrib>
+      </contrib-group>
+      <pub-date><year>2025</year></pub-date>
+      <abstract><p>Diabetic kidney disease is a major complication of type 2 diabetes mellitus. Early detection of albuminuria can significantly reduce the risk of progression to end-stage renal disease.</p></abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec><title>Introduction</title><p>Diabetic kidney disease is a major complication of type 2 diabetes mellitus. Dr. J. Chen et al. reported that early detection of albuminuria can significantly reduce the risk of progression to end-stage renal disease. The study enrolled 3.5 thousand patients over five years.</p></sec>
+    <sec><title>Methods and Discussion</title><p>Traditional biomarkers such as serum creatinine are often insufficient for early diagnosis. Newer approaches, including machine learning models trained on electronic health records, show promising results for predicting disease progression. Further validation across multiple hospitals is still required.</p></sec>
+  </body>
+</article>

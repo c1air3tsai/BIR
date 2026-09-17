@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title|default:"Biomedical Literature Search" }}</title>
+  <link rel="stylesheet" href="{% static 'search/site.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-shell header-row">
+      <a class="brand" href="{% url 'search:home' %}">
+        <span class="brand-mark">B</span>
+        <span class="brand-text">Biomedical Search</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'search:home' %}">Search</a>
+        <a class="{% if request.resolver_match.url_name == 'articles' or request.resolver_match.url_name == 'document_detail' %}active{% endif %}" href="{% url 'search:articles' %}">Articles</a>
+        <a class="{% if request.resolver_match.url_name == 'import' %}active{% endif %}" href="{% url 'search:import' %}">Upload</a>
+      </nav>
+    </div>
+  </header>
+
+  {% if messages %}
+  <div class="site-shell messages">
+    {% for message in messages %}
+      <div class="notice {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+
+  <footer class="site-footer">
+    <div class="site-shell footer-row">
+      <span>Biomedical full-text retrieval</span>
+      <span>PubMed Central XML collection</span>
+    </div>
+  </footer>
+</body>
+</html>

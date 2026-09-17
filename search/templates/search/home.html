@@ -1,0 +1,102 @@
+{% extends "search/base.html" %}
+{% block content %}
+<main>
+  <section class="search-hero {% if query %}search-hero-compact{% endif %}">
+    <div class="site-shell search-hero-inner">
+      {% if not query %}
+      <div class="hero-eyebrow">LOCAL BIOMEDICAL COLLECTION</div>
+      {% endif %}
+      <h1>Biomedical Literature Search</h1>
+      <p class="hero-description">Search full-text biomedical articles from your PubMed Central XML collection.</p>
+
+      <form class="main-search" method="get" action="{% url 'search:home' %}">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          name="q"
+          value="{{ query }}"
+          placeholder="Search articles, e.g. cancer treatment"
+          aria-label="Search articles"
+          autofocus
+        >
+        <button type="submit">Search</button>
+      </form>
+
+      {% if not query %}
+      <div class="hero-utilities">
+        <span><strong>{{ collection_count }}</strong> article{{ collection_count|pluralize }} available</span>
+        <span class="hero-divider"></span>
+        <a href="{% url 'search:articles' %}">Browse Articles</a>
+        <a href="{% url 'search:import' %}">Add XML Article</a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if query %}
+  <section class="site-shell results-section">
+    <div class="results-header">
+      <div>
+        <span class="section-kicker">SEARCH RESULTS</span>
+        <h2>“{{ query }}”</h2>
+      </div>
+      <span>{{ page_obj.paginator.count }} result{{ page_obj.paginator.count|pluralize }}</span>
+    </div>
+
+    <div class="results-list">
+      {% for r in page_obj %}
+      <article class="result-item">
+        <h3>
+          <a href="{% url 'search:document_detail' r.doc.pk %}?q={{ query|urlencode }}&page={{ page_obj.number }}">
+            {{ r.highlighted_title }}
+          </a>
+        </h3>
+
+        {% if r.doc.authors or r.doc.journal or r.doc.publication_year %}
+        <p class="citation-line">
+          {% if r.doc.authors %}{{ r.doc.authors|truncatechars:165 }}{% endif %}
+          {% if r.doc.journal %}{% if r.doc.authors %} · {% endif %}<em>{{ r.doc.journal }}</em>{% endif %}
+          {% if r.doc.publication_year %} · {{ r.doc.publication_year }}{% endif %}
+        </p>
+        {% endif %}
+
+        <p class="result-snippet">{{ r.highlighted_snippet }}</p>
+
+        <div class="result-footer">
+          <div class="result-metadata">
+            {% if r.doc.pmcid %}<span class="record-id">{{ r.doc.pmcid }}</span>{% endif %}
+            <span class="keyword-count">{{ r.keyword_count }} keyword match{{ r.keyword_count|pluralize:"es" }}</span>
+          </div>
+          <a class="view-article-link" href="{% url 'search:document_detail' r.doc.pk %}?q={{ query|urlencode }}&page={{ page_obj.number }}">View article <span>→</span></a>
+        </div>
+      </article>
+      {% empty %}
+      <div class="empty-state">
+        <div class="empty-icon">⌕</div>
+        <h3>No matching articles found</h3>
+        <p>Try another keyword or add more XML articles to the collection.</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="pagination" aria-label="Search results pages">
+      {% if page_obj.has_previous %}
+        <a class="page-step" href="?q={{ query|urlencode }}&page={{ page_obj.previous_page_number }}">← Previous</a>
+      {% else %}
+        <span class="page-step disabled">← Previous</span>
+      {% endif %}
+
+      <span class="page-position">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+      {% if page_obj.has_next %}
+        <a class="page-step" href="?q={{ query|urlencode }}&page={{ page_obj.next_page_number }}">Next →</a>
+      {% else %}
+        <span class="page-step disabled">Next →</span>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </section>
+  {% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "search/base.html" %}
+{% block content %}
+<main class="site-shell page-main articles-page">
+  <div class="articles-heading-row">
+    <header class="page-heading">
+      <span class="section-kicker">LOCAL COLLECTION</span>
+      <h1>Articles</h1>
+      <p>{{ total_docs }} article{{ total_docs|pluralize }} available.</p>
+    </header>
+
+    <form method="get" class="sort-form">
+      {% if letter %}<input type="hidden" name="letter" value="{{ letter }}">{% endif %}
+      <label for="sort">Sort by</label>
+      <select id="sort" name="sort" onchange="this.form.submit()">
+        <option value="az" {% if sort == 'az' %}selected{% endif %}>Title A–Z</option>
+        <option value="za" {% if sort == 'za' %}selected{% endif %}>Title Z–A</option>
+        <option value="newest" {% if sort == 'newest' %}selected{% endif %}>Newest added</option>
+        <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>Oldest added</option>
+      </select>
+    </form>
+  </div>
+
+  <nav class="alphabet-filter" aria-label="Filter articles by first letter">
+    <a href="?sort={{ sort }}" class="{% if not letter %}active{% endif %}">All</a>
+    {% for char in alphabet %}
+      <a href="?sort={{ sort }}&letter={{ char }}" class="{% if letter == char %}active{% endif %}">{{ char }}</a>
+    {% endfor %}
+  </nav>
+
+  <section class="article-list">
+    {% for doc in page_obj %}
+    <article class="article-list-row">
+      <div class="article-row-main">
+        <h2><a href="{% url 'search:document_detail' doc.pk %}">{{ doc.title }}</a></h2>
+        {% if doc.authors or doc.journal or doc.publication_year %}
+        <p class="citation-line">
+          {% if doc.authors %}{{ doc.authors|truncatechars:160 }}{% endif %}
+          {% if doc.journal %}{% if doc.authors %} · {% endif %}<em>{{ doc.journal }}</em>{% endif %}
+          {% if doc.publication_year %} · {{ doc.publication_year }}{% endif %}
+        </p>
+        {% endif %}
+        <div class="article-list-links">
+          <a class="article-open-link" href="{% url 'search:document_detail' doc.pk %}">View article <span>→</span></a>
+          {% if doc.abstract %}
+          <button class="abstract-preview-toggle" type="button" aria-expanded="false" aria-controls="abstract-preview-{{ doc.pk }}">Preview abstract</button>
+          {% endif %}
+        </div>
+        {% if doc.abstract %}
+        <div class="article-abstract-preview" id="abstract-preview-{{ doc.pk }}" hidden>
+          <p>{{ doc.abstract }}</p>
+        </div>
+        {% endif %}
+      </div>
+      <div class="article-row-actions">
+        {% if doc.pmcid %}<span class="record-id">{{ doc.pmcid }}</span>{% endif %}
+        <form method="post" action="{% url 'search:delete_document' doc.pk %}">
+          {% csrf_token %}
+          <button
+            class="row-delete-button"
+            type="submit"
+            onclick="event.stopPropagation(); return confirm('Delete this article from the collection?');"
+          >Delete</button>
+        </form>
+      </div>
+    </article>
+    {% empty %}
+    <div class="empty-state">
+      <h3>No articles in this group</h3>
+      <p>Choose another letter or upload an XML article.</p>
+    </div>
+    {% endfor %}
+  </section>
+
+  {% if page_obj.paginator.num_pages > 1 %}
+  <nav class="pagination" aria-label="Article pages">
+    {% if page_obj.has_previous %}
+      <a class="page-step" href="?sort={{ sort }}{% if letter %}&letter={{ letter }}{% endif %}&page={{ page_obj.previous_page_number }}">← Previous</a>
+    {% else %}
+      <span class="page-step disabled">← Previous</span>
+    {% endif %}
+    <span class="page-position">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+      <a class="page-step" href="?sort={{ sort }}{% if letter %}&letter={{ letter }}{% endif %}&page={{ page_obj.next_page_number }}">Next →</a>
+    {% else %}
+      <span class="page-step disabled">Next →</span>
+    {% endif %}
+  </nav>
+  {% endif %}
+</main>
+<script>
+(function () {
+  document.querySelectorAll('.abstract-preview-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = document.getElementById(button.getAttribute('aria-controls'));
+      if (!target) return;
+      const opening = target.hidden;
+      target.hidden = !opening;
+      button.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      button.textContent = opening ? 'Hide abstract' : 'Preview abstract';
+    });
+  });
+})();
+</script>
+{% endblock %}
