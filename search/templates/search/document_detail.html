@@ -1,6 +1,6 @@
 {% extends "search/base.html" %}
 {% block content %}
-<main class="site-shell article-page">
+<main class="site-shell article-page abstract-only-page">
   <div class="article-topbar">
     {% if query %}
       <a class="back-link" href="{% url 'search:home' %}?q={{ query|urlencode }}{% if result_page %}&page={{ result_page }}{% endif %}">← Back to search results</a>
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <article class="article-card">
+  <article class="article-card abstract-focused-card">
     <header class="article-header">
       <h1>{{ highlighted_title }}</h1>
       {% if doc.authors %}<p class="authors">{{ doc.authors }}</p>{% endif %}
@@ -24,29 +24,23 @@
         {% if doc.doi %} · DOI {{ doc.doi }}{% endif %}
       </p>
 
-      <div class="article-stat-summary" aria-label="Article statistics">
-        <div class="stat-group">
-          <span class="stat-group-label">Overall article</span>
-          <span><strong>{{ overall_stats.words|floatformat:0 }}</strong> words</span>
-          <span><strong>{{ overall_stats.sentences|floatformat:0 }}</strong> sentences</span>
-          <span><strong>{{ overall_stats.characters|floatformat:0 }}</strong> characters</span>
-        </div>
+      <div class="article-stat-summary abstract-only-stats" aria-label="Title and abstract statistics">
         {% if doc.abstract %}
-        <div class="stat-group">
+        <div class="stat-group primary-stat-group">
           <span class="stat-group-label">Abstract</span>
-          <span><strong>{{ abstract_stats.words|floatformat:0 }}</strong> words</span>
-          <span><strong>{{ abstract_stats.sentences|floatformat:0 }}</strong> sentences</span>
-          <span><strong>{{ abstract_stats.characters|floatformat:0 }}</strong> characters</span>
+          <span><strong>{{ abstract_stats.words }}</strong> words</span>
+          <span><strong>{{ abstract_stats.sentences }}</strong> sentences</span>
+          <span><strong>{{ abstract_stats.characters }}</strong> characters</span>
         </div>
         {% endif %}
         <div class="stat-group">
           <span class="stat-group-label">Title</span>
-          <span><strong>{{ title_stats.words|floatformat:0 }}</strong> words</span>
-          <span><strong>{{ title_stats.characters|floatformat:0 }}</strong> characters</span>
+          <span><strong>{{ title_stats.words }}</strong> words</span>
+          <span><strong>{{ title_stats.characters }}</strong> characters</span>
         </div>
         {% if query %}
         <div class="stat-group keyword-stat-group">
-          <span class="stat-group-label">Current search</span>
+          <span class="stat-group-label">Current search · Abstract</span>
           <span><strong>{{ keyword_count }}</strong> keyword match{{ keyword_count|pluralize:"es" }}</span>
         </div>
         {% endif %}
@@ -54,26 +48,48 @@
     </header>
 
     {% if doc.abstract %}
-    <section class="article-section abstract-section">
-      <div class="section-heading-row">
-        <h2>Abstract</h2>
-      </div>
-      <p class="article-copy abstract-copy">{{ highlighted_abstract }}</p>
-    </section>
-    {% endif %}
-
-    <section class="article-section fulltext-section">
-      <div class="section-heading-row fulltext-heading-row">
-        <h2>Full Text</h2>
-        {% if query and match_count %}
-        <div class="match-navigation" aria-label="Keyword match navigation">
+    <section class="article-section abstract-section segmented-abstract-section">
+      <div class="section-heading-row abstract-heading-row">
+        <div>
+          <span class="section-kicker">SENTENCE-SEGMENTED ABSTRACT</span>
+          <h2>Abstract</h2>
+        </div>
+        {% if query and abstract_match_count %}
+        <div class="match-navigation" aria-label="Abstract keyword match navigation">
           <button type="button" id="previous-match" class="match-button">← Previous match</button>
-          <span id="match-status">1 of {{ match_count }} matches</span>
+          <span id="match-status">1 of {{ abstract_match_count }} matches</span>
           <button type="button" id="next-match" class="match-button">Next match →</button>
         </div>
         {% endif %}
       </div>
 
+      <div class="abstract-sentence-list">
+        {% for sentence in abstract_sentences %}
+          <div class="sentence-segment abstract-sentence" data-sentence="{{ sentence.number }}">
+            <span class="sentence-number">Sentence {{ sentence.number }}</span>
+            <p class="article-copy sentence-text">{{ sentence.html }}</p>
+          </div>
+        {% empty %}
+          <p class="article-copy">No abstract is available.</p>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% comment %}
+    ========================================================================
+    FUTURE FULL TEXT DISPLAY — CURRENTLY DISABLED
+    To restore later:
+      1) Uncomment the FUTURE FULL-TEXT block in document_detail_view()
+         in search/views.py.
+      2) Remove this Django comment wrapper.
+      3) In search/indexer.py, switch search_text to full `text` and rebuild
+         the index with: python manage.py build_index
+    ========================================================================
+    <section class="article-section fulltext-section">
+      <div class="section-heading-row fulltext-heading-row">
+        <h2>Full Text</h2>
+      </div>
       <div class="reading-content">
         {% for block in reading_blocks %}
           {% if block.type == 'section' %}
@@ -88,12 +104,10 @@
               {% endfor %}
             </div>
           {% endif %}
-        {% empty %}
-          <p class="article-copy">No full text is available.</p>
         {% endfor %}
       </div>
     </section>
-
+    {% endcomment %}
   </article>
 </main>
 
@@ -126,17 +140,16 @@
 })();
 </script>
 
-{% if query and match_count %}
+{% if query and abstract_match_count %}
 <script>
 (function () {
-  const matches = Array.from(document.querySelectorAll('.fulltext-match'));
+  const matches = Array.from(document.querySelectorAll('.keyword-match'));
   const prevButton = document.getElementById('previous-match');
   const nextButton = document.getElementById('next-match');
   const status = document.getElementById('match-status');
   if (!matches.length || !prevButton || !nextButton || !status) return;
 
   let current = 0;
-
   function showMatch(index) {
     current = (index + matches.length) % matches.length;
     matches.forEach((node) => node.classList.remove('active-match'));

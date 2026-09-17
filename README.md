@@ -1,121 +1,95 @@
-## Latest collection features
+# Biomedical Literature Search — Abstract Stage
 
-- Upload local PMC/JATS XML files with duplicate detection.
-- Fetch one or multiple PMCIDs from PubMed Central, then upload individually or all at once.
-- Duplicate articles are detected primarily by PMCID, then DOI, filename, and title/year fallback.
-- Delete an article from the collection; its postings and orphan index terms are removed as well.
-- Successful uploads offer **View Articles** or **Continue Uploading**.
+A Django-based biomedical information retrieval system for PubMed Central (PMC) XML articles.
+The current homework stage focuses on **Title + Abstract**. Full body text is still stored and the code is preserved for later use, but full-text display/statistics are temporarily disabled.
 
-# Biomedical Literature Search
-
-A clean Django + Python full-text retrieval project for PubMed Central XML articles.
-
-The web interface is intentionally simple: **Search**, **Articles**, and **Upload**. The IR algorithms run in the backend without extra index/system pages in the UI.
-
-## Main functions
-
-- PubMed Central / JATS XML parsing
-- XML upload from the web interface
-- Fetch article XML from PubMed Central by PMCID, preview the fetched XML on the same Upload page, then upload it explicitly
-- Download the stored XML from an article detail page
-- Tokenization and lowercasing
-- Stop-word removal
-- Porter stemming
-- Inverted index using `Term` and `Posting`
-- BM25 ranking for normal keyword searches
-- Stop-word-only fallback so queries such as `on the` still return matching documents
-- Search keyword highlighting in titles, abstracts/snippets, and article detail pages
-- Full article text rendered sentence-by-sentence using the rule-based EOS detector
-- Upload-success confirmation dialog that continues to the Articles overview
-- Rule-based sentence / EOS detection
-- Document statistics: characters, words, sentences, average sentence length
-- Article overview with A–Z / Z–A / newest / oldest sorting and A–Z filtering
-
-## Project structure
-
-```text
-biomedir_project/
-├─ biomedir/                    # Django settings and root URLs
-├─ search/
-│  ├─ text_processing.py        # tokenization, stop words, Porter stemmer, EOS, BM25
-│  ├─ indexer.py                # XML parser + inverted index builder
-│  ├─ pmc_client.py             # NCBI ESearch / EFetch client
-│  ├─ forms.py                  # XML upload and PMCID forms
-│  ├─ models.py                 # Document / Term / Posting
-│  ├─ views.py                  # search, articles, upload, detail, XML download
-│  ├─ management/commands/
-│  │  ├─ build_index.py
-│  │  └─ download_pmc.py
-│  ├─ templates/search/
-│  └─ static/search/site.css
-├─ data/corpus/                 # local XML collection
-├─ Dockerfile
-├─ docker-compose.yml
-└─ requirements.txt
-```
-
-## Run with Docker
-
-From the project directory:
+## Run
 
 ```bash
 docker compose up --build
 ```
 
-Open:
+Open: `http://localhost:8000/`
+
+## Current functions
+
+- Search article **titles and abstracts** with an inverted index + BM25 ranking.
+- Porter stemming and stop-word handling; stop-word-only queries such as `on the` still have a fallback search.
+- Search-result keyword highlighting and **Abstract keyword match count**.
+- Article collection with A–Z/Z–A/date sorting, Abstract preview, and deletion.
+- Upload PMC XML or fetch one/multiple PMCIDs from PubMed Central.
+- Duplicate detection by PMCID, DOI, source filename, then title/year.
+- Article detail page shows metadata, Title statistics, and a sentence-segmented Abstract.
+
+## Text counting rules
+
+### Characters
+- Count visible text after repeated spaces/newlines are normalized to one space.
+- Letters, digits, punctuation, and the remaining spaces are counted.
+
+### Words / tokens
+Word statistics use the **original tokens before stop-word removal or stemming**.
+
+- `COVID-19`, `SARS-CoV-2`, `IL-6`, `well-known`, `patient's` → **1 word** each.
+- `48.1%`, `0.05` → **1 word** each.
+- Dotted forms such as `e.g.` / `i.e.` → **1 token**.
+- `/` is a separator, so `activity/exercise` → **2 words**.
+- An en dash/range separator also separates tokens unless it is part of the recognized token pattern.
+
+The shared token rule is in `search/text_processing.py` → `TOKEN_PATTERN` and `tokenize()`.
+
+### Sentences / EOS
+`split_sentences()` in `search/text_processing.py` uses `.`, `!`, `?` as candidate EOS (End Of Sentence) markers, while protecting:
+
+- decimals such as `3.14` / `0.05`;
+- common abbreviations such as `Dr.`, `Fig.`, `Prof.`;
+- multi-dot abbreviations such as `e.g.` / `i.e.`;
+- initials such as `J. Smith`;
+- closing quotation marks/brackets after sentence punctuation.
+
+Paragraph boundaries are handled separately. The next sentence is **not required to start with an uppercase letter**, which is useful for biomedical terms such as `p53`.
+
+## Search preprocessing
 
 ```text
-http://localhost:8000/
+Tokenization
+→ Stop-word removal
+→ Porter stemming
+→ Inverted index
+→ BM25 ranking
 ```
 
-The container automatically runs Django migrations. If the database is empty, it also loads the XML files in `data/corpus/`.
+Statistics do **not** remove stop words or stem words.
 
-## Rebuild the local collection
+## Current Abstract-only scope
 
-After manually adding or changing XML files in `data/corpus/`:
+The XML parser still extracts and stores full body text in `Document.raw_text`, but the active search index currently uses:
+
+```text
+Title + Abstract
+```
+
+This avoids returning an article only because a keyword appears in hidden body text.
+
+## Restore Full Text later
+
+Full-text code was intentionally kept rather than deleted.
+
+1. **`search/indexer.py`** → `_index_one()`
+   - Comment the current `search_text = Title + Abstract` block.
+   - Uncomment the marked line: `# search_text = text`.
+
+2. **`search/views.py`** → `document_detail_view()`
+   - Uncomment the block marked `FUTURE FULL-TEXT SUPPORT`.
+   - Restore the corresponding context variables.
+
+3. **`search/templates/search/document_detail.html`**
+   - Remove the `{% comment %} ... {% endcomment %}` wrapper around `FUTURE FULL TEXT DISPLAY`.
+
+4. Rebuild the index:
 
 ```bash
 docker compose exec web python manage.py build_index
 ```
 
-## Fetch PMC XML from the command line
-
-By PMCID:
-
-```bash
-docker compose exec web python manage.py download_pmc --pmcid PMC8270360
-```
-
-Or search PMC and download several articles:
-
-```bash
-docker compose exec web python manage.py download_pmc --query "cancer immunotherapy" --limit 5
-```
-
-## Retrieval logic
-
-For a normal keyword query:
-
-```text
-Query
-  -> tokenize
-  -> remove stop words
-  -> Porter stemming
-  -> inverted-index lookup
-  -> BM25 ranking
-  -> results
-```
-
-If a query contains only stop words, for example `on the`, stop-word removal would normally leave no indexed query terms. To keep the search usable, the system performs an exact token fallback over the local documents and still returns matching articles.
-
-The visible website does not expose a Keyword Index or System page; the index is built and used internally.
-
-
-## Current UI features
-
-- Clean Search / Articles / Upload navigation
-- Query highlighting in titles, snippets, abstracts, and sentence-segmented full text
-- Previous / Next keyword match navigation inside full articles
-- Paginated search results and article collection
-- Article statistics: characters, words, sentences, unique words, paragraphs, and average sentence length
-- XML upload plus staged PubMed Central XML fetch/upload workflow
+No model migration is needed just to restore the full-text display/search scope.

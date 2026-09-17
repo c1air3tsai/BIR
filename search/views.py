@@ -111,7 +111,7 @@ def _highlight(text, raw_query, match_state=None):
                 match_state["count"] += 1
                 idx = match_state["count"]
                 output.append(
-                    f'<mark class="search-highlight fulltext-match" '
+                    f'<mark class="search-highlight keyword-match" '
                     f'id="match-{idx}" data-match-index="{idx}">{safe_word}</mark>'
                 )
             else:
@@ -154,10 +154,15 @@ def _basic_stats(text, include_sentences=True):
     return result
 
 
+def _active_search_text(doc):
+    """Current homework scope: search Title + Abstract only."""
+    return "\n\n".join(part for part in [doc.title, doc.abstract] if part).strip()
+
+
 def _search_stopword_fallback(raw_query):
     """
     Fallback for queries such as 'on the' after stop-word removal leaves no
-    indexed terms. Stop words remain searchable instead of returning 0 results.
+    indexed terms. The current homework scope searches Title + Abstract only.
     """
     query_tokens = list(dict.fromkeys(tokenize(raw_query)))
     if not query_tokens:
@@ -165,21 +170,22 @@ def _search_stopword_fallback(raw_query):
 
     results = []
     for doc in Document.objects.all():
-        counts = Counter(tokenize(doc.raw_text))
+        counts = Counter(tokenize(_active_search_text(doc)))
         if all(counts[token] > 0 for token in query_tokens):
             hit_count = sum(counts[token] for token in query_tokens)
             results.append((doc, hit_count))
 
     results.sort(key=lambda item: (-item[1], item[0].title.lower()))
-    return [
-        {
+    output = []
+    for doc, score in results:
+        output.append({
             "doc": doc,
             "score": score,
-            "snippet": _build_snippet(doc.abstract or doc.raw_text, raw_query),
-            "keyword_count": _keyword_match_count(doc.raw_text, raw_query),
-        }
-        for doc, score in results
-    ]
+            "snippet": _build_snippet(doc.abstract, raw_query),
+            "keyword_count": _keyword_match_count(doc.abstract, raw_query),
+            "abstract_stats": _basic_stats(doc.abstract, include_sentences=True),
+        })
+    return output
 
 
 def _search_bm25(raw_query):
@@ -208,12 +214,13 @@ def _search_bm25(raw_query):
     results = []
     for doc_id in ranked:
         doc = docs[doc_id]
-        source = doc.abstract or doc.raw_text
         results.append({
             "doc": doc,
             "score": round(score_map[doc_id], 4),
-            "snippet": _build_snippet(source, raw_query),
-            "keyword_count": _keyword_match_count(doc.raw_text, raw_query),
+            "snippet": _build_snippet(doc.abstract, raw_query),
+            # Keyword count is intentionally Abstract-only for the current assignment stage.
+            "keyword_count": _keyword_match_count(doc.abstract, raw_query),
+            "abstract_stats": _basic_stats(doc.abstract, include_sentences=True),
         })
     return results, terms
 
@@ -349,53 +356,67 @@ def _build_reading_blocks(doc, query):
     )
 
 
+def _build_abstract_sentences(abstract, query):
+    """Render the Abstract sentence-by-sentence with optional keyword navigation IDs."""
+    match_state = {"count": 0}
+    rendered = []
+    for number, sentence in enumerate(split_sentences(abstract), start=1):
+        rendered.append({
+            "number": number,
+            "html": _highlight(sentence, query, match_state),
+        })
+    return rendered, match_state["count"]
+
+
 def document_detail_view(request, pk):
     doc = get_object_or_404(Document, pk=pk)
     query = request.GET.get("q", "").strip()
     result_page = request.GET.get("page", "").strip()
 
-    (
-        reading_blocks,
-        paragraph_count,
-        match_count,
-        body_sentence_count,
-        body_stat_text,
-    ) = _build_reading_blocks(doc, query)
-
     abstract_stats = _basic_stats(doc.abstract, include_sentences=True)
     title_stats = _basic_stats(doc.title, include_sentences=False)
-    body_stats = _basic_stats(body_stat_text, include_sentences=False)
+    abstract_sentences, abstract_match_count = _build_abstract_sentences(doc.abstract, query)
+    keyword_count = _keyword_match_count(doc.abstract, query) if query else None
 
-    # Overall article statistics include visible title + abstract + body text.
-    # Section headings contribute to word/character counts, but they are not
-    # treated as sentences. Sentence count = abstract sentences + body sentences.
-    visible_parts = [part for part in [doc.title, doc.abstract, body_stat_text] if part]
-    overall_raw_text = "\n\n".join(visible_parts)
-    overall_visible_text = re.sub(r"\s+", " ", overall_raw_text).strip()
-    overall_stats = {
-        "words": len(tokenize(overall_visible_text)),
-        "sentences": abstract_stats.get("sentences", 0) + body_sentence_count,
-        "characters": len(overall_visible_text),
-    }
-    keyword_count = _keyword_match_count(doc.raw_text, query) if query else None
-
-    # Keep paragraph information available to the template without mixing it into
-    # the three user-requested statistic groups.
-    overall_stats["paragraphs"] = paragraph_count
+    # ----------------------------------------------------------------------
+    # FUTURE FULL-TEXT SUPPORT (currently disabled for this assignment stage)
+    # To restore full-text display/statistics later, uncomment this block and
+    # the matching FUTURE FULL TEXT block in document_detail.html.
+    #
+    # (
+    #     reading_blocks,
+    #     paragraph_count,
+    #     match_count,
+    #     body_sentence_count,
+    #     body_stat_text,
+    # ) = _build_reading_blocks(doc, query)
+    #
+    # body_stats = _basic_stats(body_stat_text, include_sentences=False)
+    # visible_parts = [part for part in [doc.title, doc.abstract, body_stat_text] if part]
+    # overall_visible_text = re.sub(r"\s+", " ", "\n\n".join(visible_parts)).strip()
+    # overall_stats = {
+    #     "words": len(tokenize(overall_visible_text)),
+    #     "sentences": abstract_stats.get("sentences", 0) + body_sentence_count,
+    #     "characters": len(overall_visible_text),
+    #     "paragraphs": paragraph_count,
+    # }
+    # ----------------------------------------------------------------------
 
     return render(request, "search/document_detail.html", {
         "doc": doc,
         "query": query,
         "result_page": result_page,
         "highlighted_title": _highlight(doc.title, query),
-        "highlighted_abstract": _highlight(doc.abstract, query),
-        "reading_blocks": reading_blocks,
-        "match_count": match_count,
+        "abstract_sentences": abstract_sentences,
+        "abstract_match_count": abstract_match_count,
         "keyword_count": keyword_count,
-        "overall_stats": overall_stats,
         "abstract_stats": abstract_stats,
         "title_stats": title_stats,
         "page_title": doc.title,
+        # FUTURE FULL-TEXT context (restore with the block above):
+        # "reading_blocks": reading_blocks,
+        # "match_count": match_count,
+        # "overall_stats": overall_stats,
     })
 
 
@@ -421,6 +442,8 @@ def articles_view(request):
 
     paginator = Paginator(documents, 25)
     page_obj = paginator.get_page(request.GET.get("page", 1))
+    for doc in page_obj.object_list:
+        doc.abstract_stats = _basic_stats(doc.abstract, include_sentences=True)
     alphabet = [chr(code) for code in range(ord("A"), ord("Z") + 1)]
 
     return render(request, "search/articles.html", {

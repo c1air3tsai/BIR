@@ -7,7 +7,7 @@
       <div class="hero-eyebrow">LOCAL BIOMEDICAL COLLECTION</div>
       {% endif %}
       <h1>Biomedical Literature Search</h1>
-      <p class="hero-description">Search full-text biomedical articles from your PubMed Central XML collection.</p>
+      <p class="hero-description">Search biomedical article titles and abstracts from your PubMed Central XML collection.</p>
 
       <form class="main-search" method="get" action="{% url 'search:home' %}">
         <span class="search-icon" aria-hidden="true">⌕</span>
@@ -62,12 +62,18 @@
 
         <p class="result-snippet">{{ r.highlighted_snippet }}</p>
 
+        <div class="abstract-preview-stats" aria-label="Abstract statistics">
+          <span><strong>{{ r.abstract_stats.words }}</strong> words</span>
+          <span><strong>{{ r.abstract_stats.sentences }}</strong> sentences</span>
+          <span><strong>{{ r.abstract_stats.characters }}</strong> characters</span>
+        </div>
+
         <div class="result-footer">
           <div class="result-metadata">
             {% if r.doc.pmcid %}<span class="record-id">{{ r.doc.pmcid }}</span>{% endif %}
-            <span class="keyword-count">{{ r.keyword_count }} keyword match{{ r.keyword_count|pluralize:"es" }}</span>
+            <span class="keyword-count">{{ r.keyword_count }} abstract keyword match{{ r.keyword_count|pluralize:"es" }}</span>
           </div>
-          <a class="view-article-link" href="{% url 'search:document_detail' r.doc.pk %}?q={{ query|urlencode }}&page={{ page_obj.number }}">View article <span>→</span></a>
+          <a class="view-article-link" href="{% url 'search:document_detail' r.doc.pk %}?q={{ query|urlencode }}&page={{ page_obj.number }}">View abstract <span>→</span></a>
         </div>
       </article>
       {% empty %}

@@ -14,6 +14,10 @@ class TextProcessingTests(TestCase):
             ["covid-19", "sars-cov-2", "il-6", "patient's", "e.g.", "48.1%", "0.05"],
         )
 
+    def test_word_separator_rules(self):
+        self.assertEqual(tokenize("activity/exercise"), ["activity", "exercise"])
+        self.assertEqual(tokenize("0.44–0.97"), ["0.44", "0.97"])
+
     def test_sentence_rules(self):
         text = "Dr. Smith measured 3.14 mg. The result was significant."
         self.assertEqual(len(split_sentences(text)), 2)

@@ -172,7 +172,16 @@ def inspect_document(path: str):
     return title, text, meta, find_duplicate_document(title, meta, fname)
 
 def _index_one(title, text, fname, meta):
-    stats = document_stats(text)
+    # Current assignment stage indexes Title + Abstract only.
+    # Full XML/body text is still preserved in Document.raw_text for future use.
+    search_text = "\n\n".join(
+        part for part in [title, meta.get("abstract") or ""] if part
+    ).strip()
+
+    # FUTURE FULL-TEXT SEARCH: comment the search_text block above and uncomment:
+    # search_text = text
+
+    stats = document_stats(search_text)
     doc = Document.objects.create(
         title=title[:500],
         source_file=fname,
@@ -190,7 +199,7 @@ def _index_one(title, text, fname, meta):
     )
 
     # UI stays simple; preprocessing and the inverted index happen silently here.
-    freq = Counter(preprocess(text))
+    freq = Counter(preprocess(search_text))
     postings = []
     for word, tf in freq.items():
         term, _ = Term.objects.get_or_create(word=word[:100])
