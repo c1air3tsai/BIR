@@ -25,7 +25,7 @@ from .indexer import (
 )
 from .models import Document, Term
 from .pmc_client import download_article_xml
-from .text_processing import TOKEN_PATTERN, bm25_score, preprocess, split_sentences, stem_tokens, tokenize
+from .text_processing import bm25_score, iter_token_matches, preprocess, split_sentences, stem_tokens, tokenize
 
 
 def _corpus_dir():
@@ -95,13 +95,11 @@ def _highlight(text, raw_query, match_state=None):
 
     query_exact = set(query_tokens)
     query_stems = set(stem_tokens(query_tokens))
-    token_pattern = TOKEN_PATTERN
-
     output = []
     last = 0
-    for match in token_pattern.finditer(text):
+    for match in iter_token_matches(text):
         output.append(escape(text[last:match.start()]))
-        word = match.group(0)
+        word = text[match.start():match.end()]
         lower = word.lower()
         word_stem = stem_tokens([lower])[0]
         safe_word = escape(word)

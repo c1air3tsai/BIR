@@ -31,7 +31,17 @@ def _clean_node_text(node):
 
 
 def _extract_abstract(root):
-    """Extract the main PMC/JATS abstract while preserving paragraph boundaries."""
+    """
+    Extract only the article's main PMC/JATS abstract.
+
+    PMC can contain several <abstract> elements, for example a normal abstract,
+    abstract-type="toc", and abstract-type="editor".  For the assignment we
+    want the formal article abstract only, not TOC/editor summaries.
+
+    Section headings such as "Background", "Methods and Findings", and
+    "Conclusions" are intentionally NOT included in the returned text, so they
+    do not affect word/character/sentence statistics.
+    """
     abstracts = [
         node for node in root.iter()
         if _local_name(node.tag) == "abstract"
@@ -39,12 +49,35 @@ def _extract_abstract(root):
     if not abstracts:
         return ""
 
-    def abstract_score(node):
-        abstract_type = (node.attrib.get("abstract-type", "") or "").strip().lower()
-        penalty = -100000 if abstract_type in {"toc", "graphical", "teaser", "short"} else 0
-        return penalty + len(_clean_node_text(node))
+    # First choice: the standard JATS main abstract normally has no
+    # abstract-type attribute.  This is the case for PMC1831737.
+    abstract = next(
+        (
+            node for node in abstracts
+            if not (node.attrib.get("abstract-type", "") or "").strip()
+        ),
+        None,
+    )
 
-    abstract = max(abstracts, key=abstract_score)
+    # Fallback for journals that label their main abstract with a type.
+    # Explicitly exclude auxiliary summaries that should not be counted as the
+    # article abstract.
+    if abstract is None:
+        excluded_types = {
+            "toc", "editor", "graphical", "teaser", "short",
+            "plain-language-summary", "lay-summary",
+        }
+        abstract = next(
+            (
+                node for node in abstracts
+                if (node.attrib.get("abstract-type", "") or "").strip().lower()
+                not in excluded_types
+            ),
+            abstracts[0],
+        )
+
+    # Count/display only abstract paragraph text.  Do not include <title>
+    # elements such as Background / Methods and Findings / Conclusions.
     paragraphs = []
     for node in abstract.iter():
         if _local_name(node.tag) != "p":
@@ -53,7 +86,25 @@ def _extract_abstract(root):
         if text:
             paragraphs.append(text)
 
-    return "\n\n".join(paragraphs) if paragraphs else _clean_node_text(abstract)
+    if paragraphs:
+        return "\n\n".join(paragraphs)
+
+    # Rare unstructured abstract with no <p>: rebuild text while excluding
+    # nested <title> elements so labels still do not enter statistics.
+    pieces = []
+    if abstract.text and abstract.text.strip():
+        pieces.append(abstract.text.strip())
+    for child in abstract:
+        if _local_name(child.tag) == "title":
+            if child.tail and child.tail.strip():
+                pieces.append(child.tail.strip())
+            continue
+        child_text = _clean_node_text(child)
+        if child_text:
+            pieces.append(child_text)
+        if child.tail and child.tail.strip():
+            pieces.append(child.tail.strip())
+    return " ".join(pieces).strip()
 
 
 def _body_text(root):

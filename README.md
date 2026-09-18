@@ -35,10 +35,13 @@ Word statistics use the **original tokens before stop-word removal or stemming**
 - ASCII whitespace (space/tab/newline) separates words and is never a word itself.
 - ASCII punctuation such as commas, semicolons, brackets, and `/` acts as a separator unless specifically protected by the token rule.
 - `COVID-19`, `SARS-CoV-2`, `IL-6`, `well-known`, `patient's` → **1 word** each because internal `-` / `'` are retained.
+- `Brca1ΔC/ΔC` → **2 words** (`Brca1ΔC`, `ΔC`); `/` is a separator and is not a word.
+- `c.1813dupA` → **2 words** (`c`, `1813dupA`); a period separates the two tokens here.
+- `53BP1` → **1 word** because contiguous letters and digits form one biomedical token.
+- `12-15%` → **2 words** (`12`, `15%`); a dash between two numeric values is treated as a range separator.
+- `0.44–0.97` → **2 words** for the same numeric-range rule.
 - `48.1%`, `0.05` → **1 word** each; a decimal point inside a number is retained.
 - Dotted forms such as `e.g.` / `i.e.` → **1 token**.
-- `/` is a separator, so `activity/exercise` → **2 words**; `/` itself is not a word.
-- An en dash/range separator also separates tokens unless it is part of the recognized token pattern.
 - Non-ASCII Unicode letters are retained rather than discarded, so biomedical terms containing Greek letters such as `α` / `β` can still form tokens.
 
 The shared token rule is in `search/text_processing.py` → `TOKEN_PATTERN` and `tokenize()`.
@@ -53,6 +56,13 @@ The shared token rule is in `search/text_processing.py` → `TOKEN_PATTERN` and 
 - closing quotation marks/brackets after sentence punctuation.
 
 Paragraph boundaries are handled separately. The next sentence is **not required to start with an uppercase letter**, which is useful for biomedical terms such as `p53`.
+
+
+### PMC/JATS Abstract selection
+- Only the article's **main Abstract** is used for display, statistics, indexing, highlighting, and keyword-match counts.
+- If a normal `<abstract>` without `abstract-type` exists, that block is selected first.
+- Auxiliary blocks such as `abstract-type="toc"` and `abstract-type="editor"` are excluded.
+- Structured-abstract headings such as **Background**, **Methods and Findings**, and **Conclusions** may appear in the XML but are **not included in word/character/sentence statistics**. Only the `<p>` text inside the selected main Abstract is counted.
 
 ## Search preprocessing
 

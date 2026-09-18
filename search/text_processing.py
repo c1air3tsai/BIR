@@ -25,30 +25,70 @@ MULTI_DOT_ABBREVIATIONS = {
 }
 
 # Shared token rule used by indexing, ranking, statistics and highlighting.
-# Examples counted as ONE token:
-# COVID-19, SARS-CoV-2, IL-6, patient's, well-known, e.g., 48.1%, 0.05
+# Examples:
+#   COVID-19          -> 1 token
+#   SARS-CoV-2        -> 1 token
+#   Brca1ΔC/ΔC       -> 2 tokens (slash is a separator)
+#   c.1813dupA        -> 2 tokens (period is a separator here)
+#   53BP1             -> 1 token
+#   12-15%            -> 2 tokens (numeric range)
+#   48.1% / 0.05      -> 1 token each (decimal point stays inside number)
+#   O'Malley          -> 1 token
+#   e.g. / i.e.       -> 1 token each
 TOKEN_PATTERN = re.compile(
     # e.g. / i.e. / U.S. -> one token
     r"(?:[A-Za-z]\.){2,}"
 
-    # Pure numeric values / decimals / percentages.
-    # Do NOT take the numeric prefix when it belongs to an
-    # alphanumeric biomedical term such as 53BP1 or 1813dupA.
-    # Also keep 5-stage as one word, but split 12-15%.
-    r"|(?!\d+(?:[^\W\d_]|-(?=[^\W\d_])))"
-    r"\d+(?:\.\d+)*(?:%)?"
+    # Numbers / decimals / percentages.
+    # 12-15% -> 12 + 15%
+    # But 3-y will NOT be split here.
+    r"|\d+(?:\.\d+)*%?(?![\w’']|-[^\W\d_])"
 
     # Unicode-aware alphanumeric words.
-    # Internal hyphen / apostrophe stays in the same token.
-    r"|[^\W_]+(?:[-'][^\W_]+)*",
+    # Keep ASCII/Unicode apostrophes and hyphens inside words.
+    r"|[^\W_]+(?:['’\-][^\W_]+)*",
 
     flags=re.UNICODE,
 )
 
 
+# _NUMERIC_RANGE_BOUNDARY = re.compile(r"(?<=\d)[-–—](?=\d)")
+
+
+# def _token_scan_text(text: str):
+#     """
+#     Normalize only token boundaries while preserving string length.
+
+#     A dash between two digits is treated as a range separator, therefore
+#     12-15% -> 12 + 15% and 0.44–0.97 -> 0.44 + 0.97.  Hyphens in biomedical
+#     terms such as COVID-19 are not changed.
+#     """
+#     return _NUMERIC_RANGE_BOUNDARY.sub(" ", text or "")
+
+
+# def iter_token_matches(text: str):
+#     """Yield regex matches using the same boundaries as tokenize()."""
+#     return TOKEN_PATTERN.finditer(_token_scan_text(text))
+
+def iter_token_matches(text: str):
+    """Yield regex matches using the same boundaries as tokenize()."""
+    return TOKEN_PATTERN.finditer(text or "")
+
+
+# def tokenize(text: str):
+#     """Tokenize biomedical text using the assignment's word-count rules."""
+#     original = text or ""
+#     scan_text = _token_scan_text(original)
+#     # Replacement above is one-character-for-one-character, so match spans are
+#     # unchanged and the matched text is identical for every real token.
+#     return [original[m.start():m.end()].lower() for m in TOKEN_PATTERN.finditer(scan_text)]
+
 def tokenize(text: str):
-    """Tokenize biomedical English text with hyphenated words and decimals intact."""
-    return [match.group(0).lower() for match in TOKEN_PATTERN.finditer(text or "")]
+    """Tokenize biomedical text using the assignment's word-count rules."""
+    return [
+        m.group().casefold()
+        for m in TOKEN_PATTERN.finditer(text or "")
+    ]
 
 
 def remove_stopwords(tokens):
