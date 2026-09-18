@@ -308,24 +308,6 @@ button, input, select { font: inherit; }
 .sort-form { display: flex; align-items: center; gap: 9px; margin-bottom: 26px; font-size: 13px; }
 .sort-form label { color: #536775; font-weight: 700; }
 .sort-form select { padding: 8px 30px 8px 10px; border: 1px solid #bcc8d1; border-radius: 5px; background: #fff; }
-.alphabet-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding: 12px 0 18px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.alphabet-filter a {
-  min-width: 30px;
-  padding: 5px 7px;
-  border-radius: 4px;
-  text-align: center;
-  color: #42627a;
-  font-size: 13px;
-}
-.alphabet-filter a:hover { background: var(--soft-blue); text-decoration: none; }
-.alphabet-filter a.active { background: var(--navy); color: #fff; text-decoration: none; }
 .article-list-row {
   display: flex;
   align-items: flex-start;
@@ -804,3 +786,48 @@ button, input, select { font: inherit; }
 
 
 .article-list-stats { margin: 10px 0 8px; }
+
+/* Collection/search year filters */
+.collection-controls {
+  display: flex;
+  align-items: end;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-bottom: 24px;
+}
+.filter-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-control label {
+  color: #536775;
+  font-size: 13px;
+  font-weight: 700;
+}
+.filter-control select,
+.search-year-select {
+  min-height: 40px;
+  padding: 8px 30px 8px 10px;
+  border: 1px solid #bcc8d1;
+  border-radius: 5px;
+  background: #fff;
+  color: #29495f;
+}
+.search-with-filter .search-year-select {
+  flex: 0 0 128px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.results-year {
+  color: #647985;
+  font: 600 16px/1.4 Arial, sans-serif;
+}
+@media (max-width: 760px) {
+  .collection-controls { justify-content: flex-start; }
+  .filter-control { flex: 1 1 150px; }
+  .filter-control select { width: 100%; }
+  .search-with-filter { flex-wrap: wrap; }
+  .search-with-filter .search-year-select { flex: 1 1 120px; border-radius: 5px; }
+}

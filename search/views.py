@@ -159,17 +159,41 @@ def _active_search_text(doc):
     return "\n\n".join(part for part in [doc.title, doc.abstract] if part).strip()
 
 
-def _search_stopword_fallback(raw_query):
+def _available_years():
+    """Publication years that actually occur in the current collection."""
+    years = (
+        Document.objects.exclude(publication_year="")
+        .values_list("publication_year", flat=True)
+        .distinct()
+    )
+    # Year is stored as text; valid 4-digit years sort naturally as integers.
+    return sorted(
+        {str(year).strip() for year in years if str(year).strip()},
+        key=lambda value: (not value.isdigit(), -(int(value) if value.isdigit() else 0), value),
+    )
+
+
+def _normalize_year_filter(raw_year, available_years):
+    year = (raw_year or "").strip()
+    return year if year in set(available_years) else ""
+
+
+def _search_stopword_fallback(raw_query, year=""):
     """
     Fallback for queries such as 'on the' after stop-word removal leaves no
     indexed terms. The current homework scope searches Title + Abstract only.
+    A year filter, when selected, is applied before matching.
     """
     query_tokens = list(dict.fromkeys(tokenize(raw_query)))
     if not query_tokens:
         return []
 
+    documents = Document.objects.all()
+    if year:
+        documents = documents.filter(publication_year=year)
+
     results = []
-    for doc in Document.objects.all():
+    for doc in documents:
         counts = Counter(tokenize(_active_search_text(doc)))
         if all(counts[token] > 0 for token in query_tokens):
             hit_count = sum(counts[token] for token in query_tokens)
@@ -188,21 +212,34 @@ def _search_stopword_fallback(raw_query):
     return output
 
 
-def _search_bm25(raw_query):
+def _search_bm25(raw_query, year=""):
     terms = list(dict.fromkeys(_query_terms(raw_query)))
     if not terms:
-        return _search_stopword_fallback(raw_query), terms
+        return _search_stopword_fallback(raw_query, year=year), terms
 
-    total_docs = Document.objects.count()
-    avg_len = Document.objects.aggregate(v=Avg("word_count"))["v"] or 1
-    docs = {d.id: d for d in Document.objects.all()}
+    document_qs = Document.objects.all()
+    if year:
+        document_qs = document_qs.filter(publication_year=year)
+
+    documents = list(document_qs)
+    total_docs = len(documents)
+    if not total_docs:
+        return [], terms
+
+    docs = {doc.id: doc for doc in documents}
+    allowed_doc_ids = set(docs)
+    avg_len = sum(doc.word_count for doc in documents) / total_docs or 1
     score_map = {}
 
     for word in terms:
         term = Term.objects.filter(word=word).first()
         if not term:
             continue
-        postings = list(term.postings.all())
+        postings = [
+            posting
+            for posting in term.postings.all()
+            if posting.document_id in allowed_doc_ids
+        ]
         df = len(postings)
         for posting in postings:
             doc = docs[posting.document_id]
@@ -228,10 +265,12 @@ def _search_bm25(raw_query):
 def search_view(request):
     query = request.GET.get("q", "").strip()
     collection_count = Document.objects.count()
+    available_years = _available_years()
+    year = _normalize_year_filter(request.GET.get("year", ""), available_years)
     page_obj = None
 
     if query:
-        all_results, _ = _search_bm25(query)
+        all_results, _ = _search_bm25(query, year=year)
         paginator = Paginator(all_results, 10)
         page_obj = paginator.get_page(request.GET.get("page", 1))
 
@@ -241,6 +280,8 @@ def search_view(request):
 
     return render(request, "search/home.html", {
         "query": query,
+        "year": year,
+        "available_years": available_years,
         "page_obj": page_obj,
         "collection_count": collection_count,
         "page_title": "Biomedical Literature Search",
@@ -372,6 +413,7 @@ def document_detail_view(request, pk):
     doc = get_object_or_404(Document, pk=pk)
     query = request.GET.get("q", "").strip()
     result_page = request.GET.get("page", "").strip()
+    result_year = request.GET.get("year", "").strip()
 
     abstract_stats = _basic_stats(doc.abstract, include_sentences=True)
     title_stats = _basic_stats(doc.title, include_sentences=False)
@@ -406,6 +448,7 @@ def document_detail_view(request, pk):
         "doc": doc,
         "query": query,
         "result_page": result_page,
+        "result_year": result_year,
         "highlighted_title": _highlight(doc.title, query),
         "abstract_sentences": abstract_sentences,
         "abstract_match_count": abstract_match_count,
@@ -421,36 +464,37 @@ def document_detail_view(request, pk):
 
 
 def articles_view(request):
-    sort = request.GET.get("sort", "az")
-    letter = request.GET.get("letter", "").strip().upper()
+    # Newest-added is the default collection order.
+    sort = request.GET.get("sort", "newest")
+    available_years = _available_years()
+    year = _normalize_year_filter(request.GET.get("year", ""), available_years)
 
     documents = Document.objects.all()
-    if letter and len(letter) == 1 and letter.isalpha():
-        documents = documents.filter(title__istartswith=letter)
-    else:
-        letter = ""
+    if year:
+        documents = documents.filter(publication_year=year)
 
-    if sort == "za":
+    if sort == "az":
+        documents = documents.order_by(Lower("title"))
+    elif sort == "za":
         documents = documents.order_by(Lower("title").desc())
-    elif sort == "newest":
-        documents = documents.order_by("-indexed_at", Lower("title"))
     elif sort == "oldest":
         documents = documents.order_by("indexed_at", Lower("title"))
     else:
-        sort = "az"
-        documents = documents.order_by(Lower("title"))
+        sort = "newest"
+        documents = documents.order_by("-indexed_at", Lower("title"))
 
+    filtered_count = documents.count()
     paginator = Paginator(documents, 10)
     page_obj = paginator.get_page(request.GET.get("page", 1))
     for doc in page_obj.object_list:
         doc.abstract_stats = _basic_stats(doc.abstract, include_sentences=True)
-    alphabet = [chr(code) for code in range(ord("A"), ord("Z") + 1)]
 
     return render(request, "search/articles.html", {
         "page_obj": page_obj,
         "sort": sort,
-        "letter": letter,
-        "alphabet": alphabet,
+        "year": year,
+        "available_years": available_years,
+        "filtered_count": filtered_count,
         "total_docs": Document.objects.count(),
         "page_title": "Articles",
     })

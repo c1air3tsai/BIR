@@ -3,9 +3,9 @@
 <main class="site-shell article-page abstract-only-page">
   <div class="article-topbar">
     {% if query %}
-      <a class="back-link" href="{% url 'search:home' %}?q={{ query|urlencode }}{% if result_page %}&page={{ result_page }}{% endif %}">← Back to search results</a>
+      <a class="back-link" href="{% url 'search:home' %}?q={{ query|urlencode }}{% if result_year %}&year={{ result_year|urlencode }}{% endif %}{% if result_page %}&page={{ result_page }}{% endif %}">← Back to search results</a>
     {% else %}
-      <a class="back-link" href="{% url 'search:articles' %}">← Back to articles</a>
+      <a class="back-link" href="{% url 'search:articles' %}?sort={{ request.GET.sort|default:'newest'|urlencode }}{% if request.GET.year %}&year={{ request.GET.year|urlencode }}{% endif %}{% if request.GET.page %}&page={{ request.GET.page|urlencode }}{% endif %}">← Back to articles</a>
     {% endif %}
     <div class="article-actions">
       <a class="secondary-button" href="{% url 'search:download_xml' doc.pk %}">Download XML</a>
@@ -29,8 +29,8 @@
         {% if doc.abstract %}
         <div class="stat-group primary-stat-group">
           <span class="stat-group-label">Abstract</span>
-          <span><strong>{{ abstract_stats.words }}</strong> words</span>
           <span><strong>{{ abstract_stats.sentences }}</strong> sentences</span>
+          <span><strong>{{ abstract_stats.words }}</strong> words</span>
           <span><strong>{{ abstract_stats.characters }}</strong> characters</span>
         </div>
         {% endif %}

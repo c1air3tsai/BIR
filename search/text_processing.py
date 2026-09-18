@@ -28,12 +28,20 @@ MULTI_DOT_ABBREVIATIONS = {
 # Examples counted as ONE token:
 # COVID-19, SARS-CoV-2, IL-6, patient's, well-known, e.g., 48.1%, 0.05
 TOKEN_PATTERN = re.compile(
-    # Dotted abbreviations (e.g., i.e., U.S.) are one token.
+    # e.g. / i.e. / U.S. -> one token
     r"(?:[A-Za-z]\.){2,}"
-    # Decimal/integer/percentage values are one token.
-    r"|\d+(?:\.\d+)*(?:%)?"
-    # Hyphenated/apostrophe biomedical words are one token.
-    r"|[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)*",
+
+    # Pure numeric values / decimals / percentages.
+    # Do NOT take the numeric prefix when it belongs to an
+    # alphanumeric biomedical term such as 53BP1 or 1813dupA.
+    # Also keep 5-stage as one word, but split 12-15%.
+    r"|(?!\d+(?:[^\W\d_]|-(?=[^\W\d_])))"
+    r"\d+(?:\.\d+)*(?:%)?"
+
+    # Unicode-aware alphanumeric words.
+    # Internal hyphen / apostrophe stays in the same token.
+    r"|[^\W_]+(?:[-'][^\W_]+)*",
+
     flags=re.UNICODE,
 )
 
