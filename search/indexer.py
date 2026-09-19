@@ -30,6 +30,47 @@ def _clean_node_text(node):
     return " ".join("".join(node.itertext()).split())
 
 
+_KEYWORDS_LABEL = re.compile(r"\bkeywords?\s*:", flags=re.IGNORECASE)
+
+
+def _append_keywords(abstract, keywords):
+    """Append one canonical Keywords line unless the abstract already has one."""
+    abstract = (abstract or "").strip()
+    keywords = [keyword.strip() for keyword in keywords if keyword and keyword.strip()]
+    if not keywords or _KEYWORDS_LABEL.search(abstract):
+        return abstract
+    keyword_line = f"Keywords: {', '.join(keywords)}"
+    return "\n\n".join(part for part in [abstract, keyword_line] if part)
+
+
+def _truncate_abstract_parts_at_keywords(parts):
+    """Keep an existing Keywords block, but discard abstract blocks after it."""
+    kept = []
+    for part in parts:
+        part = (part or "").strip()
+        if not part:
+            continue
+        kept.append(part)
+        if _KEYWORDS_LABEL.search(part):
+            break
+    return kept
+
+
+def _jats_keywords(article_meta):
+    if article_meta is None:
+        return []
+    keywords = []
+    for group in article_meta.iter():
+        if _local_name(group.tag) != "kwd-group":
+            continue
+        for node in group.iter():
+            if _local_name(node.tag) == "kwd":
+                text = _clean_node_text(node)
+                if text:
+                    keywords.append(text)
+    return keywords
+
+
 def _extract_abstract(root):
     """
     Extract only the article's main PMC/JATS abstract.
@@ -42,12 +83,19 @@ def _extract_abstract(root):
     "Conclusions" are intentionally NOT included in the returned text, so they
     do not affect word/character/sentence statistics.
     """
+    article_meta = next(
+        (node for node in root.iter() if _local_name(node.tag) == "article-meta"),
+        None,
+    )
+    if article_meta is None:
+        return ""
+
     abstracts = [
-        node for node in root.iter()
+        node for node in article_meta.iter()
         if _local_name(node.tag) == "abstract"
     ]
     if not abstracts:
-        return ""
+        return _append_keywords("", _jats_keywords(article_meta))
 
     # First choice: the standard JATS main abstract normally has no
     # abstract-type attribute.  This is the case for PMC1831737.
@@ -59,13 +107,22 @@ def _extract_abstract(root):
         None,
     )
 
-    # Fallback for journals that label their main abstract with a type.
-    # Explicitly exclude auxiliary summaries that should not be counted as the
-    # article abstract.
+    # Second choice: journals that explicitly label the main abstract normal.
+    if abstract is None:
+        abstract = next(
+            (
+                node for node in abstracts
+                if (node.attrib.get("abstract-type", "") or "").strip().lower()
+                == "normal"
+            ),
+            None,
+        )
+
+    # Final fallback for sources using a non-standard main-abstract type.
     if abstract is None:
         excluded_types = {
-            "toc", "editor", "graphical", "teaser", "short",
-            "plain-language-summary", "lay-summary",
+            "toc", "editor", "graphical", "teaser", "short", "lay",
+            "plain-language-summary", "lay-summary", "layperson",
         }
         abstract = next(
             (
@@ -73,21 +130,37 @@ def _extract_abstract(root):
                 if (node.attrib.get("abstract-type", "") or "").strip().lower()
                 not in excluded_types
             ),
-            abstracts[0],
+            None,
         )
+    if abstract is None:
+        return _append_keywords("", _jats_keywords(article_meta))
 
     # Count/display only abstract paragraph text.  Do not include <title>
     # elements such as Background / Methods and Findings / Conclusions.
     paragraphs = []
+    keyword_heading_pending = False
     for node in abstract.iter():
-        if _local_name(node.tag) != "p":
+        tag = _local_name(node.tag)
+        if tag == "title":
+            heading = _clean_node_text(node)
+            keyword_heading_pending = bool(
+                re.fullmatch(r"keywords?\s*:?\s*", heading, flags=re.IGNORECASE)
+            )
+            continue
+        if tag != "p":
             continue
         text = _clean_node_text(node)
         if text:
+            if keyword_heading_pending and not _KEYWORDS_LABEL.search(text):
+                text = f"Keywords: {text}"
             paragraphs.append(text)
+            if keyword_heading_pending or _KEYWORDS_LABEL.search(text):
+                break
+        keyword_heading_pending = False
 
     if paragraphs:
-        return "\n\n".join(paragraphs)
+        abstract_text = "\n\n".join(_truncate_abstract_parts_at_keywords(paragraphs))
+        return _append_keywords(abstract_text, _jats_keywords(article_meta))
 
     # Rare unstructured abstract with no <p>: rebuild text while excluding
     # nested <title> elements so labels still do not enter statistics.
@@ -104,7 +177,8 @@ def _extract_abstract(root):
             pieces.append(child_text)
         if child.tail and child.tail.strip():
             pieces.append(child.tail.strip())
-    return " ".join(pieces).strip()
+    abstract_text = " ".join(_truncate_abstract_parts_at_keywords(pieces)).strip()
+    return _append_keywords(abstract_text, _jats_keywords(article_meta))
 
 
 def _body_text(root):
@@ -128,9 +202,9 @@ def _extract_jats_xml(root, path):
     title = _first_text(root, ".//article-title") or os.path.basename(path)
     abstract = _extract_abstract(root)
     body = _body_text(root) or _first_text(root, ".//body")
-    full_text = "\n\n".join(x for x in [title, abstract, body] if x).strip()
-    if not full_text:
-        full_text = _clean_node_text(root)
+    # Search scope excludes the bibliographic title but includes the supplied
+    # abstract (with Keywords) and PMC body.
+    full_text = "\n\n".join(x for x in [abstract, body] if x).strip()
 
     author_names = []
     for contrib in root.findall(".//contrib[@contrib-type='author']"):
@@ -180,7 +254,24 @@ def _extract_pubmed_abstract(article):
         text = _clean_node_text(node)
         if text:
             parts.append(text)
-    return "\n\n".join(parts)
+    parts = _truncate_abstract_parts_at_keywords(parts)
+
+    medline = next(
+        (node for node in article.iter() if _local_name(node.tag) == "MedlineCitation"),
+        None,
+    )
+    keywords = []
+    if medline is not None:
+        for keyword_list in medline.iter():
+            if _local_name(keyword_list.tag) != "KeywordList":
+                continue
+            for node in keyword_list.iter():
+                if _local_name(node.tag) == "Keyword":
+                    text = _clean_node_text(node)
+                    if text:
+                        keywords.append(text)
+
+    return _append_keywords("\n\n".join(parts), keywords)
 
 
 def _extract_pubmed_year(article):
@@ -210,9 +301,8 @@ def _extract_pubmed_xml(root, path):
     title = _clean_node_text(title_node) or os.path.basename(path)
     abstract = _extract_pubmed_abstract(article)
 
-    # PubMed XML is citation/abstract XML, not PMC full text. Keep Title + Abstract
-    # in raw_text so the rest of the current Abstract-only assignment works unchanged.
-    full_text = "\n\n".join(x for x in [title, abstract] if x).strip()
+    # PubMed XML has no body, and the bibliographic title is not searchable.
+    full_text = abstract
 
     pmid_node = _find_first_local(article, "PMID")
     pmid = (pmid_node.text or "").strip() if pmid_node is not None else ""
@@ -340,19 +430,11 @@ def inspect_document(path: str):
 
 
 def _index_one(title, text, fname, meta):
-    # Current assignment stage indexes Title + Abstract only.
-    # Full PMC XML/body text is still preserved in Document.raw_text for future use.
-    # PubMed XML contains citation metadata + abstract only, so text is naturally
-    # Title + Abstract for those records.
-    search_text = "\n\n".join(
-        part for part in [title, meta.get("abstract") or ""] if part
-    ).strip()
-
-    # FUTURE FULL-TEXT SEARCH (PMC/JATS only): comment the search_text block above
-    # and uncomment the following line, then rebuild the index.
-    # search_text = text
-
-    stats = document_stats(search_text)
+    # Search and statistics deliberately have different scopes. ``text`` is
+    # Abstract + Keywords + any supplied PMC body, while the persisted display
+    # statistics cover Abstract + Keywords only.
+    search_text = text
+    stats = document_stats(meta.get("abstract") or "")
     doc = Document.objects.create(
         title=title[:500],
         source_file=fname,

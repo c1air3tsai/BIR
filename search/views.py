@@ -25,7 +25,15 @@ from .indexer import (
 )
 from .models import Document, Term
 from .pmc_client import download_article_xml
-from .text_processing import bm25_score, iter_token_matches, preprocess, split_sentences, stem_tokens, tokenize
+from .text_processing import (
+    bm25_score,
+    document_stats,
+    iter_token_matches,
+    preprocess,
+    split_sentences,
+    stem_tokens,
+    tokenize,
+)
 
 
 def _corpus_dir():
@@ -141,20 +149,20 @@ def _keyword_match_count(text, raw_query):
 
 def _basic_stats(text, include_sentences=True):
     """Display statistics based on visible text while preserving EOS paragraph rules."""
-    raw_text = text or ""
-    visible_text = re.sub(r"\s+", " ", raw_text).strip()
+    stats = document_stats(text)
     result = {
-        "characters": len(visible_text),
-        "words": len(tokenize(visible_text)),
+        "characters": stats["char_count"],
+        "characters_no_space": stats["char_count_no_space"],
+        "words": stats["word_count"],
     }
     if include_sentences:
-        result["sentences"] = len(split_sentences(raw_text))
+        result["sentences"] = stats["sentence_count"]
     return result
 
 
 def _active_search_text(doc):
-    """Current homework scope: search Title + Abstract only."""
-    return "\n\n".join(part for part in [doc.title, doc.abstract] if part).strip()
+    """Search Abstract + Keywords + supplied body, never the article title."""
+    return (doc.raw_text or doc.abstract or "").strip()
 
 
 def _available_years():
@@ -179,7 +187,7 @@ def _normalize_year_filter(raw_year, available_years):
 def _search_stopword_fallback(raw_query, year=""):
     """
     Fallback for queries such as 'on the' after stop-word removal leaves no
-    indexed terms. The current homework scope searches Title + Abstract only.
+    indexed terms.
     A year filter, when selected, is applied before matching.
     """
     query_tokens = list(dict.fromkeys(tokenize(raw_query)))
@@ -226,7 +234,10 @@ def _search_bm25(raw_query, year=""):
 
     docs = {doc.id: doc for doc in documents}
     allowed_doc_ids = set(docs)
-    avg_len = sum(doc.word_count for doc in documents) / total_docs or 1
+    search_lengths = {
+        doc.id: len(preprocess(_active_search_text(doc))) for doc in documents
+    }
+    avg_len = sum(search_lengths.values()) / total_docs or 1
     score_map = {}
 
     for word in terms:
@@ -242,7 +253,7 @@ def _search_bm25(raw_query, year=""):
         for posting in postings:
             doc = docs[posting.document_id]
             score_map[posting.document_id] = score_map.get(posting.document_id, 0) + bm25_score(
-                posting.term_freq, df, doc.word_count, avg_len, total_docs
+                posting.term_freq, df, search_lengths[doc.id], avg_len, total_docs
             )
 
     ranked = sorted(score_map, key=score_map.get, reverse=True)
@@ -414,7 +425,6 @@ def document_detail_view(request, pk):
     result_year = request.GET.get("year", "").strip()
 
     abstract_stats = _basic_stats(doc.abstract, include_sentences=True)
-    title_stats = _basic_stats(doc.title, include_sentences=False)
     abstract_sentences, abstract_match_count = _build_abstract_sentences(doc.abstract, query)
     keyword_count = _keyword_match_count(doc.abstract, query) if query else None
 
@@ -452,7 +462,6 @@ def document_detail_view(request, pk):
         "abstract_match_count": abstract_match_count,
         "keyword_count": keyword_count,
         "abstract_stats": abstract_stats,
-        "title_stats": title_stats,
         "page_title": doc.title,
         # FUTURE FULL-TEXT context (restore with the block above):
         # "reading_blocks": reading_blocks,

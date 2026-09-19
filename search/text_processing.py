@@ -24,6 +24,14 @@ MULTI_DOT_ABBREVIATIONS = {
     "e.g.", "i.e.", "a.m.", "p.m.",
 }
 
+# Hyphen-like characters which may join a word when both neighbouring
+# characters are letters or numbers.  An em dash is deliberately absent: it
+# is always a separator under the project rules.
+WORD_CONNECTORS = "-‐‑–"
+_NUMERIC_RANGE_BOUNDARY = re.compile(
+    rf"(?<=\d)[{re.escape(WORD_CONNECTORS)}](?=\d)"
+)
+
 # Shared token rule used by indexing, ranking, statistics and highlighting.
 # Examples:
 #   COVID-19          -> 1 token
@@ -41,53 +49,34 @@ TOKEN_PATTERN = re.compile(
 
     # Numbers / decimals / percentages.
     # 12-15% -> 12 + 15%
-    # But 3-y will NOT be split here.
-    r"|\d+(?:\.\d+)*%?(?![\w’']|-[^\W\d_])"
+    # But 3-y / 5-stage will NOT be split here; the word alternative below
+    # consumes those as a single token.
+    rf"|\d+(?:\.\d+)*%?(?![\w’']|[{re.escape(WORD_CONNECTORS)}][^\W\d_])"
 
     # Unicode-aware alphanumeric words.
-    # Keep ASCII/Unicode apostrophes and hyphens inside words.
-    r"|[^\W_]+(?:['’\-][^\W_]+)*",
+    # Keep apostrophes and the approved hyphen variants inside words.
+    rf"|[^\W_]+(?:['’{re.escape(WORD_CONNECTORS)}][^\W_]+)*",
 
     flags=re.UNICODE,
 )
 
 
-# _NUMERIC_RANGE_BOUNDARY = re.compile(r"(?<=\d)[-–—](?=\d)")
+def _token_scan_text(text: str):
+    """Split numeric ranges without changing offsets in the original text."""
+    return _NUMERIC_RANGE_BOUNDARY.sub(" ", text or "")
 
-
-# def _token_scan_text(text: str):
-#     """
-#     Normalize only token boundaries while preserving string length.
-
-#     A dash between two digits is treated as a range separator, therefore
-#     12-15% -> 12 + 15% and 0.44–0.97 -> 0.44 + 0.97.  Hyphens in biomedical
-#     terms such as COVID-19 are not changed.
-#     """
-#     return _NUMERIC_RANGE_BOUNDARY.sub(" ", text or "")
-
-
-# def iter_token_matches(text: str):
-#     """Yield regex matches using the same boundaries as tokenize()."""
-#     return TOKEN_PATTERN.finditer(_token_scan_text(text))
 
 def iter_token_matches(text: str):
     """Yield regex matches using the same boundaries as tokenize()."""
-    return TOKEN_PATTERN.finditer(text or "")
+    return TOKEN_PATTERN.finditer(_token_scan_text(text))
 
-
-# def tokenize(text: str):
-#     """Tokenize biomedical text using the assignment's word-count rules."""
-#     original = text or ""
-#     scan_text = _token_scan_text(original)
-#     # Replacement above is one-character-for-one-character, so match spans are
-#     # unchanged and the matched text is identical for every real token.
-#     return [original[m.start():m.end()].lower() for m in TOKEN_PATTERN.finditer(scan_text)]
 
 def tokenize(text: str):
-    """Tokenize biomedical text using the assignment's word-count rules."""
+    """Tokenize biomedical text without stop-word removal or stemming."""
+    original = text or ""
     return [
-        m.group().casefold()
-        for m in TOKEN_PATTERN.finditer(text or "")
+        original[m.start():m.end()].casefold()
+        for m in TOKEN_PATTERN.finditer(_token_scan_text(original))
     ]
 
 
@@ -113,7 +102,7 @@ def _split_paragraph_sentences(text: str):
 
     while i < n:
         ch = text[i]
-        if ch not in ".!?":
+        if ch not in ".!?。！？":
             i += 1
             continue
 
@@ -198,11 +187,7 @@ def split_sentences(text: str):
     if not text:
         return []
 
-    paragraphs = [
-        p.strip()
-        for p in re.split(r"(?:\r?\n){2,}", text)
-        if p.strip()
-    ]
+    paragraphs = [p.strip() for p in re.split(r"\r?\n+", text) if p.strip()]
 
     sentences = []
     for paragraph in paragraphs:
@@ -217,13 +202,14 @@ def document_stats(text: str):
     sentence_count = len(split_sentences(raw_text))
     return {
         "char_count": len(visible_text),
+        "char_count_no_space": len(visible_text.replace(" ", "")),
         "word_count": word_count,
         "sentence_count": sentence_count,
         "avg_words_per_sentence": round(word_count / sentence_count, 2) if sentence_count else 0,
     }
 
 
-def bm25_score(tf, df, doc_len, avg_doc_len, total_docs, k1=1.5, b=0.75):
+def bm25_score(tf, df, doc_len, avg_doc_len, total_docs, k1=1.2, b=0.75):
     """Classic BM25 contribution for one query term/document pair."""
     if tf <= 0 or df <= 0 or total_docs <= 0:
         return 0.0
