@@ -524,7 +524,7 @@ def _set_import_result(request, uploaded=None, duplicates=None, errors=None):
     uploaded = uploaded or []
     duplicates = duplicates or []
     errors = errors or []
-    if uploaded and duplicates:
+    if uploaded and (duplicates or errors):
         kind = "partial"
     elif uploaded:
         kind = "success"
@@ -578,42 +578,52 @@ def import_view(request):
         if action == "upload":
             upload_form = UploadDocumentForm(request.POST, request.FILES)
             if upload_form.is_valid():
-                uploaded = upload_form.cleaned_data["file"]
-                if Path(uploaded.name).suffix.lower() != ".xml":
-                    messages.error(request, "Please upload an .xml file.")
-                    return redirect("search:import")
+                uploaded_docs = []
+                duplicate_docs = []
+                errors = []
 
-                safe_name = Path(uploaded.name).name
-                temp_path = None
-                try:
-                    with tempfile.NamedTemporaryFile(
-                        mode="wb", suffix=".xml", dir=_fetched_dir(), delete=False
-                    ) as temp:
-                        temp_path = Path(temp.name)
-                        for chunk in uploaded.chunks():
-                            temp.write(chunk)
-
-                    duplicate = _duplicate_for_path(temp_path, safe_name)
-                    if duplicate:
-                        temp_path.unlink(missing_ok=True)
-                        _set_import_result(request, duplicates=[duplicate])
-                        return redirect("search:import")
-
-                    target = _available_corpus_path(safe_name)
-                    shutil.move(str(temp_path), target)
+                for uploaded in upload_form.cleaned_data["files"]:
+                    safe_name = Path(uploaded.name).name
                     temp_path = None
-                    doc = index_file(str(target), replace=False)
-                    _set_import_result(request, uploaded=[doc])
-                    return redirect("search:import")
-                except DuplicateDocumentError as exc:
-                    if temp_path:
-                        temp_path.unlink(missing_ok=True)
-                    _set_import_result(request, duplicates=[exc.document])
-                    return redirect("search:import")
-                except Exception as exc:
-                    if temp_path:
-                        temp_path.unlink(missing_ok=True)
-                    messages.error(request, f"Upload failed: {exc}")
+                    target = None
+                    try:
+                        with tempfile.NamedTemporaryFile(
+                            mode="wb", suffix=".xml", dir=_fetched_dir(), delete=False
+                        ) as temp:
+                            temp_path = Path(temp.name)
+                            for chunk in uploaded.chunks():
+                                temp.write(chunk)
+
+                        duplicate = _duplicate_for_path(temp_path, safe_name)
+                        if duplicate:
+                            duplicate_docs.append(duplicate)
+                            temp_path.unlink(missing_ok=True)
+                            temp_path = None
+                            continue
+
+                        target = _available_corpus_path(safe_name)
+                        shutil.move(str(temp_path), target)
+                        temp_path = None
+                        uploaded_docs.append(index_file(str(target), replace=False))
+                    except DuplicateDocumentError as exc:
+                        duplicate_docs.append(exc.document)
+                        if target:
+                            target.unlink(missing_ok=True)
+                    except Exception as exc:
+                        errors.append(f"{safe_name}: {exc}")
+                        if target:
+                            target.unlink(missing_ok=True)
+                    finally:
+                        if temp_path:
+                            temp_path.unlink(missing_ok=True)
+
+                _set_import_result(
+                    request,
+                    uploaded=uploaded_docs,
+                    duplicates=duplicate_docs,
+                    errors=errors,
+                )
+                return redirect("search:import")
 
         elif action in {"article_fetch", "pmc_fetch"}:
             fetch_form = ArticleFetchForm(request.POST)

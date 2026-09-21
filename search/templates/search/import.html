@@ -9,15 +9,15 @@
   <div class="upload-grid">
     <section class="simple-panel">
       <h2>Upload XML</h2>
-      <p class="panel-intro">Choose one PubMed / PubMed Central XML file from your computer.</p>
+      <p class="panel-intro">Choose one or more PubMed / PubMed Central XML files from your computer.</p>
       <form method="post" enctype="multipart/form-data" class="stack-form">
         {% csrf_token %}
         <input type="hidden" name="action" value="upload">
-        {{ upload_form.file.errors }}
-        <label for="{{ upload_form.file.id_for_label }}">{{ upload_form.file.label }}</label>
-        {{ upload_form.file }}
-        <small>{{ upload_form.file.help_text }}</small>
-        <button class="primary-button" type="submit">Upload Article</button>
+        {{ upload_form.files.errors }}
+        <label for="{{ upload_form.files.id_for_label }}">{{ upload_form.files.label }}</label>
+        {{ upload_form.files }}
+        <small>{{ upload_form.files.help_text }}</small>
+        <button class="primary-button" type="submit">Upload Selected Articles</button>
       </form>
     </section>
 
@@ -85,7 +85,11 @@
     {% elif import_result.kind == 'partial' %}
       <div class="status-icon partial-icon">✓</div>
       <h2 id="import-result-title">Upload completed</h2>
-      <p>{{ import_result.uploaded|length }} article{{ import_result.uploaded|length|pluralize }} uploaded. {{ import_result.duplicates|length }} duplicate{{ import_result.duplicates|length|pluralize }} skipped.</p>
+      <p>
+        {{ import_result.uploaded|length }} article{{ import_result.uploaded|length|pluralize }} uploaded.
+        {% if import_result.duplicates %}{{ import_result.duplicates|length }} duplicate{{ import_result.duplicates|length|pluralize }} skipped.{% endif %}
+        {% if import_result.errors %}{{ import_result.errors|length }} file{{ import_result.errors|length|pluralize }} could not be imported.{% endif %}
+      </p>
     {% elif import_result.kind == 'success' %}
       <div class="status-icon success-check">✓</div>
       <h2 id="import-result-title">Article{% if import_result.uploaded|length > 1 %}s{% endif %} uploaded successfully</h2>

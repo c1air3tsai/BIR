@@ -10,22 +10,26 @@
       <p class="hero-description">Search biomedical article titles and abstracts from your local PubMed / PubMed Central collection.</p>
 
       <form class="main-search search-with-filter" method="get" action="{% url 'search:home' %}">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-        <input
-          type="search"
-          name="q"
-          value="{{ query }}"
-          placeholder="Search articles, e.g. cancer treatment"
-          aria-label="Search articles"
-          autofocus
-        >
-        <select name="year" class="search-year-select" aria-label="Filter search by publication year">
-          <option value="">All years</option>
-          {% for option_year in available_years %}
-            <option value="{{ option_year }}" {% if year == option_year %}selected{% endif %}>{{ option_year }}</option>
-          {% endfor %}
-        </select>
-        <button type="submit">Search</button>
+        <div class="search-query-control">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            name="q"
+            value="{{ query }}"
+            placeholder="Search articles, e.g. cancer treatment"
+            aria-label="Search articles"
+            autofocus
+          >
+        </div>
+        <div class="search-submit-controls">
+          <select name="year" class="search-year-select" aria-label="Filter search by publication year">
+            <option value="">All years</option>
+            {% for option_year in available_years %}
+              <option value="{{ option_year }}" {% if year == option_year %}selected{% endif %}>{{ option_year }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit">Search</button>
+        </div>
       </form>
 
       {% if not query %}

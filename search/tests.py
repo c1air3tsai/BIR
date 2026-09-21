@@ -1,9 +1,13 @@
 import tempfile
 from pathlib import Path
 
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import SimpleTestCase, TestCase
+from django.urls import reverse
 
+from .forms import UploadDocumentForm
 from .indexer import parse_document
+from .models import Document
 from .text_processing import document_stats, preprocess, split_sentences, tokenize
 from .pmc_client import normalize_identifier
 
@@ -136,3 +140,71 @@ class IdentifierTests(TestCase):
         self.assertEqual(normalize_identifier("PMC12503546"), ("pmc", "PMC12503546"))
         self.assertEqual(normalize_identifier("42724776"), ("pubmed", "42724776"))
         self.assertEqual(normalize_identifier("PMID:42724776"), ("pubmed", "42724776"))
+
+
+class MultipleXmlUploadTests(TestCase):
+    @staticmethod
+    def _xml_file(name, pmid, title):
+        xml = f"""
+            <PubmedArticleSet><PubmedArticle><MedlineCitation>
+              <PMID>{pmid}</PMID><Article>
+                <ArticleTitle>{title}</ArticleTitle>
+                <Abstract><AbstractText>Abstract for {title}.</AbstractText></Abstract>
+              </Article>
+            </MedlineCitation></PubmedArticle></PubmedArticleSet>
+        """.encode("utf-8")
+        return SimpleUploadedFile(name, xml, content_type="application/xml")
+
+    def test_upload_form_accepts_multiple_xml_files(self):
+        form = UploadDocumentForm(
+            data={},
+            files={"files": [
+                self._xml_file("one.xml", "101", "First article"),
+                self._xml_file("two.xml", "102", "Second article"),
+            ]},
+        )
+        self.assertTrue(form.is_valid(), form.errors)
+        self.assertEqual(len(form.cleaned_data["files"]), 2)
+
+    def test_upload_view_indexes_all_selected_files(self):
+        with tempfile.TemporaryDirectory() as directory, self.settings(BASE_DIR=Path(directory)):
+            response = self.client.post(
+                reverse("search:import"),
+                data={
+                    "action": "upload",
+                    "files": [
+                        self._xml_file("one.xml", "201", "First uploaded article"),
+                        self._xml_file("two.xml", "202", "Second uploaded article"),
+                    ],
+                },
+            )
+
+            self.assertRedirects(response, reverse("search:import"), fetch_redirect_response=False)
+            self.assertEqual(Document.objects.count(), 2)
+            self.assertSetEqual(
+                set(Document.objects.values_list("title", flat=True)),
+                {"First uploaded article", "Second uploaded article"},
+            )
+            self.assertEqual(len(list((Path(directory) / "data" / "corpus").glob("*.xml"))), 2)
+
+    def test_batch_upload_keeps_successes_when_one_file_is_invalid(self):
+        with tempfile.TemporaryDirectory() as directory, self.settings(BASE_DIR=Path(directory)):
+            response = self.client.post(
+                reverse("search:import"),
+                data={
+                    "action": "upload",
+                    "files": [
+                        self._xml_file("valid.xml", "301", "Valid article"),
+                        SimpleUploadedFile(
+                            "broken.xml", b"<not-valid", content_type="application/xml"
+                        ),
+                    ],
+                },
+            )
+
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(Document.objects.count(), 1)
+            result = self.client.session["import_result"]
+            self.assertEqual(result["kind"], "partial")
+            self.assertEqual(len(result["uploaded"]), 1)
+            self.assertEqual(len(result["errors"]), 1)

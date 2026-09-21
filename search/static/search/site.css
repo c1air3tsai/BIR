@@ -136,9 +136,9 @@ button, input, select { font: inherit; }
 }
 .search-hero-compact .hero-description { margin-bottom: 20px; }
 .main-search {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  gap: 6px;
   width: 100%;
   margin: 0 auto;
   padding: 5px;
@@ -147,8 +147,25 @@ button, input, select { font: inherit; }
   background: #fff;
   box-shadow: 0 10px 30px rgba(29, 69, 102, .10);
 }
+.search-query-control {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+}
+.search-submit-controls {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 132px auto;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
 .search-icon { padding-left: 13px; color: #718b9e; font-size: 25px; line-height: 1; transform: rotate(-12deg); }
 .main-search input {
+  width: 100%;
   min-width: 0;
   padding: 13px 14px;
   border: 0;
@@ -521,8 +538,8 @@ button, input, select { font: inherit; }
   .search-hero-compact { padding: 31px 0 34px; }
   .search-hero h1 { font-size: 31px; }
   .hero-description { font-size: 14px; }
-  .main-search { grid-template-columns: auto 1fr; padding: 4px; }
-  .main-search button { grid-column: 1 / -1; margin-top: 3px; padding: 10px; }
+  .main-search { padding: 4px; }
+  .main-search button { padding: 11px 18px; }
   .hero-divider { display: none; }
   .hero-utilities { gap: 10px 15px; }
   .results-header { align-items: flex-start; }
@@ -816,9 +833,9 @@ button, input, select { font: inherit; }
   color: #29495f;
 }
 .search-with-filter .search-year-select {
-  flex: 0 0 128px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  width: 100%;
+  border-color: #c7d3db;
+  background-color: #f7fafc;
 }
 .results-year {
   color: #647985;
@@ -828,6 +845,17 @@ button, input, select { font: inherit; }
   .collection-controls { justify-content: flex-start; }
   .filter-control { flex: 1 1 150px; }
   .filter-control select { width: 100%; }
-  .search-with-filter { flex-wrap: wrap; }
-  .search-with-filter .search-year-select { flex: 1 1 120px; border-radius: 5px; }
+}
+@media (max-width: 600px) {
+  .main-search { flex-direction: column; align-items: stretch; gap: 0; }
+  .search-submit-controls {
+    width: auto;
+    grid-template-columns: 132px auto;
+    align-self: flex-end;
+    gap: 7px;
+    margin-left: auto;
+    padding: 5px 1px 1px;
+    border-top: 1px solid #e4ebf0;
+  }
+  .main-search button { min-width: 94px; }
 }
